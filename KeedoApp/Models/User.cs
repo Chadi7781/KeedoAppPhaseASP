@@ -55,7 +55,7 @@ namespace KeedoApp.Models
 		internal bool valid;
 		private bool accountNonLocked;
 		private int failedAttempt;
-		private DateTime? lockTime = null;
+		private Nullable<DateTime> lockTime;
 		private string resettoken;
 
 
@@ -69,8 +69,8 @@ namespace KeedoApp.Models
 
 		private bool isBlocked;
 
-		private DateTime?  blockDate =null;
-		private DateTime?  unBlockDate =null ;
+		private Nullable<DateTime> blockDate;
+		private Nullable<DateTime> unBlockDate ;
 		private bool isPrivate;
 
 
@@ -458,18 +458,6 @@ namespace KeedoApp.Models
 		}
 
 
-		public virtual DateTime LockTime
-		{
-			get
-			{
-				return (DateTime)lockTime;
-			}
-			set
-			{
-				this.lockTime = value;
-			}
-		}
-
 
 		public virtual string Resettoken
 		{
@@ -534,32 +522,6 @@ namespace KeedoApp.Models
 			set
 			{
 				this.isBlocked = value;
-			}
-		}
-
-
-		public virtual DateTime BlockDate
-		{
-			get
-			{
-				return (DateTime)blockDate;
-			}
-			set
-			{
-				this.blockDate = value;
-			}
-		}
-
-
-		public virtual DateTime UnBlockDate
-		{
-			get
-			{
-				return (DateTime)unBlockDate;
-			}
-			set
-			{
-				this.unBlockDate = value;
 			}
 		}
 

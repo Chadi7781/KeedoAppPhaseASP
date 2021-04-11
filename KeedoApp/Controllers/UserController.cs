@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KeedoApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -17,16 +18,16 @@ namespace KeedoApp.Controllers
             httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(baseAddress);
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //var _AccessToken = Session["AccessToken"];
-            var _AccessToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJGaXJzdHVzZSIsImlhdCI6MTYxODA4Mjg5NSwiZXhwIjoxNjE4OTQ2ODk1fQ.0idJvRoG6nKjb0sMevkxwl99PdbQtfD8JXOzoaqssjxI55saals2JpH9nYcnWhs3ndtrfOcaRvgNBKY1LUh-rQ";
-            httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer "+_AccessToken));
+            //var _AccessToken = 
+
         }
 
         // GET: User
         public ActionResult GestionUtilisateur()
         {
+            var _AccessToken = Session["AccessToken"];
+            httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "/findall").Result;
-            //IEnumerable<Models.User> users;
             if (httpResponseMessage.IsSuccessStatusCode) {
                 ViewBag.users = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Models.User>>().Result;
             }
@@ -43,8 +44,14 @@ namespace KeedoApp.Controllers
         }
 
         // GET: User/Create
-        public ActionResult Create()
+        public ActionResult inscription(LoginObject.Login login)
         {
+            baseAddress = "http://localhost:8080/SpringMVC/servlet/User/Access";
+            if (!login.username.Equals("") && !login.password.Equals(""))
+            {
+                var APIResponse = httpClient.PostAsJsonAsync<LoginObject.Login>(baseAddress + "/login",login).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+                var result = APIResponse.Result;
+            }
             return View();
         }
 
@@ -71,21 +78,23 @@ namespace KeedoApp.Controllers
         }
 
         // POST: User/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [HttpGet]
+        public ActionResult userbyid(int id)
         {
-            try
+            var _AccessToken = Session["AccessToken"];
+            httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "/userbyid/{"+ id + "}").Result;
+            //IEnumerable<Models.User> users;
+            if (httpResponseMessage.IsSuccessStatusCode)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                ViewBag.users = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Models.User>>().Result;
             }
-            catch
+            else
             {
-                return View();
+                ViewBag.users = "erreur";
             }
+            return View();
         }
-
         // GET: User/Delete/5
         public ActionResult Delete(int id)
         {
