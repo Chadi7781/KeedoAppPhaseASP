@@ -18,12 +18,12 @@ namespace KeedoApp.Models
 		private const long serialVersionUID = 1L;
 
 		private int idUser;
-		private string firstName;
-		private string lastName;
-		private string telNum;
-		private DateTime birthdate;
+		public string firstName;
+		public string lastName;
+		public string telNum;
+		public DateTime birthdate;
 
-		private string address;
+		public string address;
 
 		private string mail;
 
@@ -55,7 +55,7 @@ namespace KeedoApp.Models
 		internal bool valid;
 		private bool accountNonLocked;
 		private int failedAttempt;
-		private DateTime lockTime;
+		private DateTime? lockTime = null;
 		private string resettoken;
 
 
@@ -69,8 +69,8 @@ namespace KeedoApp.Models
 
 		private bool isBlocked;
 
-		private DateTime blockDate;
-		private DateTime unBlockDate;
+		private DateTime?  blockDate =null;
+		private DateTime?  unBlockDate =null ;
 		private bool isPrivate;
 
 
@@ -462,7 +462,7 @@ namespace KeedoApp.Models
 		{
 			get
 			{
-				return lockTime;
+				return (DateTime)lockTime;
 			}
 			set
 			{
@@ -542,7 +542,7 @@ namespace KeedoApp.Models
 		{
 			get
 			{
-				return blockDate;
+				return (DateTime)blockDate;
 			}
 			set
 			{
@@ -555,7 +555,7 @@ namespace KeedoApp.Models
 		{
 			get
 			{
-				return unBlockDate;
+				return (DateTime)unBlockDate;
 			}
 			set
 			{
