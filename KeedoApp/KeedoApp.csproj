@@ -142,7 +142,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DonationController.cs" />
+    <Compile Include="Controllers\EvaluationController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MeetingController.cs" />
+    <Compile Include="Controllers\ParticipationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -473,6 +478,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Donation\" />
+    <Folder Include="Views\Evaluation\" />
+    <Folder Include="Views\Event\" />
+    <Folder Include="Views\Meeting\" />
+    <Folder Include="Views\Participation\" />
     <Folder Include="Views\Shared\App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
