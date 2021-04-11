@@ -143,9 +143,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginInscriptionController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LoginObject\Login.cs" />
     <Compile Include="Models\Advertisement.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\AppointmentStatus.cs" />
@@ -470,9 +473,14 @@
     <Content Include="Views\Shared\AdminTemplate\_Scripts.cshtml" />
     <Content Include="Views\Shared\AdminTemplate\_Styles.cshtml" />
     <Content Include="Views\Shared\AdminTemplate\_SideBar.cshtml" />
+    <Content Include="Views\User\GestionUtilisateur.cshtml" />
+    <Content Include="Views\User\Inscription.cshtml" />
+    <Content Include="Views\User\Authentification.cshtml" />
+    <Content Include="Views\Auth\login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\LoginInscription\" />
     <Folder Include="Views\Shared\App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
