@@ -1,4 +1,5 @@
 ﻿using KeedoApp.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -44,15 +45,18 @@ namespace KeedoApp.Controllers
         }
 
         // GET: User/Create
-        public ActionResult inscription(LoginObject.Login login)
-        {
+        public ActionResult inscription(LoginObject.Login login) {
             baseAddress = "http://localhost:8080/SpringMVC/servlet/User/Access";
             if (!login.username.Equals("") && !login.password.Equals(""))
             {
-                var APIResponse = httpClient.PostAsJsonAsync<LoginObject.Login>(baseAddress + "/login",login).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-                var result = APIResponse.Result;
+                var APIResponse = httpClient.PostAsJsonAsync<LoginObject.Login>(baseAddress + "/login", login).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+
+                var jsonreponse = APIResponse.Result.Content.ReadAsAsync<LoginObject.jwtResponse>().Result;
+                Session["AccessToken"] = jsonreponse.AccessToken;
+                Session["Role"] = jsonreponse.role;
+                Session["User"] = jsonreponse.username;
             }
-            return View();
+                return View();
         }
 
         // POST: User/Create
