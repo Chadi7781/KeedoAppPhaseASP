@@ -148,6 +148,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LoginObject\jwtResponse.cs" />
     <Compile Include="LoginObject\Login.cs" />
     <Compile Include="Models\Advertisement.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -474,9 +475,9 @@
     <Content Include="Views\Shared\AdminTemplate\_Styles.cshtml" />
     <Content Include="Views\Shared\AdminTemplate\_SideBar.cshtml" />
     <Content Include="Views\User\GestionUtilisateur.cshtml" />
-    <Content Include="Views\User\Inscription.cshtml" />
-    <Content Include="Views\User\Authentification.cshtml" />
+    <Content Include="Views\User\login.cshtml" />
     <Content Include="Views\Auth\login.cshtml" />
+    <Content Include="Views\User\create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

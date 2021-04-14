@@ -12,6 +12,8 @@ namespace KeedoApp.Controllers
     {
         HttpClient httpClient;
         string baseAddress;
+        
+        
 
         public UserController()
         {
@@ -19,8 +21,6 @@ namespace KeedoApp.Controllers
             httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(baseAddress);
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //var _AccessToken = 
-
         }
 
         // GET: User
@@ -37,15 +37,7 @@ namespace KeedoApp.Controllers
             }
             return View();
         }
-
-        // GET: User/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: User/Create
-        public ActionResult inscription(LoginObject.Login login) {
+        public ActionResult login(LoginObject.Login login) {
             baseAddress = "http://localhost:8080/SpringMVC/servlet/User/Access";
             if (!login.username.Equals("") && !login.password.Equals(""))
             {
@@ -59,23 +51,39 @@ namespace KeedoApp.Controllers
                 return View();
         }
 
-        // POST: User/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult create (User user)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ViewBag.roles == null) { 
+                baseAddress = "http://localhost:8080/SpringMVC/servlet/Role";
+                HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "/findall").Result;
+                if (httpResponseMessage.IsSuccessStatusCode)
+                {
+                    ViewBag.roles = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Models.Role>>().Result;
+                }
+                }
+                if (!(user.firstName.Equals("") && user.lastName.Equals("") && user.Login.Equals("") && user.Password.Equals(""))) 
+                {
+                    baseAddress = "http://localhost:8080/SpringMVC/servlet/User/Access";
+                    var APIResponse = httpClient.PostAsJsonAsync<User>(baseAddress + "/signup", user).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+                   
+                    
+                    var jsonreponse = APIResponse.Result.Content.ReadAsAsync<String>().Result;.
+                    
+                    
+                    ViewBag.SuccessMessage = jsonreponse;
+                }
             }
+
             catch
             {
                 return View();
             }
+            return View();
         }
 
-        // GET: User/Edit/5
+
         public ActionResult Edit(int id)
         {
             return View();

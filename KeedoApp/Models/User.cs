@@ -18,18 +18,18 @@ namespace KeedoApp.Models
 		private const long serialVersionUID = 1L;
 
 		private int idUser;
-		public string firstName;
-		public string lastName;
-		public string telNum;
+		public string firstName = "";
+		public string lastName = "";
+		public string telNum = "";
 		public DateTime birthdate;
 
 		public string address;
 
-		private string mail;
+		private string mail = "";
 
-		private string login;
+		private string login ="";
 
-		private string password;
+		private string password = "";
 
 		private bool delegatee;
 
