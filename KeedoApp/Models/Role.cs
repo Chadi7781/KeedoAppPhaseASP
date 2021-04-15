@@ -12,7 +12,7 @@ namespace KeedoApp.Models
 
 		private const long serialVersionUID = 1L;
 
-		private int idRole;
+		public int idRole;
 		private string description;
 		private RoleType roleType;
 		private ISet<User> user;
