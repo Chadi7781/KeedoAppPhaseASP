@@ -17,7 +17,7 @@ namespace KeedoApp.Models
 
 		private const long serialVersionUID = 1L;
 
-		private int idUser;
+		public int idUser;
 		public string firstName = "";
 		public string lastName = "";
 		public string telNum = "";

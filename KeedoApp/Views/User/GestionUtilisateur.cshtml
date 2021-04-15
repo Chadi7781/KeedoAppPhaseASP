@@ -8,47 +8,49 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.idUser)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.firstName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.lastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.firstName)
+            @Html.DisplayNameFor(model => model.address)
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.firstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.firstName)
+            @Html.DisplayNameFor(model => model.birthdate)
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in ViewBag.users)
     {
-        <tr>
-            <td>
-                @item.firstName
-            </td>
-            <td>
-                @item.lastName
-            </td>
-            <td>
-                @item.firstName
-            </td>
-            <td>
-                @item.firstName
-            </td>
-            <td>
-                @item.address
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @item.idUser
+    </td>
+    <td>
+        @item.firstName
+    </td>
+    <td>
+        @item.lastName
+    </td>
+    <td>
+        @item.address
+    </td>
+
+    <td>
+        @item.birthdate
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.idUser }) |
+        @Html.ActionLink("Details", "Userbyid", new {  id=item.idUser }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.idUser })
+    </td>
+</tr>
     }
 
 </table>
