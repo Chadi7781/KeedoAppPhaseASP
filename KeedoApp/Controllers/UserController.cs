@@ -84,48 +84,32 @@ namespace KeedoApp.Controllers
         }
 
 
-        // GET: Post/Edit/5
-         public ActionResult Edit(int id, User user)
-          {
-            //  User user = null;
+        // GET: User/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
 
 
-              //HTTP GET
-              var responseTask = httpClient.GetAsync(baseAddress + "/UpdateUser" + id.ToString());
-              responseTask.Wait();
 
-              var result = responseTask.Result;
-              if (result.IsSuccessStatusCode)
-              {
-                  var readTask = result.Content.ReadAsAsync<User>();
-                  readTask.Wait();
-
-                  user = readTask.Result;
-              }
-
-              return View(user);
-          }
-
-
-          // POST: Post/Edit/5
-          [HttpPost]
-          public ActionResult Edit(User user)
-          {
+        // POST: User/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, User user)
+        {
             //HTTP POST
-             var putTask = httpClient.PutAsJsonAsync<User>("UpdateUser", user);
-             putTask.Wait();
+            var putTask = httpClient.PutAsJsonAsync<User>(baseAddress + "/updateUserr/" + id.ToString(), user);
+            putTask.Wait();
 
-             var result = putTask.Result;
-             if (result.IsSuccessStatusCode)
-             {
+            var result = putTask.Result;
 
-                 return RedirectToAction("GestionUtilisateur");
-             }
-             return View(user); 
-           
+            if (result.IsSuccessStatusCode)
+            {
 
-        } 
-      
+                return RedirectToAction("GestionUtilisateur");
+            }
+            return View();
+
+        }
 
 
         // POST: User/Edit/5
