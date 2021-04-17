@@ -14,7 +14,7 @@ namespace KeedoApp.Models
 
 		public int idRole;
 		private string description;
-		private RoleType roleType;
+		public RoleType roleType;
 		private ISet<User> user;
 
 		public Role() : base()
