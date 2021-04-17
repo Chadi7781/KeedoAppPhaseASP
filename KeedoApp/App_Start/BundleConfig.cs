@@ -11,9 +11,8 @@ namespace KeedoApp
 
 
 
-
             bundles.Add(new ScriptBundle("~/Scripts/js").Include(
-                       "~/FrontEnd/assets/libs/jquery/jquery.min.js",
+                      "~/FrontEnd/assets/libs/jquery/jquery.min.js",
                       "~/FrontEnd/assets/libs/bootstrap/js/bootstrap.bundle.min.js",
                       "~/FrontEnd/assets/libs/metismenu/metisMenu.min.js",
                       "~/FrontEnd/assets/libs/simplebar/simplebar.min.js",
@@ -22,17 +21,24 @@ namespace KeedoApp
                       "~/FrontEnd/assets/libs/jquery.counterup/jquery.counterup.min.js",
                       "~/FrontEnd/assets/libs/apexcharts/apexcharts.min.js",
                       "~/FrontEnd/assets/js/pages/dashboard.init.js",
+                      "~/FrontEnd/assets/libs/datatables.net/js/jquery.dataTables.min.js",
+                      "~/FrontEnd/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js",
+                      "~/FrontEnd/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js",
+                      "~/FrontEnd/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js",
+                      "~/FrontEnd/assets/js/pages/ecommerce-datatables.init.js",
+                      "~/FrontEnd/assets/js/chadi.js",
                       "~/FrontEnd/assets/js/app.js"));
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-            "~/Content/site.css",
             "~/FrontEnd/assets/css/bootstrap.min.css",
-            "~/Frontend/assets/css/app-dark.min.css",
-            "~/Frontend/assets/css/app-rtl.min.css",
-            "~/Frontend/assets/css/icons.min.css",
+            "~/FrontEnd/assets/css/app-dark.min.css",
+            "~/FrontEnd/assets/css/app-rtl.min.css",
+            "~/FrontEnd/assets/css/icons.min.css",
             "~/FrontEnd/assets/css/app.min.css",
-            "~/FrontEnd/assets/css/line.css"
+            "~/FrontEnd/assets/css/line.css",
+            "~/FrontEnd/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css",
+            "~/FrontEnd/assets/libs/datatables.net-bs4/css/responsive.bootstrap4.min.css"
             ));
         }
     }

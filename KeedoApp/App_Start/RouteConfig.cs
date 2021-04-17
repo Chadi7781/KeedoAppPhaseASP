@@ -18,6 +18,12 @@ namespace KeedoApp
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+               name: "Delete",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Event", action = "Delete", id = UrlParameter.Optional }
+           );
         }
     }
 }

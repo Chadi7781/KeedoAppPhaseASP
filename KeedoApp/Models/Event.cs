@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace KeedoApp.Models
 {
@@ -22,7 +23,7 @@ namespace KeedoApp.Models
 		private string address;
 
 
-		private sbyte[] image;
+		private byte[] image;
 
 
 
@@ -43,30 +44,30 @@ namespace KeedoApp.Models
 		private EventCategory category;
 		private int views;
 
-		private ISet<Participation> participations;
+		private List<Participation> participations;
 
 
 
 		internal Jackpot jackpot;
 
-		private ISet<Notification> notifications;
+		private List<Notification> notifications;
 
 
 		private float discountPercentage;
 
-		private IList<Advertisement> advertisements;
+		private List<Advertisement> advertisements;
 
 
 		private IList<Donation> donation;
 
 
-		private ISet<Evaluation> evaluations;
+		private List<Evaluation> evaluations;
 
 
 		private Kindergarden Kindergarden;
 
 
-		public Event(int idEvenement, string title, DateTime date, DateTime hour, string description, bool status, string address, sbyte[] image, float ticketPrice, float collAmount, int participantsNbr, int placesNbr, bool earlyParticipants, int nbrTicketEarlyParticipants, EventCategory category, int views, ISet<Participation> participations, Jackpot jackpot, ISet<Notification> notifications, float discountPercentage, IList<Advertisement> advertisements, IList<Donation> donation) : base()
+		public Event(int idEvenement, string title, DateTime date, DateTime hour, string description, bool status, string address, byte[] image, float ticketPrice, float collAmount, int participantsNbr, int placesNbr, bool earlyParticipants, int nbrTicketEarlyParticipants, EventCategory category, int views, List<Participation> participations, Jackpot jackpot, List<Notification> notifications, float discountPercentage, List<Advertisement> advertisements, List<Donation> donation) : base()
 		{
 			this.idEvenement = idEvenement;
 			this.title = title;
@@ -108,6 +109,25 @@ namespace KeedoApp.Models
 			}
 		}
 
+		public int PlaceNbr { 
+			get
+            {
+				return placesNbr;
+
+			}
+			set
+            {
+				this.placesNbr = value; 
+
+			}
+		
+		}
+
+		[DataType(DataType.Time)]
+		public DateTime Hour
+        {
+			get;set;
+        }
 
 
 
@@ -117,7 +137,7 @@ namespace KeedoApp.Models
 
 
 
-		public Event(string title, DateTime date, DateTime hour, string description, bool status, string address, sbyte[] image, float ticketPrice, float collAmount, int participantsNbr, int placesNbr, EventCategory category, int views, bool earlyParticipants, int nbrTicketEarlyParticipants, ISet<Participation> participations, Jackpot jackpot, ISet<Notification> notifications, float discountPercentage, IList<Advertisement> advertisements, IList<Donation> donation) : base()
+		public Event(string title, DateTime date, DateTime hour, string description, bool status, string address, byte[] image, float ticketPrice, float collAmount, int participantsNbr, int placesNbr, EventCategory category, int views, bool earlyParticipants, int nbrTicketEarlyParticipants, List<Participation> participations, Jackpot jackpot, List<Notification> notifications, float discountPercentage, List<Advertisement> advertisements, List<Donation> donation) : base()
 		{
 			this.title = title;
 			this.date = date;
@@ -166,12 +186,22 @@ namespace KeedoApp.Models
 			}
 		}
 
+		public virtual byte[] Image
+		{
+			get
+			{
+				return image ;
+			}
+			set
+			{
+				this.image = value;
+			}
+		}
 
 
 
 
-
-		public virtual IList<Advertisement> Advertisements
+		public virtual List<Advertisement> Advertisements
 		{
 			get
 			{
@@ -282,7 +312,7 @@ namespace KeedoApp.Models
 				this.address = value;
 			}
 		}
-		public virtual ISet<Notification> Notifications
+		public virtual List<Notification> Notifications
 		{
 			get
 			{
@@ -331,7 +361,19 @@ namespace KeedoApp.Models
 		}
 
 
-
+		public virtual DateTime Date
+		{
+			get
+			{
+				return date;
+			}
+			set
+			{
+				this.date = value;
+			}
+		}
+		public virtual EventCategory Category { get; set; }
+		
 
 		public override string ToString()
 		{

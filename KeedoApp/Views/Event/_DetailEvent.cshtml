@@ -1,0 +1,67 @@
+﻿@model KeedoApp.Models.Event
+
+<!--Detail-->
+<div class="modal fade" id="detailEvent">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="detailEvent">Detail Event</h4>
+            
+            </div>
+
+            <div class="modal-body">
+                <form>
+
+                    <div class="form-group">
+                        <label asp-for="IdEvenement" hidden="true"> @Model.IdEvenement</label>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Title">Title: @Model.Title</label>
+                    </div>
+                    <div class="form-group">
+
+                        <label asp-for="Date">
+                            Date debut:@Html.FormatValue("yyy-MM-dd", @Model.Date.ToString("yyy-MM-dd"))
+                        </label>
+
+
+                    </div>
+                    <div class="form-group">
+
+                        <label asp-for="Date">
+                             @ViewBag.time
+                        </label>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Category"> Category :@Model.Category</label>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description"> @Model.Description</label>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DiscountPercentage">Discount Percentage: @Model.DiscountPercentage</label>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EarlyParticipants">EarlyParticipants: @Model.EarlyParticipants</label>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Address">Address: @Model.Address</label>
+                        </div>
+                </form>
+
+
+            </div>
+
+        <div class="modal-footer">
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<!---->
+

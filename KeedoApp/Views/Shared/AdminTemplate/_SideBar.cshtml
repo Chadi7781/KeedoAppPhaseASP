@@ -1,22 +1,23 @@
-﻿<div class="vertical-menu">
+﻿
+<div class="vertical-menu">
 
     <!-- LOGO -->
-    <div class="navbar-brand-box" style="margin-left:100px;">
-        <a href="index.html" class="logo logo-dark">
+    <div class="navbar-brand-box" style="margin-left:10px;">
+        <a href="@Url.Action("Dashboard","Home")" class="logo logo-dark" style="margin-left:40px;">
             <span class="logo-sm">
-                <img src="~/FrontEnd/assets/images/logo1.png" alt="">
+                <img src="/Frontend/assets/images/logo1.png" alt="" height="42" >
             </span>
             <span class="logo-lg">
-                <img src="~/FrontEnd/assets/images/logo1.png" alt="" height="22">
+                <img src="/Frontend/assets/images/logo1.png" alt="" height="42" >
             </span>
         </a>
 
         <a href="index.html" class="logo logo-light">
             <span class="logo-sm">
-                <img src="~/FrontEnd/assets/images/logo1.png" alt="">
+                <img src="/FrontEnd/assets/images/logo1.png" alt="">
             </span>
             <span class="logo-lg">
-                <img src="~/FrontEnd/assets/images/logo1.png" alt="" height="22">
+                <img src="/FrontEnd/assets/images/logo1.png" alt="" height="22">
             </span>
         </a>
     </div>
@@ -34,7 +35,7 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="@Url.Action("Dashboard","Home")">
                         <i class="uil-home-alt"></i><span class="badge rounded-pill bg-primary float-end">01</span>
                         <span>Dashboard</span>
                     </a>
@@ -70,35 +71,8 @@
     </li>
 
     -->
+           
 
-                <li class="menu-title">Users</li>
-                <!--<li>
-            <a href="calendar.html" class="waves-effect">
-                <i class="uil-calender"></i>
-                <span>Calendar</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="chat.html" class=" waves-effect">
-                <i class="uil-comments-alt"></i>
-                <span class="badge rounded-pill bg-warning float-end">New</span>
-                <span>Chat</span>
-            </a>
-        </li>
-    -->
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="uil-user-circle"></i>
-                        <span>Users</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="ecommerce-products.html">Products</a></li>
-                        <li><a href="ecommerce-product-detail.html">Product Detail</a></li>
-
-                    </ul>
-                </li>
 
 
                 <li class="menu-title">Events</li>
@@ -109,42 +83,28 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
 
-                        <li><a href="~/Views/Home/About.cshtml">Manage Events</a></li>
+                        <li><a href="@Url.Action("ManageEvent","Event")">Manage Events</a></li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="email-inbox.html">Manage Participations</a></li>
                     </ul>
                 </li>
+                <li class="menu-title">Meeting</li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="uil-meeting-board"></i>
+                        <span>Meetings</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="email-inbox.html">Manage Meeting</a></li>
+                    </ul>
 
-                <li class="menu-title">Appointment</li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="uil-calendar-alt"></i>
-                        <span>Appointments</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html">Manage Appointement</a></li>
-                    </ul>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html">Gestion Participations</a></li>
-                    </ul>
                 </li>
-                <li class="menu-title">Evenements</li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="uil-calendar-alt"></i>
-                        <span>Evenements</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html">Gestion Evenements</a></li>
-                    </ul>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html">Gestion Participations</a></li>
-                    </ul>
-                </li>
+               
+
 
             </ul>
-        </div>
+</div>
         <!-- Sidebar -->
     </div>
 </div>

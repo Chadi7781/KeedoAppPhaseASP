@@ -151,6 +151,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ConfigureHttpClient.cs" />
     <Compile Include="Models\Advertisement.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\AppointmentStatus.cs" />
@@ -221,6 +222,7 @@
     <Content Include="FrontEnd\assets\css\bootstrap.min.css" />
     <Content Include="FrontEnd\assets\css\icons.min.css" />
     <Content Include="FrontEnd\assets\css\line.css" />
+    <Content Include="FrontEnd\assets\css\style.css" />
     <Content Include="FrontEnd\assets\fonts\dripicons-v2.svg" />
     <Content Include="FrontEnd\assets\fonts\fa-brands-400.html" />
     <Content Include="FrontEnd\assets\fonts\fa-brands-400.svg" />
@@ -243,6 +245,7 @@
     <Content Include="FrontEnd\assets\images\flags\italy.jpg" />
     <Content Include="FrontEnd\assets\images\flags\russia.jpg" />
     <Content Include="FrontEnd\assets\images\flags\spain.jpg" />
+    <Content Include="FrontEnd\assets\images\flags\TN.png" />
     <Content Include="FrontEnd\assets\images\flags\us.jpg" />
     <Content Include="FrontEnd\assets\images\layouts\layout-1.jpg" />
     <Content Include="FrontEnd\assets\images\layouts\layout-2.jpg" />
@@ -250,7 +253,7 @@
     <Content Include="FrontEnd\assets\images\logo-dark.png" />
     <Content Include="FrontEnd\assets\images\logo-light.png" />
     <Content Include="FrontEnd\assets\images\logo-sm.png" />
-    <Content Include="FrontEnd\assets\images\logo1.png" />
+    <Content Include="FrontEnd\assets\images\logo.png" />
     <Content Include="FrontEnd\assets\images\maintenance.png" />
     <Content Include="FrontEnd\assets\images\product\img-1.png" />
     <Content Include="FrontEnd\assets\images\product\img-2.png" />
@@ -275,6 +278,7 @@
     <Content Include="FrontEnd\assets\images\users\avatar-7.jpg" />
     <Content Include="FrontEnd\assets\images\users\avatar-8.jpg" />
     <Content Include="FrontEnd\assets\js\app.js" />
+    <Content Include="FrontEnd\assets\js\chadi.js" />
     <Content Include="FrontEnd\assets\js\pages\apexcharts.init.js" />
     <Content Include="FrontEnd\assets\js\pages\auth-carousel.init.js" />
     <Content Include="FrontEnd\assets\js\pages\calendar.init.js" />
@@ -469,18 +473,19 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Event\ManageEvent.cshtml" />
+    <Content Include="Views\Event\Create.cshtml" />
     <Content Include="Views\Shared\AdminTemplate\_Footer.cshtml" />
-    <Content Include="Views\Shared\AdminTemplate\_MainNavigation.cshtml" />
     <Content Include="Views\Shared\AdminTemplate\_Navbar.cshtml" />
     <Content Include="Views\Shared\AdminTemplate\_Scripts.cshtml" />
-    <Content Include="Views\Shared\AdminTemplate\_Styles.cshtml" />
     <Content Include="Views\Shared\AdminTemplate\_SideBar.cshtml" />
+    <Content Include="Views\Shared\AdminTemplate\_Styles.cshtml" />
+    <Content Include="Views\Event\_DetailEvent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Donation\" />
     <Folder Include="Views\Evaluation\" />
-    <Folder Include="Views\Event\" />
     <Folder Include="Views\Meeting\" />
     <Folder Include="Views\Participation\" />
     <Folder Include="Views\Shared\App_LocalResources\" />
