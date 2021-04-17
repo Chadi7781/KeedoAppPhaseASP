@@ -93,26 +93,6 @@ namespace KeedoApp.Controllers
                 return View();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public ActionResult create (User user)
         {
             try
@@ -213,45 +193,7 @@ namespace KeedoApp.Controllers
             System.Diagnostics.Debug.WriteLine("entered here" + result);
             return View();
         }
-        // GET: Post
-        public ActionResult Index(string searchString)
-        {
-            IEnumerable<Post> posts;
-            HttpResponseMessage httpResponseMessage;
-            if (String.IsNullOrEmpty(searchString))
-            {
-                System.Diagnostics.Debug.WriteLine("entered Index");
-
-                httpResponseMessage = httpClient.GetAsync(baseAddress + "/get-all-posts").Result;
-
-
-                if (httpResponseMessage.IsSuccessStatusCode)
-                {
-                    posts = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Post>>().Result;
-                }
-                else
-                {
-                    posts = null;
-                }
-
-                return View(posts);
-            }
-            else
-            {
-                httpResponseMessage = httpClient.GetAsync(baseAddress + "/search-by-admin/?pattern=" + searchString).Result;
-                if (httpResponseMessage.IsSuccessStatusCode)
-                {
-
-                    posts = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Post>>().Result;
-                }
-                else
-                {
-                    posts = null;
-                }
-
-                return View(posts);
-            }
-        }
+       
 
     }
 }
