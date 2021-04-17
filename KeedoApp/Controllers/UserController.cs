@@ -24,19 +24,61 @@ namespace KeedoApp.Controllers
         }
 
         // GET: User
-        public ActionResult GestionUtilisateur()
+        public ActionResult GestionUtilisateur(string searchString)
         {
+            
+            HttpResponseMessage httpResponseMessage;
             var _AccessToken = Session["AccessToken"];
             httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
-            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "/findall").Result;
-            if (httpResponseMessage.IsSuccessStatusCode) {
-                ViewBag.users = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Models.User>>().Result;
+            if (String.IsNullOrEmpty(searchString))
+            {
+                System.Diagnostics.Debug.WriteLine("entered Index");
+
+                httpResponseMessage = httpClient.GetAsync(baseAddress + "/findall").Result;
+
+
+                if (httpResponseMessage.IsSuccessStatusCode)
+                {
+                    ViewBag.users = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Models.User>>().Result;
+                }
+                else
+                {
+                    ViewBag.users = "erreur";
+                }
+
+                return View();
             }
-            else {
-                ViewBag.users = "erreur";
+            else
+            {
+                httpResponseMessage = httpClient.GetAsync(baseAddress + "/findUserSearch/?pattern=" + searchString).Result;
+                if (httpResponseMessage.IsSuccessStatusCode)
+                {
+
+                    ViewBag.users = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Models.User>>().Result;
+                }
+                else
+                {
+                    ViewBag.users = "erreur";
+                }
+
+                return View();
             }
-            return View();
         }
+
+        //httpResponseMessage = httpClient.GetAsync(baseAddress + "/findall").Result;
+        //    if (httpResponseMessage.IsSuccessStatusCode) {
+            //    ViewBag.users = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Models.User>>().Result;
+          //  }
+           // else {
+             //   ViewBag.users = "erreur";
+          //  }
+           // return View();
+       // }
+
+
+
+
+
         public ActionResult login(LoginObject.Login login) {
             baseAddress = "http://localhost:8080/SpringMVC/servlet/User/Access";
             if (!login.username.Equals("") && !login.password.Equals(""))
@@ -50,6 +92,26 @@ namespace KeedoApp.Controllers
             }
                 return View();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public ActionResult create (User user)
         {
@@ -150,6 +212,45 @@ namespace KeedoApp.Controllers
             }
             System.Diagnostics.Debug.WriteLine("entered here" + result);
             return View();
+        }
+        // GET: Post
+        public ActionResult Index(string searchString)
+        {
+            IEnumerable<Post> posts;
+            HttpResponseMessage httpResponseMessage;
+            if (String.IsNullOrEmpty(searchString))
+            {
+                System.Diagnostics.Debug.WriteLine("entered Index");
+
+                httpResponseMessage = httpClient.GetAsync(baseAddress + "/get-all-posts").Result;
+
+
+                if (httpResponseMessage.IsSuccessStatusCode)
+                {
+                    posts = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Post>>().Result;
+                }
+                else
+                {
+                    posts = null;
+                }
+
+                return View(posts);
+            }
+            else
+            {
+                httpResponseMessage = httpClient.GetAsync(baseAddress + "/search-by-admin/?pattern=" + searchString).Result;
+                if (httpResponseMessage.IsSuccessStatusCode)
+                {
+
+                    posts = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Post>>().Result;
+                }
+                else
+                {
+                    posts = null;
+                }
+
+                return View(posts);
+            }
         }
 
     }

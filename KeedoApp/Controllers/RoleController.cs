@@ -75,25 +75,31 @@ namespace KeedoApp.Controllers
             return View();
         }
         // GET: Role/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Post/Edit/5
+        public ActionResult EditRole(int id)
         {
             return View();
         }
 
-        // POST: Role/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+
+        // POST: Post/Edit/5
+        [HttpPost]
+        public ActionResult EditRole(int id, Role role)
+        {
+            //HTTP POST
+            var putTask = httpClient.PutAsJsonAsync<Role>(baseAddress + "updateRolee/" + id.ToString(), role);
+            putTask.Wait();
+
+            var result = putTask.Result;
+
+            if (result.IsSuccessStatusCode)
             {
-                return View();
+
+                return RedirectToAction("GestionRole");
             }
+            return View();
+
         }
 
         public ActionResult DeleteRole(int id)

@@ -484,6 +484,7 @@
     <Content Include="Views\Role\DeleteRole.cshtml" />
     <Content Include="Views\Role\CreateRole.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Role\EditRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
