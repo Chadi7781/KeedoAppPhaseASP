@@ -193,7 +193,31 @@ namespace KeedoApp.Controllers
             System.Diagnostics.Debug.WriteLine("entered here" + result);
             return View();
         }
-       
+
+        public ActionResult Forgotpassword(String username)
+        {
+            if (username != null)
+            {
+                baseAddress = "http://localhost:8080/SpringMVC/servlet/User/Access";
+                var APIResponse = httpClient.PostAsJsonAsync(baseAddress + "/forgot/" + username, "").ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+                return RedirectToAction("Reset");
+            }
+            return View();
+
+        }
+
+        public ActionResult Reset(LoginObject.Login reset)
+        {
+            if (!reset.username.Equals("") && !reset.password.Equals(""))
+            {
+                baseAddress = "http://localhost:8080/SpringMVC/servlet/User/Access";
+                var APIResponse = httpClient.PostAsJsonAsync(baseAddress + "/reset/" + reset.username + "/" + reset.password, "").ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+                return RedirectToAction("login");
+            }
+            return View();
+        }
+
+
 
     }
 }

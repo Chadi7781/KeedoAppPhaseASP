@@ -54,8 +54,18 @@
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.idUser }) |
-        @Html.ActionLink("Details", "Details", new {  id=item.idUser }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.idUser })
+        @Html.ActionLink("Details", "Details", new { id = item.idUser }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.idUser })|
+
+        @if (item.Valid == true)
+        {
+            @Html.ActionLink("Desactive", "Desactive", new {item })
+        }
+        else
+        {
+            @Html.ActionLink("Active", "Active", new {item })
+        }
+
     </td>
 </tr>
     }

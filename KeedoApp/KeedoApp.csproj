@@ -476,7 +476,6 @@
     <Content Include="Views\Shared\AdminTemplate\_SideBar.cshtml" />
     <Content Include="Views\User\GestionUtilisateur.cshtml" />
     <Content Include="Views\User\login.cshtml" />
-    <Content Include="Views\Auth\login.cshtml" />
     <Content Include="Views\User\create.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
@@ -485,6 +484,8 @@
     <Content Include="Views\Role\CreateRole.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\Role\EditRole.cshtml" />
+    <Content Include="Views\User\Forgotpassword.cshtml" />
+    <Content Include="Views\User\Reset.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
