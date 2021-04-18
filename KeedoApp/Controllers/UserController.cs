@@ -89,6 +89,7 @@ namespace KeedoApp.Controllers
                 Session["AccessToken"] = jsonreponse.AccessToken;
                 Session["Role"] = jsonreponse.role;
                 Session["User"] = jsonreponse.username;
+                return RedirectToAction("GestionUtilisateur");
             }
                 return View();
         }
@@ -213,6 +214,36 @@ namespace KeedoApp.Controllers
                 baseAddress = "http://localhost:8080/SpringMVC/servlet/User/Access";
                 var APIResponse = httpClient.PostAsJsonAsync(baseAddress + "/reset/" + reset.username + "/" + reset.password, "").ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
                 return RedirectToAction("login");
+            }
+            return View();
+        }
+
+        public ActionResult ActiverUser(int id)
+        {
+            var _AccessToken = Session["AccessToken"];
+            httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
+            var APIResponse = httpClient.PutAsJsonAsync(baseAddress + "/activateUser/" + id,"");
+            APIResponse.Wait();
+
+            var result = APIResponse.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                return RedirectToAction("GestionUtilisateur");
+            }
+            return View();
+        }
+
+        public ActionResult DesactiverUser(int id)
+        {
+            var _AccessToken = Session["AccessToken"];
+            httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
+            var APIResponse = httpClient.PutAsJsonAsync(baseAddress + "/desactivateUser/" + id.ToString(), id.ToString());
+            APIResponse.Wait();
+
+            var result = APIResponse.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                return RedirectToAction("GestionUtilisateur");
             }
             return View();
         }

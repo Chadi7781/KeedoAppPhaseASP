@@ -59,11 +59,11 @@
 
         @if (item.Valid == true)
         {
-            @Html.ActionLink("Desactive", "Desactive", new {item })
+            @Html.ActionLink("Desactiver User", "DesactiverUser", new { id = item.idUser })
         }
         else
         {
-            @Html.ActionLink("Active", "Active", new {item })
+            @Html.ActionLink("Activer User", "ActiverUser", new { id = item.idUser })
         }
 
     </td>
