@@ -1,0 +1,222 @@
+﻿@model KeedoApp.Models.Event
+
+
+<div class="modal fade show" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" style="padding-right: 16px; display: block;" aria-modal="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Add event</h5>
+                <button type="button" class="btn-close" data-sm-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body p-4">
+                <form id="addForm" class="needs-validation was-validated" novalidate="" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <input type="file" id="imageEvent" name="image" />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="validationCustom01">Title</label>
+                                <input type="text" class="form-control" id="titleEvent" placeholder="Enter Title" value="" required="">
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="validationCustom01">Adress</label>
+                                <input type="text" class="form-control" id="addressEvent" placeholder="Enter Adress" value="" required="">
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">Category</label>
+                                <select class="form-control form-select" name="category" id="totalPlacesEvent" required="">
+                                    <option value="bg-danger" selected="">10</option>
+                                    <option value="bg-success">20</option>
+                                    <option value="bg-primary">30</option>
+                                    <option value="bg-info">40</option>
+                                    <option value="bg-dark">50</option>
+                                </select>
+                                <div class="invalid-feedback">Please select a valid event category</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <div>
+                            <textarea value="" required="" id="descriptionEvent" class="form-control parsley-error" rows="5" data-parsley-id="21" aria-describedby="parsley-id-21"></textarea>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Start Date</label>
+                        <div class="input-group" id="datepicker1">
+                            <input type="text" id="startDateEvent" class="form-control" placeholder="dd M, yyyy" data-date-format="dd M, yyyy" data-date-container="#datepicker1" data-provide="datepicker">
+
+                            <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                        </div><!-- input-group -->
+
+                    </div>
+                    <div class="mb-3">
+
+                        <label class="form-label">End Date</label>
+                        <div class="input-group" id="datepicker1">
+                            <input type="text" id="endDateEvent" class="form-control" placeholder="dd M, yyyy" data-date-format="dd M, yyyy" data-date-container="#datepicker1" data-provide="datepicker">
+
+                            <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                        </div><!-- input-group -->
+</div>
+
+
+                            
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <br />
+
+                                <div class="mb-3">
+
+                                    <label class="form-label" for="validationCustom03">DiscountPercentage</label>
+                                    <input type="number" class="form-control" id="discountPercentageEvent" placeholder="discount" required="">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid city.
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                            <div class="col-md-4">
+                                <br />
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="validationCustom04">Early Participants</label>
+                                    <input type="number" class="form-control" id="nbrTicketEarlyParticipants" placeholder="Early " required="">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid state.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <br />
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="validationCustom05">Ticket Price</label>
+                                    <input type="number" class="form-control" id="ticketPriceEvent" placeholder="Ticket Price" required="">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid zip.
+                                    </div>
+                                </div>
+
+
+                                
+
+                            </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="invalidCheck" required="">
+                                        <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+                                        <div class="invalid-feedback">
+                                            You must agree before submitting.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="btnAddEvent" class="btn btn-primary" type="button">Submit form</button>
+
+                            
+                            
+                            
+                            
+                   
+                            
+                            
+                            </form>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<script>
+
+    $('#btnAddEvent').click(function () {
+
+
+        $('#addForm').serialize();
+
+
+        var nbrTicketEarlyParticipants = parseInt($('#nbrTicketEarlyParticipants').val()); //Output will be 23.
+        var totalPlacesEvent = parseInt($('#totalPlacesEvent').val()); //Output will be 23.
+        var ticketPriceEvent = parseInt($('#ticketPriceEvent').val()); //Output will be 23.
+        var image = $('#imageEvent').val();
+        $("#imageEvent").attr("src", "data:image/png;base64");
+        var conceptName = $('#totalPlacesEvent').find(":selected").text();
+
+        var data = {
+            startDate: moment($('#startDateEvent').val(),"dd-mm-yyyy").toDate(),
+            endDate: moment($('#endDateEvent').val(), "dd-mm-yyyy").toDate(),
+            title: $('#titleEvent').val().trim(),
+            description: $('#descriptionEvent').val(),
+            placeNbr: conceptName,
+            ticketPriceEvent: ticketPriceEvent,
+            NbrTicketEarlyParticipants: nbrTicketEarlyParticipants,
+
+        }
+
+        console.log("DATATA =" + moment($('#startDateEvent').val(), "dd-mm-yyyy").toDate());
+        //file
+        var formdata = new FormData();
+        var filename = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '')
+
+        var file = $("#imageEvent").val();
+        var convert = [];
+
+        for (var i = 0; i < filename.length; i++) {
+            convert.push(filename.charCodeAt(i));
+        }
+
+        formdata.append("image", filename);
+        formdata.append("evJson", JSON.stringify(data));
+
+
+        for (var pair in formdata.entries()) {
+            console.log(pair[0]);
+            console.log(pair[1]);
+        }
+        $.ajax({
+            type: "POST",
+            url: '/Event/CreateEvent',
+            data: formdata,
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                console.log(data);
+                $('#exampleModalScrollable').modal('hide');
+
+
+            },
+            error: function (err) {
+                alert('Failed');
+            }
+        })
+        })
+    }
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>

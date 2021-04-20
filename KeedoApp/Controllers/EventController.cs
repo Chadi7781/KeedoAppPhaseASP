@@ -1,10 +1,12 @@
 ﻿using KeedoApp.Helper;
 using KeedoApp.Models;
+using KeedoApp.Service;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -34,7 +36,8 @@ namespace KeedoApp.Controllers
 
 
 
-
+        //Event Service
+        EventService eventService = new EventService();
 
 
 
@@ -43,42 +46,71 @@ namespace KeedoApp.Controllers
         {
             IEnumerable<Event> events;
 
-
-            HttpResponseMessage httpResponseMessage = client.GetAsync(springMvcUrl + "/event/displayAllevents").Result;
-            var method = client.GetAsync(springMvcUrl + "/event/displayEventsByCollAmount").Result.Content.ReadAsStringAsync().Result.ToString();
-
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            if (httpResponseMessage.IsSuccessStatusCode)
+            try
             {
+                HttpResponseMessage httpResponseMessage = client.GetAsync(springMvcUrl + "/event/displayAllevents").Result;
+                var method = client.GetAsync(springMvcUrl + "/event/displayEventsByCollAmount").Result.Content.ReadAsStringAsync().Result.ToString();
 
-                //recuperation 1 er json affichage events
-                ViewBag.events = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Event>>().Result;
-                //recuperation 2 eme json collamount
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                if (httpResponseMessage.IsSuccessStatusCode)
+                {
 
-                var deserial = JsonConvert.DeserializeObject<dynamic>(method);
-                var collAmount = deserial[0].CollAmount;
-                var Average = deserial[0].Average;
-                var topEventName = deserial[0].TopEvent;
-                ViewBag.collAmount = collAmount;
-                ViewBag.Average = Average;//@ViewBag.Average
-                ViewBag.topEventName = topEventName;
+                    //recuperation 1 er json affichage events
+                    ViewBag.events = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Event>>().Result;
+                    //recuperation 2 eme json collamount
 
+                    var deserial = JsonConvert.DeserializeObject<dynamic>(method);
+                    var collAmount = deserial[0].CollAmount;
+                    var Average = deserial[0].Average;
+                    var topEventName = deserial[0].TopEvent;
+                    ViewBag.collAmount = collAmount;
+                    ViewBag.Average = Average;//@ViewBag.Average
+                    ViewBag.topEventName = topEventName;
+
+                }
+
+                else
+                {
+                    ViewBag.events = null;
+                }
+                return View();
+            }
+            catch
+            {
+                return View("Error");
             }
 
-            else
-            {
-                ViewBag.events = null;
-            }
-            return View();
         }
 
 
 
-        public ActionResult create(Event events)
+
+        [HttpGet]
+        public ActionResult CreateEventModal()
         {
-            return View();
+            return PartialView("_CreateEvent");
+        }
+
+
+        [HttpPost]
+        public JsonResult CreateEvent(FormCollection formCollection)
+        {
+            var response = false;
+
+
+            eventService.addEvent(formCollection);
+              response = true;
+        
+            
+            return new JsonResult { Data = new { response = response
+    }
+};
+
 
         }
+
+
+
 
 
 
@@ -87,21 +119,18 @@ namespace KeedoApp.Controllers
         {
             HttpResponseMessage httpResponseMessage = client.GetAsync(springMvcUrl + "/event/retrieve-Event-ById/" + id.ToString()).Result;
             Event events;
-           
+
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-          
+
 
                 events = httpResponseMessage.Content.ReadAsAsync<Event>().Result;
-                DateTime myDate2 = DateTime.Now;
 
-                TimeSpan myDateResult;
-
-                myDateResult =  events.Hour.TimeOfDay;
-
-                double seconds = myDateResult.TotalSeconds;
-                ViewBag.time = myDateResult;
- 
+                string imageDataURL = string.Format("data:image/png;base64,{0}", events.Image);
+                if (imageDataURL == null)
+                    ViewBag.ImageData = "Image null";
+                else
+                    ViewBag.ImageData = imageDataURL;
 
             }
             else

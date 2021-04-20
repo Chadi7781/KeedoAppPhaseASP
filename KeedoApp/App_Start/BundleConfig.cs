@@ -26,7 +26,9 @@ namespace KeedoApp
                       "~/FrontEnd/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js",
                       "~/FrontEnd/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js",
                       "~/FrontEnd/assets/js/pages/ecommerce-datatables.init.js",
-                      "~/FrontEnd/assets/js/chadi.js",
+                      "~/FrontEnd/assets/js/script.js",
+                      "~/FrontEnd/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js",
+                      "~/FrontEnd/assets/libs/dropzone/min/dropzone.min.js",
                       "~/FrontEnd/assets/js/app.js"));
 
 
@@ -37,7 +39,13 @@ namespace KeedoApp
             "~/FrontEnd/assets/css/icons.min.css",
             "~/FrontEnd/assets/css/app.min.css",
             "~/FrontEnd/assets/css/line.css",
+            "~/FrontEnd/assets/libs/select2/css/select2.min.css",
+            "~/FrontEnd/assets/libs/spectrum-colorpicker2/spectrum.min.css",
+            "~/FrontEnd/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css",
+            "~/FrontEnd/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css",
+            "~/FrontEnd/assets/libs/@chenfengyuan/datepicker/datepicker.min.css",
             "~/FrontEnd/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css",
+            "~/FrontEnd/assets/libs/dropzone/min/dropzone.min.css",
             "~/FrontEnd/assets/libs/datatables.net-bs4/css/responsive.bootstrap4.min.css"
             ));
         }

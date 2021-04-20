@@ -1,5 +1,6 @@
 ﻿
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,15 +10,14 @@ namespace KeedoApp.Models
 
 
 
-	[Serializable]
 	public class Event
 	{
 
 		private const long serialVersionUID = 1L;
 		private int idEvenement;
 		private string title;
-		private DateTime date;
-		private DateTime hour;
+		private DateTime startDate;
+		private DateTime endDate;
 		private string description;
 		private bool status;
 		private string address;
@@ -36,6 +36,7 @@ namespace KeedoApp.Models
 		private int participantsNbr;
 
 		private int placesNbr;
+
 
 
 		private bool earlyParticipants;
@@ -71,8 +72,8 @@ namespace KeedoApp.Models
 		{
 			this.idEvenement = idEvenement;
 			this.title = title;
-			this.date = date;
-			this.hour = hour;
+			this.startDate = date;
+			this.endDate = hour;
 			this.description = description;
 			this.status = status;
 			this.address = address;
@@ -109,6 +110,7 @@ namespace KeedoApp.Models
 			}
 		}
 
+		[JsonProperty("placeNbr")]
 		public int PlaceNbr { 
 			get
             {
@@ -123,44 +125,28 @@ namespace KeedoApp.Models
 		
 		}
 
-		[DataType(DataType.Time)]
-		public DateTime Hour
-        {
-			get;set;
-        }
+		[JsonProperty("endDate")]
 
-
-
-
-
-
-
-
-
-		public Event(string title, DateTime date, DateTime hour, string description, bool status, string address, byte[] image, float ticketPrice, float collAmount, int participantsNbr, int placesNbr, EventCategory category, int views, bool earlyParticipants, int nbrTicketEarlyParticipants, List<Participation> participations, Jackpot jackpot, List<Notification> notifications, float discountPercentage, List<Advertisement> advertisements, List<Donation> donation) : base()
+		public DateTime EndDate
 		{
-			this.title = title;
-			this.date = date;
-			this.hour = hour;
-			this.description = description;
-			this.status = status;
-			this.address = address;
-			this.image = image;
-			this.ticketPrice = ticketPrice;
-			this.collAmount = collAmount;
-			this.participantsNbr = participantsNbr;
-			this.placesNbr = placesNbr;
-			this.category = category;
-			this.views = views;
-			this.participations = participations;
-			this.jackpot = jackpot;
-			this.notifications = notifications;
-			this.discountPercentage = discountPercentage;
-			this.advertisements = advertisements;
-			this.donation = donation;
-			this.earlyParticipants = earlyParticipants;
-			this.nbrTicketEarlyParticipants = nbrTicketEarlyParticipants;
+			get
+			{
+				return endDate;
+
+			}
+			set
+			{
+				this.endDate = value;
+
+			}
+
 		}
+
+
+
+
+
+
 
 
 
@@ -185,6 +171,8 @@ namespace KeedoApp.Models
 				this.discountPercentage = value;
 			}
 		}
+
+		[JsonProperty("image")]
 
 		public virtual byte[] Image
 		{
@@ -242,6 +230,8 @@ namespace KeedoApp.Models
 		}
 
 
+		[JsonProperty("title")]
+
 		public virtual string Title
 		{
 			get
@@ -256,7 +246,7 @@ namespace KeedoApp.Models
 
 
 
-
+		[JsonProperty("ticketPriceEvent")]
 
 		public virtual float TicketPrice
 		{
@@ -274,7 +264,7 @@ namespace KeedoApp.Models
 
 
 
-
+		[JsonProperty("description")]
 		public virtual string Description
 		{
 			get
@@ -347,7 +337,7 @@ namespace KeedoApp.Models
 
 
 
-
+		[JsonProperty("NbrTicketEarlyParticipants")]
 		public virtual int NbrTicketEarlyParticipants
 		{
 			get
@@ -361,15 +351,15 @@ namespace KeedoApp.Models
 		}
 
 
-		public virtual DateTime Date
+		public virtual DateTime StartDate
 		{
 			get
 			{
-				return date;
+				return startDate;
 			}
 			set
 			{
-				this.date = value;
+				this.startDate = value;
 			}
 		}
 		public virtual EventCategory Category { get; set; }

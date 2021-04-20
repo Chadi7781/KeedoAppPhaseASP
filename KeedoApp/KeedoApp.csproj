@@ -208,6 +208,8 @@
     <Compile Include="Models\Workshop.cs" />
     <Compile Include="Models\WorkshopCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\EventService.cs" />
+    <Compile Include="Service\JsonModelBinderProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -253,7 +255,7 @@
     <Content Include="FrontEnd\assets\images\logo-dark.png" />
     <Content Include="FrontEnd\assets\images\logo-light.png" />
     <Content Include="FrontEnd\assets\images\logo-sm.png" />
-    <Content Include="FrontEnd\assets\images\logo.png" />
+    <Content Include="FrontEnd\assets\images\logo1.png" />
     <Content Include="FrontEnd\assets\images\maintenance.png" />
     <Content Include="FrontEnd\assets\images\product\img-1.png" />
     <Content Include="FrontEnd\assets\images\product\img-2.png" />
@@ -278,7 +280,7 @@
     <Content Include="FrontEnd\assets\images\users\avatar-7.jpg" />
     <Content Include="FrontEnd\assets\images\users\avatar-8.jpg" />
     <Content Include="FrontEnd\assets\js\app.js" />
-    <Content Include="FrontEnd\assets\js\chadi.js" />
+    <Content Include="FrontEnd\assets\js\script.js" />
     <Content Include="FrontEnd\assets\js\pages\apexcharts.init.js" />
     <Content Include="FrontEnd\assets\js\pages\auth-carousel.init.js" />
     <Content Include="FrontEnd\assets\js\pages\calendar.init.js" />
@@ -481,6 +483,8 @@
     <Content Include="Views\Shared\AdminTemplate\_SideBar.cshtml" />
     <Content Include="Views\Shared\AdminTemplate\_Styles.cshtml" />
     <Content Include="Views\Event\_DetailEvent.cshtml" />
+    <Content Include="Views\Event\_CreateEvent.cshtml" />
+    <Content Include="Views\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
