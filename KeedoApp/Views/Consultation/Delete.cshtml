@@ -1,0 +1,58 @@
+﻿@model KeedoApp.Models.Consultation
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Consultation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Date consultation
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateConsultation)
+        </dd>
+
+        <dt>
+           time
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.time)
+        </dd>
+
+        <dt>
+            Created by
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.director.FirstNameLastName)
+        </dd>
+
+        <dt>
+            Doctor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doctor.FirstNameLastName)
+        </dd>
+
+        <dt>
+            Kid
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kid.FirstNameLastName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

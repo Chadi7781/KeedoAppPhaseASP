@@ -1,126 +1,27 @@
 ﻿using KeedoApp.Models;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace tn.esprit.pi.entities
+namespace KeedoApp.Models
 {
-
-
-	[Serializable]
 	public class Message
 	{
 
-		private const long serialVersionUID = 1L;
+		public int idMessage { get; set; }
 
-		private int idMessage;
-
-
-		private string content;
-		private sbyte[] image;
-
-		private DateTime date;
-
-		private DateTime time;
-
-	
-		private User sender;
-
-		private User receiver;
-
-		public Message() : base()
-		{
-		}
-
-		public virtual int IdMessage
-		{
-			get
-			{
-				return idMessage;
-			}
-			set
-			{
-				this.idMessage = value;
-			}
-		}
-
-
-		public virtual User Sender
-		{
-			get
-			{
-				return sender;
-			}
-			set
-			{
-				this.sender = value;
-			}
-		}
-
-		public virtual string Content
-		{
-			get
-			{
-				return content;
-			}
-			set
-			{
-				this.content = value;
-			}
-		}
-
-		public virtual sbyte[] Image
-		{
-			get
-			{
-				return image;
-			}
-			set
-			{
-				this.image = value;
-			}
-		}
-
-
-
-
-		public virtual User Receiver
-		{
-			get
-			{
-				return receiver;
-			}
-			set
-			{
-				this.receiver = value;
-			}
-		}
-
-
-		public virtual DateTime Date
-		{
-			get
-			{
-				return date;
-			}
-			set
-			{
-				this.date = value;
-			}
-		}
-
-
-		public virtual DateTime Time
-		{
-			get
-			{
-				return time;
-			}
-			set
-			{
-				this.time = value;
-			}
-		}
-
-
+		public string content { get; set; }
+		public System.Drawing.Image image { get; set; }
+		[DataType(DataType.Date)]
+		public DateTime date { get; set; }
+		[DataType(DataType.Time)]
+		public DateTime time { get; set; }
+		[ForeignKey("User")]
+		public int? senderFk { get; set; }
+		public User sender { get; set; }
+		[ForeignKey("User")]
+		public int? receiverFk { get; set; }
+		public User receiver { get; set; }
 
 	}
 }

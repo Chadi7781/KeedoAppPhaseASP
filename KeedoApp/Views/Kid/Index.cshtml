@@ -1,0 +1,69 @@
+﻿@model IEnumerable<KeedoApp.Models.Kid>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idKid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.birthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Daycare.dateBegin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Daycare.dateEnd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.idKid)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.firstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.lastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.birthDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.gender)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Daycare.dateBegin)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Daycare.dateEnd)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.idKid }) |
+        @Html.ActionLink("Details", "Details", new { id = item.idKid }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.idKid })
+    </td>
+</tr>
+}
+
+</table>
