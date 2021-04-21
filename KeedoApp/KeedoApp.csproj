@@ -147,6 +147,7 @@
     <Compile Include="Controllers\KindergartenController.cs" />
     <Compile Include="Controllers\LoginInscriptionController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\ResponseController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -504,13 +505,18 @@
     <Content Include="Views\User\GestionUtilisateur.cshtml" />
     <Content Include="Views\User\login.cshtml" />
     <Content Include="Views\User\Reset.cshtml" />
-    <Content Include="Views\Question\Index.cshtml" />
+    <Content Include="Views\Question\Details.cshtml" />
+    <Content Include="Views\Question\edit.cshtml" />
+    <Content Include="Views\Question\Delete.cshtml" />
+    <Content Include="Views\Question\Create.cshtml" />
+    <Content Include="Views\Question\index.cshtml" />
+    <Content Include="Views\Response\Index.cshtml" />
+    <Content Include="Views\Response\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Claim\" />
     <Folder Include="Views\Follow\" />
-    <Folder Include="Views\Response\" />
     <Folder Include="Views\Shared\App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>

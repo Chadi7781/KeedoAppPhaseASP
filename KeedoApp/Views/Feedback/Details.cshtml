@@ -28,32 +28,37 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Questions)
+            @Html.DisplayNameFor(model => model.Meeting)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Questions)
+            @Html.DisplayFor(model => model.Meeting.Description)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
+      
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
+     
+           
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedAt)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.CreatedAt)
+            </dd>
 
-    </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.UpdatedAt)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UpdatedAt)
+            </dd>
+
+        </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdFeedback }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

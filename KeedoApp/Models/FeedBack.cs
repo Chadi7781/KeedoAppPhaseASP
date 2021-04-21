@@ -27,6 +27,7 @@ namespace KeedoApp.Models
 
 
 		private ISet<Question> questions;
+		public int? meetingFk { get; set; }
 
 		private Meeting meeting;
 

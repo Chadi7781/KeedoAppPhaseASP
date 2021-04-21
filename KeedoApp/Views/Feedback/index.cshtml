@@ -14,6 +14,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Meeting)
+        </th>
+
+       
         <th>
             @Html.DisplayNameFor(model => model.CreatedAt)
         </th>
@@ -35,6 +41,10 @@
     <td>
         @Html.DisplayFor(modelItem => item.Description)
     </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Meeting.Description)
+    </td>
+
     <td>
         @Html.DisplayFor(modelItem => item.CreatedAt)
     </td>

@@ -29,8 +29,9 @@ namespace KeedoApp.Controllers
         {
        
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress+"retrieve-all-feedbacks").Result;
-
+         
             IEnumerable<Feedback> feedbacks;
+     
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 feedbacks = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Feedback>>().Result;
@@ -41,10 +42,13 @@ namespace KeedoApp.Controllers
 
             }
 
+      
 
 
             return View(feedbacks);
         }
+
+      
 
 
 
@@ -52,18 +56,34 @@ namespace KeedoApp.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
+
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Feedbacks/retrieve-feedback-details/" + id.ToString()).Result;
+
+            HttpResponseMessage httpResponseMessage2 = httpClient.GetAsync(baseAddress + "Questions/retrieve-feedback-questions/" + id.ToString()).Result;
             Feedback feedback;
+            IEnumerable<Question> questions;
             if (httpResponseMessage.IsSuccessStatusCode)
             {
 
                 feedback = httpResponseMessage.Content.ReadAsAsync<Feedback>().Result;
+
             }
             else
             {
                 feedback = null;
             }
+            /*
+            if (httpResponseMessage2.IsSuccessStatusCode)
+            {
 
+                questions = httpResponseMessage2.Content.ReadAsAsync<IEnumerable<Question>>().Result;
+
+            }
+            else
+            {
+                questions = null;
+            }
+            */
             return View(feedback);
         }
 
@@ -127,9 +147,39 @@ namespace KeedoApp.Controllers
         // GET: Feedback/Edit/5
         public ActionResult Edit(int id)
         {
-           
-            
-            return View();
+
+
+            Feedback feedback = null;
+
+
+
+            var responseTask = httpClient.GetAsync(baseAddress + "Feedbacks/retrieve-feedback-details/" + id);
+            // responseTask.Wait();
+
+            var result = responseTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<Feedback>();
+                readTask.Wait();
+
+                feedback = readTask.Result;
+            }
+            //------------
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "meetings/get-all-meeting").Result;
+            IEnumerable<Meeting> meetings;
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                meetings = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Meeting>>().Result;
+            }
+            else
+            {
+                meetings = null;
+            }
+
+            ViewBag.meetingFK = new SelectList(meetings, "idMeeting", "description");
+
+
+            return View(feedback);
         }
 
 

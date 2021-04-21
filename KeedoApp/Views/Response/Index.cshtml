@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KeedoApp.Models.Question>
+﻿@model IEnumerable<KeedoApp.Models.Response>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -7,16 +7,20 @@
     <tr>
 
         <th>
-            @Html.DisplayNameFor(model => model.Questions)
+            @Html.DisplayNameFor(model => model.Responses)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Type)
+            @Html.DisplayNameFor(model => model.SatisfactionDegree)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CreatedAt)
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
+            @Html.DisplayNameFor(model => model.up)
         </th>
         <th></th>
     </tr>
@@ -25,16 +29,16 @@
 <tr>
 
     <td>
-        @Html.DisplayFor(modelItem => item.Questions)
+        @Html.DisplayFor(modelItem => item.Responses)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Type)
+        @Html.DisplayFor(modelItem => item.SatisfactionDegree)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Rating)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.CreatedAt)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.UpdatedAt)
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
