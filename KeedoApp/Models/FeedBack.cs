@@ -21,7 +21,7 @@ namespace KeedoApp.Models
 
 		private DateTime createdAt;
 
-		private DateTime updatedAt;
+		private Nullable<DateTime> updatedAt;
 
 
 
@@ -107,7 +107,7 @@ namespace KeedoApp.Models
 
 
 
-		public virtual DateTime UpdatedAt
+		public virtual Nullable<DateTime> UpdatedAt
 		{
 			get
 			{

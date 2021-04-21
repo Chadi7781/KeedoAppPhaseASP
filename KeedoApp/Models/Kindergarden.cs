@@ -1,4 +1,4 @@
-﻿using KeedoApp.Models;
+using KeedoApp.Models;
 using System;
 using System.Collections.Generic;
 using tn.esprit.pi.entities;
@@ -28,24 +28,11 @@ namespace KeedoApp.Models
 
 		private DateTime createdAt;
 
-		private DateTime updatedAt;
+		private Nullable<DateTime> updatedAt;
 
 
 
-		private IList<Event> events;
-
-		public virtual IList<Event> Events
-		{
-			get
-			{
-				return events;
-			}
-			set
-			{
-				this.events = value;
-			}
-		}
-
+		
 
 		public Kindergarden() : base()
 		{
@@ -129,7 +116,7 @@ namespace KeedoApp.Models
 		}
 
 
-		public virtual DateTime UpdatedAt
+		public virtual Nullable<DateTime> UpdatedAt
 		{
 			get
 			{
