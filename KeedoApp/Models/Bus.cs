@@ -1,8 +1,10 @@
 ﻿using KeedoApp.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace tn.esprit.pi.entities
+namespace KeedoApp.Models
 {
 
 
@@ -13,12 +15,21 @@ namespace tn.esprit.pi.entities
 
 		private const long serialVersionUID = 1L;
 
-			private int idBus;
+		private int idBus;
+		[Required(ErrorMessage = "Required Field")]
+		[StringLength(25,ErrorMessage = "length does not exceed 25")]
 		private string departure;
-	private string destination;
-	private DateTime timeDep;
-	private DateTime timeA;
+		[Required(ErrorMessage = "Required Field")]
+		[StringLength(20, ErrorMessage = "length does not exceed 20")]
+		private string destination;
+		[Required(ErrorMessage = "Required Field")]
+		private DateTime timeDep;
+		[Required(ErrorMessage = "Required Field")]
+		private DateTime timeA;
+		[Required(ErrorMessage = "Required Field")]
+		[Range(10,20)]
 		private int capacity;
+		[Range(0, 20)]
 		private int disponible;
 
 
@@ -56,7 +67,7 @@ namespace tn.esprit.pi.entities
 			}
 		}
 
-
+	
 		public virtual string Destination
 		{
 			get
@@ -68,7 +79,6 @@ namespace tn.esprit.pi.entities
 				this.destination = value;
 			}
 		}
-
 
 		public virtual DateTime TimeDep
 		{
@@ -109,8 +119,10 @@ namespace tn.esprit.pi.entities
 				this.user = value;
 			}
 		}
-
-
+/*
+		public int? DriverFk { get; set; }
+		public Driver Driver { get; set; }
+		*/
 		public virtual Driver Driver
 		{
 			get
