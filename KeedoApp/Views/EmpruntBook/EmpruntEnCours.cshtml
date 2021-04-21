@@ -1,0 +1,79 @@
+﻿@model IEnumerable<KeedoApp.Models.EmpruntBook>
+
+@{
+    ViewBag.Title = "EmpruntEnCours";
+}
+
+<div class="col-12">
+    <div class="page-title-box d-flex align-items-center justify-content-between">
+        <h2 class="mb-0">EmpruntEnCours</h2>
+    </div>
+</div>
+<br />
+<br />
+
+
+<table style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;">
+    <thead>
+        <tr class="bg-transparent">
+            <th>
+                <div class="form-check text-center">
+                    <input type="checkbox" class="form-check-input" id="invoicecheck">
+                    <label class="form-check-label" for="invoicecheck"></label>
+                </div>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmprunt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DebutDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prolonge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rendu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Detail)
+            </th>
+          
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <div class="form-check text-center">
+                    <input type="checkbox" class="form-check-input" id="invoicecheck1">
+                    <label class="form-check-label" for="invoicecheck1"></label>
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmprunt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DebutDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prolonge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rendu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detail)
+            </td>
+          
+        </tr>
+        }
+
+</table>
