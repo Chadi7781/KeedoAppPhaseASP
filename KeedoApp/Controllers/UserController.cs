@@ -1,5 +1,7 @@
-﻿using KeedoApp.Models;
+﻿using KeedoApp.LoginObject;
+using KeedoApp.Models;
 using Newtonsoft.Json;
+using reCAPTCHA.MVC;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -67,31 +69,36 @@ namespace KeedoApp.Controllers
 
         //httpResponseMessage = httpClient.GetAsync(baseAddress + "/findall").Result;
         //    if (httpResponseMessage.IsSuccessStatusCode) {
-            //    ViewBag.users = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Models.User>>().Result;
-          //  }
-           // else {
-             //   ViewBag.users = "erreur";
-          //  }
-           // return View();
-       // }
+        //    ViewBag.users = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Models.User>>().Result;
+        //  }
+        // else {
+        //   ViewBag.users = "erreur";
+        //  }
+        // return View();
+        // }
 
 
 
-
-
-        public ActionResult login(LoginObject.Login login) {
+        [CaptchaValidator]
+        public ActionResult login(LoginObject.Login login, bool captchaValid) {
             baseAddress = "http://localhost:8080/SpringMVC/servlet/User/Access";
-            if (!login.username.Equals("") && !login.password.Equals(""))
+            if (ModelState.IsValid && !login.username.Equals("") && !login.password.Equals(""))
             {
                 var APIResponse = httpClient.PostAsJsonAsync<LoginObject.Login>(baseAddress + "/login", login).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
 
                 var jsonreponse = APIResponse.Result.Content.ReadAsAsync<LoginObject.jwtResponse>().Result;
-                Session["AccessToken"] = jsonreponse.AccessToken;
-                Session["Role"] = jsonreponse.role;
-                Session["User"] = jsonreponse.username;
-                return RedirectToAction("GestionUtilisateur");
+                String resultat = jsonreponse.AccessToken;
+                if (jsonreponse.Roles.Length > 0)
+                {
+                    Session["AccessToken"] = jsonreponse.AccessToken;
+                    Session["Role"] = jsonreponse.role;
+                    Session["User"] = jsonreponse.username;
+                    return RedirectToAction("GestionUtilisateur");
+                }
+                ViewBag.resultat = resultat;
+                
             }
-                return View();
+            return View();
         }
 
         public ActionResult create (User user)

@@ -1,4 +1,5 @@
 ﻿@model KeedoApp.LoginObject.Login
+@using reCAPTCHA.MVC
 @{
     ViewBag.Title = "Login";
 }
@@ -53,6 +54,7 @@
                                 <div class="text-center mt-2">
                                     <h5 class="text-primary">Welcome Back !</h5>
                                     <p class="text-muted">Sign in to continue to KeedoApp.</p>
+                                    <p style="color='red'">@ViewBag.resultat</p>
                                 </div>
                                 <div class="p-2 mt-4">
 
@@ -70,7 +72,10 @@
                                         @Html.EditorFor(model => model.password, new { htmlAttributes = new { @type = "password", @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
                                     </div>
-
+                                    <div class="col-md-offset-2 col-md-10">
+                                        @Html.Recaptcha()
+                                        @Html.ValidationMessage("ReCaptcha")
+                                    </div>
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="auth-remember-check">
                                         <label class="form-check-label" for="auth-remember-check">Remember me</label>
