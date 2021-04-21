@@ -12,6 +12,16 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
 
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Director)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Director.Fullname)
+        </dd>
+
+
         <dt>
             @Html.DisplayNameFor(model => model.CreatedAt)
         </dt>

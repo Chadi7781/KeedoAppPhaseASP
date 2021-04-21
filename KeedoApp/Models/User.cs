@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using tn.esprit.pi.entities;
 
 namespace KeedoApp.Models
@@ -20,6 +21,9 @@ namespace KeedoApp.Models
 		public int idUser;
 		public string firstName = "";
 		public string lastName = "";
+		[NotMapped]
+		public string Fullname { get { return firstName + " " + lastName; } }
+
 		public string telNum = "";
 		public DateTime birthdate;
 
