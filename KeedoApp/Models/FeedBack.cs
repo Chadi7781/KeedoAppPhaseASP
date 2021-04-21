@@ -18,6 +18,7 @@ namespace KeedoApp.Models
 
 		private string title;
 
+		private string description;
 
 		private DateTime createdAt;
 
@@ -89,7 +90,17 @@ namespace KeedoApp.Models
 			}
 		}
 
-
+		public virtual string Description
+		{
+			get
+			{
+				return description;
+			}
+			set
+			{
+				this.description = value;
+			}
+		}
 		public virtual DateTime CreatedAt
 		{
 			get

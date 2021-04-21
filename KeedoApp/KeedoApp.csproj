@@ -142,10 +142,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KindergartenController.cs" />
+    <Compile Include="Controllers\LoginInscriptionController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LoginObject\jwtResponse.cs" />
+    <Compile Include="LoginObject\Login.cs" />
     <Compile Include="Models\Advertisement.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\AppointmentStatus.cs" />
@@ -470,9 +478,39 @@
     <Content Include="Views\Shared\AdminTemplate\_Scripts.cshtml" />
     <Content Include="Views\Shared\AdminTemplate\_Styles.cshtml" />
     <Content Include="Views\Shared\AdminTemplate\_SideBar.cshtml" />
+    <Content Include="Views\Auth\login.cshtml" />
+    <Content Include="Views\Feedback\Create.cshtml" />
+    <Content Include="Views\Feedback\Details.cshtml" />
+    <Content Include="Views\Feedback\edit.cshtml" />
+    <Content Include="Views\Feedback\index.cshtml" />
+    <Content Include="Views\Kindergarten\Create.cshtml" />
+    <Content Include="Views\Kindergarten\delete.cshtml" />
+    <Content Include="Views\Kindergarten\Details.cshtml" />
+    <Content Include="Views\Kindergarten\edit.cshtml" />
+    <Content Include="Views\Kindergarten\index.cshtml" />
+    <Content Include="Views\RequestFollow\index.cshtml" />
+    <Content Include="Views\Role\CreateRole.cshtml" />
+    <Content Include="Views\Role\DeleteRole.cshtml" />
+    <Content Include="Views\Role\EditRole.cshtml" />
+    <Content Include="Views\Role\GestionRole.cshtml" />
+    <Content Include="Views\User\ActiverUser.cshtml" />
+    <Content Include="Views\User\AfficherActivate.cshtml" />
+    <Content Include="Views\User\create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\DesactiverUser.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Forgotpassword.cshtml" />
+    <Content Include="Views\User\GestionUtilisateur.cshtml" />
+    <Content Include="Views\User\login.cshtml" />
+    <Content Include="Views\User\Reset.cshtml" />
+    <Content Include="Views\Question\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Claim\" />
+    <Folder Include="Views\Follow\" />
+    <Folder Include="Views\Response\" />
     <Folder Include="Views\Shared\App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>

@@ -46,24 +46,28 @@ namespace KeedoApp.Controllers
             return View(feedbacks);
         }
 
+
+
         // GET: Feedback/Details/5
         [HttpGet]
         public ActionResult Details(int id)
         {
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Feedbacks/retrieve-feedback-details/" + id.ToString()).Result;
-            Kindergarden kindergarden;
+            Feedback feedback;
             if (httpResponseMessage.IsSuccessStatusCode)
             {
 
-                kindergarden = httpResponseMessage.Content.ReadAsAsync<Kindergarden>().Result;
+                feedback = httpResponseMessage.Content.ReadAsAsync<Feedback>().Result;
             }
             else
             {
-                kindergarden = null;
+                feedback = null;
             }
 
-            return View(kindergarden);
+            return View(feedback);
         }
+
+
 
         // GET: Feedback/Create
         public ActionResult Create()
@@ -174,6 +178,29 @@ namespace KeedoApp.Controllers
                 }
             
             return View();
+        }
+
+
+        // GET: Feedback
+        public ActionResult FeedbackQuestions(int id)
+        {
+
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Questions/retrieve-feedback-questions/"+id.ToString()).Result;
+
+            IEnumerable<Question> questions;
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                questions = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Question>>().Result;
+            }
+            else
+            {
+                questions = null;
+
+            }
+
+
+
+            return View(questions);
         }
     }
 }
