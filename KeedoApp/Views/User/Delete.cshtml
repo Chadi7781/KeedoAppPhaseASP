@@ -1,0 +1,176 @@
+﻿@model KeedoApp.Models.User
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>User</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.IdUser)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IdUser)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TelNum)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TelNum)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Birthdate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Birthdate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Mail)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Mail)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Login)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Login)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Delegatee)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Delegatee)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AccountNonLocked)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AccountNonLocked)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FailedAttempt)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FailedAttempt)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Resettoken)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Resettoken)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Blocked)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Blocked)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Private)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Private)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AccBalance)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AccBalance)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Valid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Valid)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "GestionUtilisateur")
+            </div>
+        }
+    </div>
+</body>
+</html>

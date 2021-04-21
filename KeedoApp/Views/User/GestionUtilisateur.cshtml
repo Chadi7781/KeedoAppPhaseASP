@@ -1,0 +1,78 @@
+﻿@model IEnumerable<KeedoApp.Models.User>
+@{
+    ViewBag.Title = "GestionUtilisateur";
+}
+
+<h2>GestionUtilisateur</h2>
+
+<p>
+    @Html.ActionLink("Afficher Activate", "AfficherActivate")
+</p>
+<form>
+    <p>
+        Search: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" class="btn btn-outline-primary waves-effect waves-light" />
+
+    </p>
+</form>
+
+<table class="table" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.birthdate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.users)
+    {
+<tr>
+    <td>
+        @item.idUser
+    </td>
+    <td>
+        @item.firstName
+    </td>
+    <td>
+        @item.lastName
+    </td>
+    <td>
+        @item.address
+    </td>
+
+    <td>
+        @item.birthdate
+    </td>
+    <td>
+
+        <a class="px-3 text-primary">@Html.ActionLink("Edit", "Edit", new { id = item.idUser }) |<i class="uil uil-file-edit-alt font-size-18"> </i></a>
+        <a class="px-3 text-primary">@Html.ActionLink("Details", "Details", new { id = item.idUser }) | <i class="uil uil-file font-size-18"> </i></a>
+        <a class="px-3 text-primary">@Html.ActionLink("Delete", "Delete", new { id = item.idUser })| <i class="uil uil-file-times font-size-18"></i></a>
+
+        @if (item.Valid == true)
+        {
+    <a class="px-3 text-primary">@Html.ActionLink("Desactiver User", "DesactiverUser", new { id = item.idUser })  |<i class="uil uil-file-lock-alt font-size-18"></i></a>
+        }
+        else
+        {
+            <a class="px-3 text-primary">@Html.ActionLink("Activer User", "ActiverUser", new { id = item.idUser }) |<i class="uil uil-file-check font-size-18"></i></a>
+        }
+
+    </td>
+</tr>
+    }
+
+</table>
