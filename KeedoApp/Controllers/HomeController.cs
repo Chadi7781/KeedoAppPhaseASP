@@ -8,6 +8,14 @@ namespace KeedoApp.Controllers
 {
     public class HomeController : Controller
     {
+        //Client
+
+
+        public ActionResult IndexClient()
+        {
+            return View("IndexClient");
+        }
+        //Admin
         public ActionResult Index()
         {
             return View();
