@@ -12,12 +12,20 @@ namespace KeedoApp
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            //CLient
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "IndexClient", id = UrlParameter.Optional }
             );
+
+            //ADmin
+
+            routes.MapRoute(
+    name: "Default",
+    url: "{controller}/{action}/{id}",
+    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+);
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
         }
