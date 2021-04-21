@@ -248,6 +248,27 @@ namespace KeedoApp.Controllers
             return View();
         }
 
+       public ActionResult AfficherActivate()
+        {
+            var _AccessToken = Session["AccessToken"];
+            httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "findActivatedUser/").Result;
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                ViewBag.users = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Models.User>>().Result;
+            }
+            else
+            {
+                ViewBag.users = "erreur";
+            }
+            return View();
+        }
+        // GET: Role
+        public ActionResult Index()
+        {
+            return View();
+        } 
+
 
 
     }

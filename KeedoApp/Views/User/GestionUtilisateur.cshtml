@@ -4,15 +4,19 @@
 }
 
 <h2>GestionUtilisateur</h2>
+
+<p>
+    @Html.ActionLink("Afficher Activate", "AfficherActivate")
+</p>
 <form>
     <p>
         Search: <input type="text" name="SearchString" />
-        <input type="submit" value="Filter" />
+        <input type="submit" value="Filter" class="btn btn-outline-primary waves-effect waves-light" />
 
     </p>
 </form>
 
-<table class="table">
+<table class="table" >
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.idUser)
@@ -53,17 +57,18 @@
         @item.birthdate
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.idUser }) |
-        @Html.ActionLink("Details", "Details", new { id = item.idUser }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.idUser })|
+
+        <a class="px-3 text-primary">@Html.ActionLink("Edit", "Edit", new { id = item.idUser }) |<i class="uil uil-file-edit-alt font-size-18"> </i></a>
+        <a class="px-3 text-primary">@Html.ActionLink("Details", "Details", new { id = item.idUser }) | <i class="uil uil-file font-size-18"> </i></a>
+        <a class="px-3 text-primary">@Html.ActionLink("Delete", "Delete", new { id = item.idUser })| <i class="uil uil-file-times font-size-18"></i></a>
 
         @if (item.Valid == true)
         {
-            @Html.ActionLink("Desactiver User", "DesactiverUser", new { id = item.idUser })
+    <a class="px-3 text-primary">@Html.ActionLink("Desactiver User", "DesactiverUser", new { id = item.idUser })  |<i class="uil uil-file-lock-alt font-size-18"></i></a>
         }
         else
         {
-            @Html.ActionLink("Activer User", "ActiverUser", new { id = item.idUser })
+            <a class="px-3 text-primary">@Html.ActionLink("Activer User", "ActiverUser", new { id = item.idUser }) |<i class="uil uil-file-check font-size-18"></i></a>
         }
 
     </td>

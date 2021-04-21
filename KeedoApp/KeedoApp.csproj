@@ -488,6 +488,7 @@
     <Content Include="Views\User\Reset.cshtml" />
     <Content Include="Views\User\ActiverUser.cshtml" />
     <Content Include="Views\User\DesactiverUser.cshtml" />
+    <Content Include="Views\User\AfficherActivate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

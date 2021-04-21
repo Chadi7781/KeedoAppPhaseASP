@@ -184,10 +184,6 @@ C:\Users\Iskander\Source\Repos\KeedoAppPhaseASP\KeedoApp\obj\Debug\KeedoApp.cspr
 C:\Users\Iskander\Source\Repos\KeedoAppPhaseASP\KeedoApp\obj\Debug\KeedoApp.dll
 C:\Users\Iskander\Source\Repos\KeedoAppPhaseASP\KeedoApp\obj\Debug\KeedoApp.pdb
 C:\Users\Iskander\Source\Repos\KeedoAppPhaseASP\KeedoApp\obj\Debug\KeedoApp.csprojAssemblyReference.cache
-C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\obj\Debug\KeedoApp.csprojAssemblyReference.cache
-C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\obj\Debug\KeedoApp.csproj.CoreCompileInputs.cache
-C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\obj\Debug\KeedoApp.dll
-C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\obj\Debug\KeedoApp.pdb
 C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\bin\KeedoApp.dll.config
 C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\bin\KeedoApp.dll
 C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\bin\KeedoApp.pdb
@@ -276,4 +272,8 @@ C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\bin\fr\System.Web.Razor.resou
 C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\bin\fr\System.Web.WebPages.resources.dll
 C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\bin\fr\System.Web.WebPages.Deployment.resources.dll
 C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\bin\fr\System.Web.WebPages.Razor.resources.dll
+C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\obj\Debug\KeedoApp.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\obj\Debug\KeedoApp.csproj.CoreCompileInputs.cache
 C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\obj\Debug\KeedoApp.csproj.CopyComplete
+C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\obj\Debug\KeedoApp.dll
+C:\Users\HP\source\repos\KeedoAppPhaseASP\KeedoApp\obj\Debug\KeedoApp.pdb

@@ -118,8 +118,10 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.idUser }) |
-        @Html.ActionLink("Back to List", "GestionUtilisateur")
+        <a class="px-3 text-primary">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.idUser })<i class="uil uil-file-edit-alt font-size-18"> </i>
+        </a> | <br />
+            @Html.ActionLink("Back to List", "GestionUtilisateur")
     </p>
 </body>
 </html>
