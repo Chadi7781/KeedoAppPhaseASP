@@ -22,6 +22,7 @@ namespace KeedoApp.Models
 
 		private ISet<Claim> claims;
 
+		public int? directorFk { get; set; }
 
 		private User director;
 

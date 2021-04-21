@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -27,7 +28,6 @@ namespace KeedoApp.Controllers.Kindergarten
         // GET: Kindergarten
         public ActionResult Index()
         {
-           // Session["AccessToken"]= "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYxODI2NjEyNiwiZXhwIjoxNjE5MTMwMTI2fQ.JjxadD-vCeyuBGMk4HpG2NebXyqxOkO8rbbuPNVMKLGYiJDLfeiUbhA-ucs3ir1LPeC9YJnZ1AgLB3kq6SJuCQ";
             
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress+"Kindergartens/retrieve-all-kindergartens").Result;
 
@@ -74,18 +74,19 @@ namespace KeedoApp.Controllers.Kindergarten
         {
 
 
-            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress+"SpringMVC/servlet/User/Service/findall").Result;
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress+ "Kindergartens/directors").Result;
 
             IEnumerable<User> directors;
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-                ViewBag.directors = httpResponseMessage.Content.ReadAsAsync<IEnumerable<User>>().Result;
+                directors = httpResponseMessage.Content.ReadAsAsync<IEnumerable<User>>().Result;
             }
             else
             {
-                ViewBag.directors = null;
+                directors = null;
 
             }
+            ViewBag.directorFK = new SelectList(directors, "idUser", "firstName");
 
 
 
@@ -94,40 +95,36 @@ namespace KeedoApp.Controllers.Kindergarten
 
         // POST: Kindergarten/Create
         [HttpPost]
-        public ActionResult Create(Kindergarden kindergarden ,int director)        {
+        public async Task<ActionResult> Create(Kindergarden kindergarden )        {
 
-            try
-            {
-                
-                HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress+"SpringMVC/servlet/User/Service/findall").Result;
+      
 
-                var APIResponse = httpClient.PostAsJsonAsync<Kindergarden>(baseAddress + "/Kindergartens/add-kindergarden/" + director.ToString(), kindergarden).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-                var jsonreponse = APIResponse.Result.Content.ReadAsAsync<String>().Result;
-                ViewBag.SuccessMessage = jsonreponse;
+                var response = await httpClient.PostAsJsonAsync(baseAddress + "Kindergartens/add-kindergarden/" + kindergarden.directorFk, kindergarden);
 
-
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+                HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "User/Service/findall").Result;
                 IEnumerable<User> directors;
+
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
-                    ViewBag.directors = httpResponseMessage.Content.ReadAsAsync<IEnumerable<User>>().Result;
+                directors = httpResponseMessage.Content.ReadAsAsync<IEnumerable<User>>().Result;
                 }
                 else
                 {
-                    ViewBag.directors = null;
-
+                directors = null;
                 }
-            }
-            catch
-            {
-                return View();
-            }
-            return RedirectToAction("Index");
-                       
-           
+
+            ViewBag.directorFK = new SelectList(directors, "idUser", "firstName");
+
+            return View(kindergarden);
+
             }
 
         // GET: Kindergarten/Edit/5
-        public ActionResult Edit(int id)
+            public ActionResult Edit(int id)
         {
            
             return View();
