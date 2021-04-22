@@ -93,7 +93,7 @@ namespace KeedoApp.Controllers
         public ActionResult Create()
         {
           
-            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress+"meetings/get-all-meeting").Result;
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress+ "finished-meetings").Result;
 
             IEnumerable<Meeting> meetings;
             if (httpResponseMessage.IsSuccessStatusCode)
@@ -118,7 +118,7 @@ namespace KeedoApp.Controllers
             try
             {
           
-                HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress+"meetings/get-all-meeting").Result;
+                HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress+ "finished-meetings").Result;
 
                 var APIResponse = httpClient.PostAsJsonAsync<Feedback>(baseAddress + "/Feedbacks/new-feedback-of/" + idMeeting.ToString(), feedback).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
                 var jsonreponse = APIResponse.Result.Content.ReadAsAsync<String>().Result;
@@ -165,7 +165,7 @@ namespace KeedoApp.Controllers
                 feedback = readTask.Result;
             }
             //------------
-            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "meetings/get-all-meeting").Result;
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "finished-meetings").Result;
             IEnumerable<Meeting> meetings;
             if (httpResponseMessage.IsSuccessStatusCode)
             {

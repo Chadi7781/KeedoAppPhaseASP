@@ -3,7 +3,7 @@
 <div style="margin-left:50px">
     <h4>Feedback</h4>
     <hr />
-    <dl class="dl-horizontal" >
+    <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.IdFeedback)
         </dt>
@@ -32,31 +32,37 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Meeting.Description)
+            @Html.DisplayFor(model => model.Meeting.TypeMeeting)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Questions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Questions)
         </dd>
 
 
-      
 
-     
-           
-            <dt>
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.CreatedAt)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.UpdatedAt)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.UpdatedAt)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedAt)
+        </dt>
 
-        </dl>
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedAt)
+        </dd>
+
+    </dl>
 </div>
 <p style="margin-left:50px">
     @Html.ActionLink("Edit", "Edit", new { id = Model.IdFeedback }) |
