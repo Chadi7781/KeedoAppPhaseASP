@@ -162,9 +162,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ConsultationController.cs" />
+    <Compile Include="Controllers\DaycareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KidController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Extensions\NotificationExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -508,6 +510,13 @@
     <Content Include="Views\Consultation\Details.cshtml" />
     <Content Include="Views\Consultation\Delete.cshtml" />
     <Content Include="Views\Consultation\Edit.cshtml" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
+    <Content Include="Views\Daycare\Index.cshtml" />
+    <Content Include="Views\Daycare\Details.cshtml" />
+    <Content Include="Views\Daycare\Create.cshtml" />
+    <Content Include="Views\Daycare\Edit.cshtml" />
+    <Content Include="Views\Daycare\Delete.cshtml" />
+    <Content Include="Views\Kid\Affect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

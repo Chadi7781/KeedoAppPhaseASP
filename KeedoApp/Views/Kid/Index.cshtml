@@ -3,11 +3,11 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<div>
+    @Html.Partial("_Notifications")
+</div>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.idKid)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.firstName)
         </th>
@@ -24,19 +24,14 @@
             @Html.DisplayNameFor(model => model.address)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Daycare.dateBegin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Daycare.dateEnd)
+            Daycare
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
 <tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.idKid)
-    </td>
     <td>
         @Html.DisplayFor(modelItem => item.firstName)
     </td>
@@ -53,17 +48,23 @@
         @Html.DisplayFor(modelItem => item.address)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Daycare.dateBegin)
+        @if (item.affect.Equals("Affected"))
+        {
+            <img src="https://img.icons8.com/office/30/000000/checked--v2.png" />
+        }
+        else
+        {
+            <img src="https://img.icons8.com/flat-round/30/000000/delete-sign.png" />
+        }
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Daycare.dateEnd)
-    </td>
-    <td>
+        @Html.ActionLink("Affect", "Affect", new { idk = item.idKid }) |
+        @Html.ActionLink("Disaffect", "Disaffect", new { idk = item.idKid }) |
         @Html.ActionLink("Edit", "Edit", new { id = item.idKid }) |
         @Html.ActionLink("Details", "Details", new { id = item.idKid }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.idKid })
     </td>
 </tr>
-}
+    }
 
 </table>

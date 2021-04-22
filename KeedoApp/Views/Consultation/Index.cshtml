@@ -3,6 +3,9 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<div>
+    @Html.Partial("_Notifications")
+</div>
 <table class="table">
     <tr>
         <th>
@@ -23,29 +26,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.dateConsultation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.director.FirstNameLastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.doctor.FirstNameLastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.kid.FirstNameLastName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.idConsultation  }) |
-            @Html.ActionLink("Details", "Details", new { id = item.idConsultation }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.idConsultation })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateConsultation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.director.FirstNameLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.doctor.FirstNameLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kid.FirstNameLastName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idConsultation }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idConsultation }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idConsultation })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -1,0 +1,68 @@
+﻿@model tn.esprit.pi.entities.Daycare
+
+<div>
+    <h4>Daycare</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Price per month
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price_M)
+        </dd>
+
+        <dt>
+            Total price
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price_T)
+        </dd>
+
+        <dt>
+            Periode
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.periode)
+        </dd>
+
+        <dt>
+            Date Begin
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateBegin)
+        </dd>
+
+        <dt>
+            Date end
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateEnd)
+        </dd>
+
+        <dt>
+            Capacity
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capacity)
+        </dd>
+
+        <dt>
+            Nbr inscription
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nbInscrit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idDaycare }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

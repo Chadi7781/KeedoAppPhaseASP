@@ -2,6 +2,7 @@
 using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
+using KeedoApp.Extensions;
 using KeedoApp.Models;
 using System;
 using System.Collections.Generic;
@@ -131,9 +132,21 @@ namespace KeedoApp.Controllers
 
             var response = await client.PostAsJsonAsync("SpringMVC/servlet/consult/add/"+consultation.kidFk+"/"+consultation.doctorFk, consultation);
             if (response.IsSuccessStatusCode)
-             {
-                 return RedirectToAction("Index");
-             }
+            {
+                if (response.Content.ReadAsStringAsync().Result.ToString().Equals("1")){
+                    this.AddNotification("Wrong date !!", NotificationType.WARNING);
+                }else if (response.Content.ReadAsStringAsync().Result.ToString().Equals("2"))
+                {
+                    this.AddNotification("Consultation added successfully !", NotificationType.SUCCESS);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    this.AddNotification("Doctor not available for this date !!", NotificationType.WARNING);
+                }
+                
+            }
+            
             //--------
 
             HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/kid/getAll").Result;
@@ -225,7 +238,7 @@ namespace KeedoApp.Controllers
                 var result = putTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-
+                    this.AddNotification("Consultation updated successfully !", NotificationType.SUCCESS);
                     return RedirectToAction("Index");
                 }
                 //------------
@@ -282,15 +295,15 @@ namespace KeedoApp.Controllers
         public ActionResult Delete(int id, FormCollection collection)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8080");
+            client.BaseAddress = new Uri("http://localhost:8080/SpringMVC/servlet/");
 
             //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            var putTask = client.DeleteAsync("SpringMVC/servlet/consult/del/" + id);
+            var putTask = client.DeleteAsync("consult/del/" + id);
             putTask.Wait();
             var result = putTask.Result;
             if (result.IsSuccessStatusCode)
             {
-
+                this.AddNotification("Consultation deleted successfully !", NotificationType.SUCCESS);
                 return RedirectToAction("Index");
             }
             return View();

@@ -22,7 +22,8 @@ namespace KeedoApp.Models
 
 		public string address { get; set; }
 
-		[ForeignKey("Daycare")]
+		public string affect { get; set; }
+
 		public int? DaycareFk { get; set; }
 		public Daycare Daycare { get; set; }
 		public ICollection<Consultation> consultations { get; set; }

@@ -14,7 +14,9 @@ namespace KeedoApp.Models
 		public int idUser { get; set; }
 		public string firstName { get; set; }
 		public string lastName { get; set; }
+		
 		public string FirstNameLastName { get { return firstName + " " + lastName; } }
+		
 		public string telNum { get; set; }
 		[DataType(DataType.Date)]
 		public DateTime birthdate { get; set; }
