@@ -10,13 +10,12 @@
 </p>
 <form>
     <p>
-        Search: <input type="text" name="SearchString" />
+        <input type="text" class="form-control" placeholder="Search..." name="SearchString" />
         <input type="submit" value="Filter" class="btn btn-outline-primary waves-effect waves-light" />
-
     </p>
 </form>
 
-<table class="table" >
+<table class="table table-primary table-striped mb-0">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.idUser)
@@ -39,40 +38,64 @@
 
     @foreach (var item in ViewBag.users)
     {
-<tr>
-    <td>
-        @item.idUser
-    </td>
-    <td>
-        @item.firstName
-    </td>
-    <td>
-        @item.lastName
-    </td>
-    <td>
-        @item.address
-    </td>
+        <tr>
+            <td>
+                @item.idUser
+            </td>
+            <td>
+                @item.firstName
+            </td>
+            <td>
+                @item.lastName
+            </td>
+            <td>
+                @item.address
+            </td>
 
-    <td>
-        @item.birthdate
-    </td>
-    <td>
+            <td>
+                @item.birthdate
+            </td>
+            <td>
 
-        <a class="px-3 text-primary">@Html.ActionLink("Edit", "Edit", new { id = item.idUser }) |<i class="uil uil-file-edit-alt font-size-18"> </i></a>
-        <a class="px-3 text-primary">@Html.ActionLink("Details", "Details", new { id = item.idUser }) | <i class="uil uil-file font-size-18"> </i></a>
-        <a class="px-3 text-primary">@Html.ActionLink("Delete", "Delete", new { id = item.idUser })| <i class="uil uil-file-times font-size-18"></i></a>
+                <a class="px-3 text-primary">@Html.ActionLink("Edit", "Edit", new { id = item.idUser }) |<i class="uil uil-file-edit-alt font-size-18"> </i></a>
+                <a class="px-3 text-primary">@Html.ActionLink("Details", "Details", new { id = item.idUser }) | <i class="uil uil-file font-size-18"> </i></a>
+                <a class="px-3 text-primary">@Html.ActionLink("Delete", "Delete", new { id = item.idUser })| <i class="uil uil-file-times font-size-18"></i></a>
 
-        @if (item.Valid == true)
-        {
-    <a class="px-3 text-primary">@Html.ActionLink("Desactiver User", "DesactiverUser", new { id = item.idUser })  |<i class="uil uil-file-lock-alt font-size-18"></i></a>
-        }
-        else
-        {
-            <a class="px-3 text-primary">@Html.ActionLink("Activer User", "ActiverUser", new { id = item.idUser }) |<i class="uil uil-file-check font-size-18"></i></a>
-        }
+                @if (item.Valid == true)
+                {
+                    <a class="px-3 text-primary">@Html.ActionLink("Desactiver User", "DesactiverUser", new { id = item.idUser })  |<i class="uil uil-file-lock-alt font-size-18"></i></a>
+                }
+                else
+                {
+                    <a class="px-3 text-primary">@Html.ActionLink("Activer User", "ActiverUser", new { id = item.idUser }) |<i class="uil uil-file-check font-size-18"></i></a>
+                }
 
-    </td>
-</tr>
+            </td>
+        </tr>
     }
 
 </table>
+<br />
+
+
+<div class="col-sm-6">
+    <div class="float-sm-end">
+        <ul class="pagination mb-sm-0">
+            <li class="page-item disabled">
+                <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link">1</a>
+            </li>
+            <li class="page-item active">
+                <a href="#" class="page-link">2</a>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link">3</a>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
