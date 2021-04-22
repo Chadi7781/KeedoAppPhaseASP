@@ -512,6 +512,7 @@
     <Content Include="Views\Question\index.cshtml" />
     <Content Include="Views\Response\Index.cshtml" />
     <Content Include="Views\Response\Create.cshtml" />
+    <Content Include="Views\Feedback\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

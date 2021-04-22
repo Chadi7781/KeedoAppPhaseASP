@@ -130,9 +130,9 @@ namespace KeedoApp.Controllers.Kindergarten
 
         }
 
-        // GET: Kindergarten/Edit/5
         public ActionResult Edit(int id)
         {
+
 
             Kindergarden kindergarden = null;
 
@@ -151,7 +151,6 @@ namespace KeedoApp.Controllers.Kindergarten
             }
             //------------
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Kindergartens/directors").Result;
-
             IEnumerable<User> directors;
             if (httpResponseMessage.IsSuccessStatusCode)
             {
@@ -160,50 +159,39 @@ namespace KeedoApp.Controllers.Kindergarten
             else
             {
                 directors = null;
-
             }
-            ViewBag.directorFK = new SelectList(directors, "idUser", "Fullname");
 
-
+            ViewBag.directorFk = new SelectList(directors, "idUser", "Fullname");
 
 
             return View(kindergarden);
-
         }
 
-        // POST: Kindergarten/Edit/5
+
+        //
+        // POST: /Products/Edit/5
+
         [HttpPost]
         public ActionResult Edit(int id, Kindergarden kindergarden)
         {
-            //HTTP POST
+
             var putTask = httpClient.PutAsJsonAsync<Kindergarden>(baseAddress + "Kindergartens/update-kindergarten/" + id.ToString(), kindergarden);
             putTask.Wait();
 
             var result = putTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
 
-                    return RedirectToAction("Index");
-                }
-     
-            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Kindergartens/directors").Result;
-            IEnumerable<User> directors;
-            if (httpResponseMessage.IsSuccessStatusCode)
-                {
-                directors = httpResponseMessage.Content.ReadAsAsync<IEnumerable<User>>().Result;
-                }
-                else
-                {
-                directors = null;
-                }
-               
-                ViewBag.directorFk = new SelectList(directors, "idUser", "Fullname");
-     
+            if (result.IsSuccessStatusCode)
+            {
+
+                return RedirectToAction("Index");
+            }
             return View();
         }
-           
-    
-    
+
+
+
+
+
 
 
 

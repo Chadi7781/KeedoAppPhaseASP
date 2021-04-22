@@ -1,9 +1,9 @@
 ﻿@model KeedoApp.Models.Feedback
 
-<div>
+<div style="margin-left:50px">
     <h4>Feedback</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" >
         <dt>
             @Html.DisplayNameFor(model => model.IdFeedback)
         </dt>
@@ -58,7 +58,7 @@
 
         </dl>
 </div>
-<p>
+<p style="margin-left:50px">
     @Html.ActionLink("Edit", "Edit", new { id = Model.IdFeedback }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -5,7 +5,7 @@
 {
     @Html.AntiForgeryToken()
     
-<div class="form-horizontal">
+<div class="form-horizontal" style="margin-left:50px">
     <h4>Feedback</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -37,7 +37,7 @@
 </div>
 }
 
-<div>
+<div style="margin-left:50px">
     @Html.ActionLink("Back to List", "Index")
 </div>
 

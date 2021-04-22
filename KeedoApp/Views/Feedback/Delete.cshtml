@@ -1,0 +1,15 @@
+﻿@model KeedoApp.Models.Feedback
+
+<h3 style="margin-left:50px">Are you sure you want to delete this?</h3>
+<div style="margin-left:50px">
+   
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="margin-left:50px">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
