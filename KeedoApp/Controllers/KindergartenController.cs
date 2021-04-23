@@ -93,7 +93,7 @@ namespace KeedoApp.Controllers.Kindergarten
                 directors = null;
 
             }
-            ViewBag.directorFK = new SelectList(directors, "idUser", "Fullname");
+            ViewBag.directorFK = new SelectList(directors, "idUser", "Login");
 
 
 
@@ -124,7 +124,7 @@ namespace KeedoApp.Controllers.Kindergarten
                 directors = null;
             }
 
-            ViewBag.directorFK = new SelectList(directors, "idUser", "firstName");
+            ViewBag.directorFK = new SelectList(directors, "idUser", "Login");
 
             return View(kindergarden);
 
@@ -161,7 +161,7 @@ namespace KeedoApp.Controllers.Kindergarten
                 directors = null;
             }
 
-            ViewBag.directorFk = new SelectList(directors, "idUser", "Fullname");
+            ViewBag.directorFk = new SelectList(directors, "idUser", "Login");
 
 
             return View(kindergarden);

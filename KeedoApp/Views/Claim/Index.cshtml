@@ -3,7 +3,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table" style="margin-left:50px">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.IdClaim)
@@ -24,28 +24,48 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdClaim)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.IdClaim)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedAt)
+    </td>
+    @if (item.UpdatedAt != null)
+    {
         <td>
             @Html.DisplayFor(modelItem => item.UpdatedAt)
         </td>
+    }
+    else
+    {
+
+        <td>Not Updated yet</td>
+
+
+    }
+    @if (item.CheckedAt != null)
+    {
         <td>
             @Html.DisplayFor(modelItem => item.CheckedAt)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+    }
+    else
+    {
+
+        <td>Not Checked yet</td>
+
+
+    }
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.IdClaim }) |
+        @Html.ActionLink("Details", "Details", new { id = item.IdClaim }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.IdClaim })
+    </td>
+</tr>
 }
 
 </table>

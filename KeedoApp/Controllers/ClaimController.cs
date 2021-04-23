@@ -48,9 +48,24 @@ namespace KeedoApp.Controllers
         }
 
         // GET: Claim/Details/5
+        [HttpGet]
         public ActionResult Details(int id)
         {
-            return View();
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "claims/retrieve-claim-details/" + id.ToString()).Result;
+
+            Claim claim;
+           
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                claim = httpResponseMessage.Content.ReadAsAsync<Claim>().Result;
+            }
+            else
+            {
+                claim = null;
+            }
+           
+
+            return View(claim);
         }
 
         // GET: Claim/Create
