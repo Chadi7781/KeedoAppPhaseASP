@@ -1,0 +1,57 @@
+﻿@model IEnumerable<KeedoApp.Models.Comment>
+
+@{
+    ViewBag.Title = "Comments";
+}
+
+<h2>Comments</h2>
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.CommentContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.ModifyDate))
+                {
+                    @Html.DisplayFor(modelItem => item.ModifyDate)
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditComment", new { id = item.IdComment }) |
+                @Html.ActionLink("Delete", "DeleteComment", new { id = item.IdComment })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
