@@ -1,4 +1,6 @@
-﻿namespace KeedoApp.Models
+﻿using System;
+
+namespace KeedoApp.Models
 {
 
 
@@ -7,7 +9,7 @@
 
 		private int id;
 
-		private string word;
+		private String word;
 
 		public UnhealthyWord() : base()
 		{
@@ -26,7 +28,7 @@
 		}
 
 
-		public virtual string Word
+		public virtual String Word
 		{
 			get
 			{
