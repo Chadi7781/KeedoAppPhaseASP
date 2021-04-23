@@ -3,6 +3,11 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<p>
+    Claims :  <p>@ViewBag.Title</p>
+
+</p>
 <table class="table" style="margin-left:50px">
     <tr>
         <th>
@@ -10,6 +15,18 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            The Claimant
+        </th>
+        <th>
+           The Claimed
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CreatedAt)
@@ -30,6 +47,21 @@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Category)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Parent.Login)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Kindergarden.Name)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.CreatedAt)
@@ -60,11 +92,12 @@
 
 
     }
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.IdClaim }) |
-        @Html.ActionLink("Details", "Details", new { id = item.IdClaim }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.IdClaim })
-    </td>
+<td>
+    @Html.ActionLink("Edit", "Edit", new { id = item.IdClaim }) |
+    @Html.ActionLink("ClaimProcessing", "ClaimProcessing", new { id = item.IdClaim }) |
+    @Html.ActionLink("Details", "Details", new { id = item.IdClaim }) |
+    @Html.ActionLink("Delete", "Delete", new { id = item.IdClaim })
+</td>
 </tr>
 }
 

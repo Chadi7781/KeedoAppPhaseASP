@@ -5,7 +5,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Parent)
+           The claimant
         </dt>
 
         <dd>
@@ -14,7 +14,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Kindergarden)
+The Claimed      
         </dt>
 
         <dd>
@@ -22,7 +22,7 @@
         </dd>
 
         <dt>
-            Kindergarten Director
+           The Claimed Kindergarten Director
         </dt>
 
         <dd>
@@ -46,6 +46,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.CreatedAt)
         </dt>
 
@@ -62,7 +70,7 @@
             <dd>
                 @Html.DisplayFor(model => model.UpdatedAt)
             </dd>
- }
+        }
         else
         {
 
@@ -79,7 +87,7 @@
             <dd>
                 @Html.DisplayFor(model => model.CheckedAt)
             </dd>
- }
+        }
         else
         {
 
@@ -92,6 +100,6 @@
     </dl>
 </div>
 <p style="margin-left:50px">
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.IdClaim  }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

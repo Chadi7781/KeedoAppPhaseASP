@@ -28,6 +28,7 @@ namespace KeedoApp.Controllers
         public ActionResult Index()
         {
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Claims/retrieve-all-claims").Result;
+          //  HttpResponseMessage httpResponseMessage2 = httpClient.GetAsync(baseAddress + "count-claims").Result;
 
             IEnumerable<Claim> claims;
 
@@ -108,23 +109,54 @@ namespace KeedoApp.Controllers
         // GET: Claim/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Claim claim = null;
+
+
+
+            var responseTask = httpClient.GetAsync(baseAddress + "claims/retrieve-claim-details/" + id);
+            // responseTask.Wait();
+
+            var result = responseTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<Claim>();
+                readTask.Wait();
+
+                claim = readTask.Result;
+            }
+           
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Kindergartens/retrieve-all-kindergartens").Result;
+            IEnumerable<Kindergarden> kindergardens;
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                kindergardens = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Kindergarden>>().Result;
+            }
+            else
+            {
+                kindergardens = null;
+            }
+
+            ViewBag.kindergardenFk = new SelectList(kindergardens, "id", "name");
+
+
+            return View(claim);
         }
 
         // POST: Claim/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Claim claim)
         {
-            try
+            var putTask = httpClient.PutAsJsonAsync<Claim>(baseAddress + "claims/update-claim/" + id.ToString(), claim);
+            putTask.Wait();
+
+            var result = putTask.Result;
+
+            if (result.IsSuccessStatusCode)
             {
-                // TODO: Add update logic here
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: Claim/Delete/5
@@ -148,5 +180,47 @@ namespace KeedoApp.Controllers
                 return View();
             }
         }
+
+
+
+
+        // GET: Claim/Edit/5
+        public ActionResult ClaimProcessing(int id)
+        {
+            Claim claim = null;
+            var responseTask = httpClient.GetAsync(baseAddress + "claims/retrieve-claim-details/" + id);
+            var result = responseTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<Claim>();
+                readTask.Wait();
+                claim = readTask.Result;
+            }
+            return View(claim);
+        }
+
+        // POST: Claim/Edit/5
+        [HttpPost]
+        public ActionResult ClaimProcessing(int id, Claim claim)
+        {
+            var putTask = httpClient.PutAsJsonAsync<Claim>(baseAddress + "claims/process-claim/" + id.ToString(), claim);
+            putTask.Wait();
+
+            var result = putTask.Result;
+
+            if (result.IsSuccessStatusCode)
+            {
+
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+
+ 
+
+
+
+
     }
 }

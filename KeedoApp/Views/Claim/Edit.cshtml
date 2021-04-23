@@ -1,11 +1,11 @@
 ﻿@model tn.esprit.pi.entities.Claim
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
-<div class="form-horizontal" style="margin-left:50px">
+<div class="form-horizontal">
     <h4>Claim</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -16,7 +16,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Kindergarden, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Kindergarden, new SelectList(ViewBag.kindergardens, "id", "name"), new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.kindergardenFk, null, new { htmlAttributes = new { @class = "form-control" } })
 
             </div>
         </div>
@@ -44,7 +44,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
 </div>

@@ -7,10 +7,6 @@ namespace KeedoApp.Models
 
 {
 
-
-
-
-
 	[Serializable]
 	public class Kindergarden
 	{
