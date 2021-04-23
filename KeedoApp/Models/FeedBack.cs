@@ -25,6 +25,7 @@ namespace KeedoApp.Models
 		private Nullable<DateTime> updatedAt;
 
 
+		public int? questionFk { get; set; }
 
 		private ISet<Question> questions;
 		public int? meetingFk { get; set; }

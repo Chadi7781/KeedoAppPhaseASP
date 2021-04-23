@@ -61,7 +61,7 @@ namespace KeedoApp.Models
 			}
 		}
 
-		public virtual Response Response
+		public  Response Response
 		{
 			get
 			{

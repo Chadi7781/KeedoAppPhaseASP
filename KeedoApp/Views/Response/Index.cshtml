@@ -5,9 +5,8 @@
 </p>
 <table class="table">
     <tr>
-
         <th>
-            @Html.DisplayNameFor(model => model.Responses)
+            @Html.DisplayNameFor(model => model.Question.Questions)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SatisfactionDegree)
@@ -16,20 +15,21 @@
             @Html.DisplayNameFor(model => model.Rating)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Responses)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.CreatedAt)
         </th>
-
         <th>
-            @Html.DisplayNameFor(model => model.up)
+            @Html.DisplayNameFor(model => model.UpdatedAt)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
 <tr>
-
     <td>
-        @Html.DisplayFor(modelItem => item.Responses)
+        @Html.DisplayFor(modelItem => item.Question.Questions)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.SatisfactionDegree)
@@ -38,7 +38,13 @@
         @Html.DisplayFor(modelItem => item.Rating)
     </td>
     <td>
+        @Html.DisplayFor(modelItem => item.Responses)
+    </td>
+    <td>
         @Html.DisplayFor(modelItem => item.CreatedAt)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UpdatedAt)
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

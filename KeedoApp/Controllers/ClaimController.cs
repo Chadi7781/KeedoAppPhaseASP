@@ -6,17 +6,17 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Mvc;
+using tn.esprit.pi.entities;
 
 namespace KeedoApp.Controllers
 {
-    public class ResponseController : Controller
+    public class ClaimController : Controller
     {
-
 
         HttpClient httpClient;
         string baseAddress;
 
-        public ResponseController()
+        public ClaimController()
         {
             baseAddress = "http://localhost:8082/SpringMVC/servlet/";
             httpClient = new HttpClient();
@@ -24,38 +24,57 @@ namespace KeedoApp.Controllers
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        // GET: Response
+        // GET: Claim
         public ActionResult Index()
         {
-            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Responses/retrieve-all-responses").Result;
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Claims/retrieve-all-claims").Result;
 
-            IEnumerable<Response> responses;
+            IEnumerable<Claim> claims;
+
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-                responses = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Response>>().Result;
+                claims = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Claim>>().Result;
             }
             else
             {
-                responses = null;
+                claims = null;
 
             }
 
-            return View(responses);
+
+
+
+            return View(claims);
         }
 
-        // GET: Response/Details/5
+        // GET: Claim/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Response/Create
+        // GET: Claim/Create
         public ActionResult Create()
         {
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Kindergartens/retrieve-all-kindergartens").Result;
+
+            IEnumerable<Kindergarden> kindergardens;
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                ViewBag.kindergardens = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Kindergarden>>().Result;
+            }
+            else
+            {
+                ViewBag.kindergardens = null;
+
+            }
+
+
+
             return View();
         }
 
-        // POST: Response/Create
+        // POST: Claim/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -71,13 +90,13 @@ namespace KeedoApp.Controllers
             }
         }
 
-        // GET: Response/Edit/5
+        // GET: Claim/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Response/Edit/5
+        // POST: Claim/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -93,13 +112,13 @@ namespace KeedoApp.Controllers
             }
         }
 
-        // GET: Response/Delete/5
+        // GET: Claim/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Response/Delete/5
+        // POST: Claim/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

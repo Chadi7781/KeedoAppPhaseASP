@@ -18,7 +18,9 @@ namespace tn.esprit.pi.entities
 		
 		private string description;
 				private ClaimCategory category;
-		private User user;
+		public int? parentFk { get; set; }
+		private User parent;
+		public int? kindergardenFk { get; set; }
 		private Kindergarden kindergarden;
 
 		private DateTime createdAt;
@@ -72,15 +74,15 @@ namespace tn.esprit.pi.entities
 		}
 
 
-		public virtual User User
+		public virtual User Parent
 		{
 			get
 			{
-				return user;
+				return parent;
 			}
 			set
 			{
-				this.user = value;
+				this.parent = value;
 			}
 		}
 
@@ -154,11 +156,6 @@ namespace tn.esprit.pi.entities
 			}
 		}
 
-
-		public override string ToString()
-		{
-			return "Claim [idClaim=" + idClaim + ", description=" + description + ", category=" + category + ", kindergarden=" + kindergarden + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", status=" + status + ", checkedAt=" + checkedAt + "]";
-		}
 
 
 

@@ -7,7 +7,7 @@ namespace KeedoApp.Models
 {
     public enum Satistfaction
     {
-        Extremely_satisfied, Very_satisfied, Somewhat_satisfied, Dissatisfied, Very_dissatisfied
+        Extremely_satisfied, Very_satisfied, Somewhat_satisfied, Dissatisfied, Very_dissatisfied,No
 
     }
 }

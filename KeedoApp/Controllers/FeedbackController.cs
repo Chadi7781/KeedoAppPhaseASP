@@ -58,32 +58,25 @@ namespace KeedoApp.Controllers
         {
 
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Feedbacks/retrieve-feedback-details/" + id.ToString()).Result;
-
             HttpResponseMessage httpResponseMessage2 = httpClient.GetAsync(baseAddress + "Questions/retrieve-feedback-questions/" + id.ToString()).Result;
             Feedback feedback;
             IEnumerable<Question> questions;
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-
                 feedback = httpResponseMessage.Content.ReadAsAsync<Feedback>().Result;
-
             }
             else
             {
                 feedback = null;
             }
-            /*
             if (httpResponseMessage2.IsSuccessStatusCode)
             {
-
-                questions = httpResponseMessage2.Content.ReadAsAsync<IEnumerable<Question>>().Result;
-
+                ViewBag.questions = httpResponseMessage2.Content.ReadAsAsync<IEnumerable<Question>>().Result;
             }
             else
-            {
-                questions = null;
+            {  ViewBag.questions = null;
             }
-            */
+
             return View(feedback);
         }
 

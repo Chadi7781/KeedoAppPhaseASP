@@ -38,10 +38,22 @@
         <dt>
             @Html.DisplayNameFor(model => model.Questions)
         </dt>
+        @foreach (var item in ViewBag.questions)
+        {
+            <dd>
+                @item.Questions
+              
 
-        <dd>
-            @Html.DisplayFor(model => model.Questions)
-        </dd>
+
+
+            </dd>
+
+
+
+        }
+
+
+
 
 
 

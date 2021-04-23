@@ -142,6 +142,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClaimController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KindergartenController.cs" />
@@ -510,13 +511,13 @@
     <Content Include="Views\Question\Delete.cshtml" />
     <Content Include="Views\Question\Create.cshtml" />
     <Content Include="Views\Question\index.cshtml" />
-    <Content Include="Views\Response\Index.cshtml" />
-    <Content Include="Views\Response\Create.cshtml" />
     <Content Include="Views\Feedback\Delete.cshtml" />
+    <Content Include="Views\Response\Index.cshtml" />
+    <Content Include="Views\Claim\Index.cshtml" />
+    <Content Include="Views\Claim\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Claim\" />
     <Folder Include="Views\Follow\" />
     <Folder Include="Views\Shared\App_LocalResources\" />
   </ItemGroup>
