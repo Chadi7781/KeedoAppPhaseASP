@@ -4,7 +4,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using tn.esprit.pi.entities;
 
 namespace KeedoApp.Models
@@ -21,9 +20,6 @@ namespace KeedoApp.Models
 		public int idUser;
 		public string firstName = "";
 		public string lastName = "";
-		[NotMapped]
-		public string Fullname { get { return firstName + " " + lastName; } }
-
 		public string telNum = "";
 		public DateTime birthdate;
 
@@ -31,7 +27,7 @@ namespace KeedoApp.Models
 
 		private string mail = "";
 
-		private string login = "";
+		private string login ="";
 
 		private string password = "";
 
@@ -74,7 +70,7 @@ namespace KeedoApp.Models
 		private bool isBlocked;
 
 		private Nullable<DateTime> blockDate;
-		private Nullable<DateTime> unBlockDate;
+		private Nullable<DateTime> unBlockDate ;
 		private bool isPrivate;
 
 
