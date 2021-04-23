@@ -61,6 +61,7 @@
                 <a class="px-3 text-primary">@Html.ActionLink("Details", "Details", new { id = item.idUser }) | <i class="uil uil-file font-size-18"> </i></a>
                 <a class="px-3 text-primary">@Html.ActionLink("Delete", "Delete", new { id = item.idUser })| <i class="uil uil-file-times font-size-18"></i></a>
 
+
                 @if (item.Valid == true)
                 {
                     <a class="px-3 text-primary">@Html.ActionLink("Desactiver User", "DesactiverUser", new { id = item.idUser })  |<i class="uil uil-file-lock-alt font-size-18"></i></a>
@@ -69,7 +70,6 @@
                 {
                     <a class="px-3 text-primary">@Html.ActionLink("Activer User", "ActiverUser", new { id = item.idUser }) |<i class="uil uil-file-check font-size-18"></i></a>
                 }
-
             </td>
         </tr>
     }

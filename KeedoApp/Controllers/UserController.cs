@@ -101,27 +101,28 @@ namespace KeedoApp.Controllers
             return View();
         }
 
-        public ActionResult create (User user)
+        public ActionResult create(User user)
         {
             try
             {
-                if (ViewBag.roles == null) { 
-                baseAddress = "http://localhost:8080/SpringMVC/servlet/Role";
-                HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "/findall").Result;
-                if (httpResponseMessage.IsSuccessStatusCode)
+                if (ViewBag.roles == null)
                 {
-                    ViewBag.roles = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Models.Role>>().Result;
+                    baseAddress = "http://localhost:8080/SpringMVC/servlet/Role";
+                    HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "/findall").Result;
+                    if (httpResponseMessage.IsSuccessStatusCode)
+                    {
+                        ViewBag.roles = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Models.Role>>().Result;
+                    }
                 }
-                }
-                if (!(user.firstName.Equals("") && user.lastName.Equals("") && user.Login.Equals("") && user.Password.Equals(""))) 
+                if (!(user.firstName.Equals("") && user.lastName.Equals("") && user.Login.Equals("") && user.Password.Equals("")))
                 {
                     baseAddress = "http://localhost:8080/SpringMVC/servlet/User/Access";
                     var APIResponse = httpClient.PostAsJsonAsync<User>(baseAddress + "/signup", user).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-                   
-                    
+
+
                     var jsonreponse = APIResponse.Result.Content.ReadAsAsync<String>().Result;
-                    
-                    
+
+
                     ViewBag.SuccessMessage = jsonreponse;
                 }
             }
@@ -132,8 +133,6 @@ namespace KeedoApp.Controllers
             }
             return View();
         }
-
-
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
