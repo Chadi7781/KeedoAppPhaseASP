@@ -1,6 +1,4 @@
-﻿using KeedoApp.LoginObject;
-using KeedoApp.Models;
-using Newtonsoft.Json;
+﻿using KeedoApp.Models;
 using reCAPTCHA.MVC;
 using System;
 using System.Collections.Generic;
@@ -14,8 +12,8 @@ namespace KeedoApp.Controllers
     {
         HttpClient httpClient;
         string baseAddress;
-        
-        
+
+
 
         public UserController()
         {
@@ -28,7 +26,7 @@ namespace KeedoApp.Controllers
         // GET: User
         public ActionResult GestionUtilisateur(string searchString)
         {
-            
+
             HttpResponseMessage httpResponseMessage;
             var _AccessToken = Session["AccessToken"];
             httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
@@ -80,7 +78,8 @@ namespace KeedoApp.Controllers
 
 
         [CaptchaValidator]
-        public ActionResult login(LoginObject.Login login, bool captchaValid) {
+        public ActionResult login(LoginObject.Login login, bool captchaValid)
+        {
             baseAddress = "http://localhost:8080/SpringMVC/servlet/User/Access";
             if (ModelState.IsValid && !login.username.Equals("") && !login.password.Equals(""))
             {
@@ -96,7 +95,7 @@ namespace KeedoApp.Controllers
                     return RedirectToAction("GestionUtilisateur");
                 }
                 ViewBag.resultat = resultat;
-                
+
             }
             return View();
         }
@@ -133,39 +132,46 @@ namespace KeedoApp.Controllers
             }
             return View();
         }
-        // GET: User/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-
-
-        // POST: User/Edit/5
-        [HttpPost]
         public ActionResult Edit(int id, User user)
         {
-            //HTTP POST
-            var putTask = httpClient.PutAsJsonAsync<User>(baseAddress + "/updateUserr/" + id.ToString(), user);
-            putTask.Wait();
-
-            var result = putTask.Result;
-
-            if (result.IsSuccessStatusCode)
+            var _AccessToken = Session["AccessToken"];
+            httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
+            if (user.LastName.Equals(""))
             {
+                HttpResponseMessage httpResponseMessage;
+                httpResponseMessage = httpClient.GetAsync(baseAddress + "/userbyid/" + id).Result;
+                if (httpResponseMessage.IsSuccessStatusCode)
+                {
 
-                return RedirectToAction("GestionUtilisateur");
+                    user = httpResponseMessage.Content.ReadAsAsync<User>().Result;
+                }
             }
-            return View();
+            else
+            {
+                var putTask = httpClient.PutAsJsonAsync<User>(baseAddress + "/UpdateUser", user);
+                putTask.Wait();
 
+                var result = putTask.Result;
+
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("GestionUtilisateur");
+                }
+
+            }
+
+            return View(user);
         }
-
 
         // POST: User/Edit/5
         [HttpGet]
         public ActionResult Details(int id)
         {
-            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "/userbyid/" + id.ToString()).Result;
+            HttpResponseMessage httpResponseMessage;
+            var _AccessToken = Session["AccessToken"];
+            httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
+            httpResponseMessage = httpClient.GetAsync(baseAddress + "/userbyid/" + id).Result;
             User user;
             if (httpResponseMessage.IsSuccessStatusCode)
             {
@@ -187,6 +193,8 @@ namespace KeedoApp.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
+            var _AccessToken = Session["AccessToken"];
+            httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
             //HTTP POST
             var putTask = httpClient.DeleteAsync(baseAddress + "/deleteUserById/" + id.ToString());
             putTask.Wait();
@@ -228,7 +236,7 @@ namespace KeedoApp.Controllers
         {
             var _AccessToken = Session["AccessToken"];
             httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
-            var APIResponse = httpClient.PutAsJsonAsync(baseAddress + "/activateUser/" + id,"");
+            var APIResponse = httpClient.PutAsJsonAsync(baseAddress + "/activateUser/" + id, "");
             APIResponse.Wait();
 
             var result = APIResponse.Result;
@@ -254,7 +262,7 @@ namespace KeedoApp.Controllers
             return View();
         }
 
-       public ActionResult AfficherActivate()
+        public ActionResult AfficherActivate()
         {
             var _AccessToken = Session["AccessToken"];
             httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
@@ -273,7 +281,7 @@ namespace KeedoApp.Controllers
         public ActionResult Index()
         {
             return View();
-        } 
+        }
 
 
 
