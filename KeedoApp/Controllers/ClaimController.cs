@@ -28,10 +28,11 @@ namespace KeedoApp.Controllers
         public ActionResult Index()
         {
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Claims/retrieve-all-claims").Result;
-          //  HttpResponseMessage httpResponseMessage2 = httpClient.GetAsync(baseAddress + "count-claims").Result;
+            HttpResponseMessage httpResponseMessage2 = httpClient.GetAsync(baseAddress + "count-claims").Result;
 
             IEnumerable<Claim> claims;
-
+            //var  nbClaim;
+       
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 claims = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Claim>>().Result;
@@ -42,8 +43,7 @@ namespace KeedoApp.Controllers
 
             }
 
-
-
+       
 
             return View(claims);
         }

@@ -1,104 +1,132 @@
 ﻿@model IEnumerable<tn.esprit.pi.entities.Claim>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-<p>
-    Claims :  <p>@ViewBag.Title</p>
-
-</p>
-<table class="table" style="margin-left:50px">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdClaim)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            The Claimant
-        </th>
-        <th>
-           The Claimed
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CheckedAt)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.IdClaim)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Description)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Category)
-    </td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.Status)
-    </td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.Parent.Login)
-    </td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.Kindergarden.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CreatedAt)
-    </td>
-    @if (item.UpdatedAt != null)
-    {
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdatedAt)
-        </td>
-    }
-    else
-    {
-
-        <td>Not Updated yet</td>
 
 
-    }
-    @if (item.CheckedAt != null)
-    {
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckedAt)
-        </td>
-    }
-    else
-    {
-
-        <td>Not Checked yet</td>
 
 
-    }
-<td>
-    @Html.ActionLink("Edit", "Edit", new { id = item.IdClaim }) |
-    @Html.ActionLink("ClaimProcessing", "ClaimProcessing", new { id = item.IdClaim }) |
-    @Html.ActionLink("Details", "Details", new { id = item.IdClaim }) |
-    @Html.ActionLink("Delete", "Delete", new { id = item.IdClaim })
-</td>
-</tr>
-}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 >Latest Claims</h4>
+                @Html.ActionLink("Create Claim", "Create", null, new { @class = "btn btn-success waves-effect waves-light", @style = "margin-left:85%" })
 
-</table>
+                </br> </br>
+                </br>
+                <div class="table-responsive">
+                    <table class="table table-centered table-nowrap mb-0">
+                        <thead class="table-light">
+
+
+                            <tr>
+                                <th style="width: 20px;">
+                                    <div class="form-check font-size-16">
+                                        <input type="checkbox" class="form-check-input" id="customCheck1">
+                                        <label class="form-check-label" for="customCheck1">&nbsp;</label>
+                                    </div>
+                                </th>
+                                <th>Claim ID</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Claimant</th>
+                                <th>Claim Status</th>
+                                <th>Claimed</th>
+                                <th>Created At</th>
+                                <th>Updated At</th>
+                                <th>Checked At</th>
+                                <th>Action</th>
+                            </tr>
+
+
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="form-check font-size-16">
+                                            <input type="checkbox" class="form-check-input" id="customCheck2">
+                                            <label class="form-check-label" for="customCheck2">&nbsp;</label>
+                                        </div>
+                                    </td>
+                                    <td><a href="javascript: void(0);" class="text-body fw-bold"></a>   @Html.DisplayFor(modelItem => item.IdClaim)</td>
+                                    <td>  @Html.DisplayFor(modelItem => item.Description)</td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Category)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Parent.Login)
+                                    </td>
+
+                                    @if (item.Status == KeedoApp.Models.ClaimStatus.Processing)
+                                    {
+                                        <td>
+                                            <span class="badge rounded-pill bg-soft-success font-size-12">  @Html.DisplayFor(modelItem => item.Status)</span>
+                                        </td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <span class="badge rounded-pill bg-soft-warning font-size-12">  @Html.DisplayFor(modelItem => item.Status)</span>
+                                        </td>
+                                    }
+
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Kindergarden.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreatedAt)
+                                    </td>
+                                    @if (item.CheckedAt != null)
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UpdatedAt)
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            Not Updated Yet
+                                        </td>
+                                    }
+                                    @if (item.CheckedAt != null)
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CheckedAt)
+                                        </td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            Not Checked Yet
+                                        </td>
+
+                                    }
+                                    <td>
+
+                                        <!-- Button trigger modal -->
+
+
+                                        <i class="uil uil-pen font-size-18 text-primary" onclick="location.href = '@(Url.Action("Edit", new { id = item.IdClaim }))'"> </i>
+                                        <i class="uil uil-eye font-size-18 text-dark" onclick="location.href = '@(Url.Action("Details", new { id = item.IdClaim }))'"> </i>
+
+                                        <i class="uil uil-trash font-size-18 text-danger" onclick="location.href = '@(Url.Action("Delete", new { id = item.IdClaim }))'"> </i>
+                                        <i class="uil uil-process font-size-18 text-warning" onclick="location.href = '@(Url.Action("ClaimProcessing", new { id = item.IdClaim }))'"> </i>
+
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end table-responsive -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
