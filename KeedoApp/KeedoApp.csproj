@@ -247,6 +247,7 @@
     <Content Include="FrontEnd\assets\images\flags\russia.jpg" />
     <Content Include="FrontEnd\assets\images\flags\spain.jpg" />
     <Content Include="FrontEnd\assets\images\flags\us.jpg" />
+    <Content Include="FrontEnd\assets\images\kinder.jpg" />
     <Content Include="FrontEnd\assets\images\layouts\layout-1.jpg" />
     <Content Include="FrontEnd\assets\images\layouts\layout-2.jpg" />
     <Content Include="FrontEnd\assets\images\layouts\layout-3.jpg" />

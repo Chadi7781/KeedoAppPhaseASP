@@ -1,46 +1,98 @@
 ﻿@model KeedoApp.Models.Kindergarden
 
-<div>
-    <h4>Kindergarden</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
 
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Director)
-        </dt>
+<div class="page-content">
+    <div class="container-fluid">
 
-        <dd>
-            @Html.DisplayFor(model => model.Director.Login)
-        </dd>
+        <!-- start page title -->
+     
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Kindergarten Detail</h4>
 
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
+                </div>
+ 
+        <!-- end page title -->
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="invoice-title">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
+                            @if (ViewBag.review == true)
+                            {
 
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedAt)
-        </dd>
 
-    </dl>
+                                <h4 class="float-end font-size-16"> <span class="badge bg-success font-size-12 ms-2">Recommended</span></h4>
+
+                            }
+                            else
+                            {
+                                <h4 class="float-end font-size-16"> <span class="badge bg-danger font-size-12 ms-2">Not Recommended</span></h4>
+
+                            }
+                            <div class="mb-4">
+                                <img src="~/FrontEnd/assets/images/kinder.jpg" alt="logo" height="100" />
+                            </div>
+                            <div class="text-muted">
+                                <p class="mb-1"><i class="uil uil-map me-1"></i> @Html.DisplayFor(model => model.Location)</p>
+                                <p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> @Html.DisplayFor(model => model.Director.Mail)</p>
+                                <p><i class="uil uil-phone me-1"></i>  @Html.DisplayFor(model => model.Director.TelNum)</p>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div>
+
+                                    <h5 class="font-size-16 ">Kindergarten Name :</h5>
+                                    <p>@Html.DisplayFor(model => model.Name)</p>
+
+
+
+                                    <h5 class="font-size-16 ">Kindergarten Responsable :</h5>
+                                    <p>@Html.DisplayFor(model => model.Director.Login)</p>
+
+                                    <h5 class="font-size-16 ">Number of kids:</h5>
+
+
+                                    <p>@ViewBag.kids</p>
+
+                                    <h5 class="font-size-16 ">Number of classes:</h5>
+
+
+                                    <p>@ViewBag.daycares</p>
+
+                                    <h5 class="font-size-16 ">Kindergarten Location :</h5>
+                                    <p>@Html.DisplayFor(model => model.Location)</p>
+
+                                    <h5 class="font-size-16 ">Added to Keedo at :</h5>
+                                    <p>@Html.DisplayFor(model => model.CreatedAt)</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <p style="margin-left:50%">
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success waves-effect waves-light" }) |
+                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-dark waves-effect waves-light" })
+                        </p>
+                    
+
+                    </div>
+              
+                </div>
+
+
+             
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<!-- End Page-content -->

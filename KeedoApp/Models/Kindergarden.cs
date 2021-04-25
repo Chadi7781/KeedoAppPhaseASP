@@ -15,6 +15,7 @@ namespace KeedoApp.Models
 		private int id;
 
 		private string name;
+		private string location;
 
 		private ISet<Claim> claims;
 
@@ -67,7 +68,17 @@ namespace KeedoApp.Models
 			}
 		}
 
-
+		public virtual string Location
+		{
+			get
+			{
+				return location;
+			}
+			set
+			{
+				this.location = value;
+			}
+		}
 
 
 		public virtual ISet<Claim> Claims

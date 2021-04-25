@@ -58,7 +58,13 @@ namespace KeedoApp.Controllers.Kindergarten
 
 
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Kindergartens/retrieve-kindergarten-details/" + id.ToString()).Result;
+            HttpResponseMessage httpResponseMessage2 = httpClient.GetAsync(baseAddress + "kid/static/nb" ).Result;
+            HttpResponseMessage httpResponseMessage3 = httpClient.GetAsync(baseAddress + "daycare/nb").Result;
+            HttpResponseMessage httpResponseMessage4 = httpClient.GetAsync(baseAddress + "Kindergartens/kindergarden-revieww/"+id.ToString()).Result;
             Kindergarden kindergarden;
+            int kids;
+            int daycares;
+            Boolean review;
             if (httpResponseMessage.IsSuccessStatusCode)
             {
 
@@ -69,6 +75,36 @@ namespace KeedoApp.Controllers.Kindergarten
                 kindergarden = null;
             }
 
+
+            if (httpResponseMessage2.IsSuccessStatusCode)
+            {
+                
+                ViewBag.kids = httpResponseMessage2.Content.ReadAsAsync<int>().Result;
+            }
+            else
+            {
+                ViewBag.kids = null;
+            }
+
+            if (httpResponseMessage3.IsSuccessStatusCode)
+            {
+
+                ViewBag.daycares = httpResponseMessage3.Content.ReadAsAsync<int>().Result;
+            }
+            else
+            {
+                ViewBag.daycares = null;
+            }
+
+            if (httpResponseMessage4.IsSuccessStatusCode)
+            {
+
+                ViewBag.review = httpResponseMessage4.Content.ReadAsAsync<Boolean>().Result;
+            }
+            else
+            {
+                ViewBag.review = null;
+            }
             return View(kindergarden);
 
 

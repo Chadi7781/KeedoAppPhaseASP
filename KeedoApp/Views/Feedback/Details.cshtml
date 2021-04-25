@@ -1,5 +1,11 @@
 ﻿@model KeedoApp.Models.Feedback
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .checked {
+        color: orange;
+    }
 
+</style>
 <div style="margin-left:50px">
     <h4>Feedback</h4>
     <hr />
@@ -40,23 +46,38 @@
         </dt>
         @foreach (var item in ViewBag.questions)
         {
-            <dd>
+
+            if (@item.Type == ViewBag.satisfaction)
+            {
                 @item.Questions
-              
+                <dd>
 
 
 
-            </dd>
+                    @item.Response.SatisfactionDegree
+
+                </dd>
+            }
+            else if (@item.Type == ViewBag.text)
+            {
+
+                @item.Questions
+
+                @item.Response.Responses
+
+            }
+            else
+            {
+                @item.Questions
+                for (int i=0; i < @item.Response.Rating; i++)
+                {
+    <span class="fa fa-star checked"></span>
+                
+                }
 
 
-
+            }
         }
-
-
-
-
-
-
 
         <dt>
             @Html.DisplayNameFor(model => model.CreatedAt)

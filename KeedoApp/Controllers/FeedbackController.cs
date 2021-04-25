@@ -61,6 +61,8 @@ namespace KeedoApp.Controllers
             HttpResponseMessage httpResponseMessage2 = httpClient.GetAsync(baseAddress + "Questions/retrieve-feedback-questions/" + id.ToString()).Result;
             Feedback feedback;
             IEnumerable<Question> questions;
+
+            QuestionType questionType;
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 feedback = httpResponseMessage.Content.ReadAsAsync<Feedback>().Result;
@@ -76,6 +78,11 @@ namespace KeedoApp.Controllers
             else
             {  ViewBag.questions = null;
             }
+
+            ViewBag.satisfaction = QuestionType.Satisfaction;
+            ViewBag.rating = QuestionType.Stars;
+            ViewBag.text = QuestionType.Text;
+
 
             return View(feedback);
         }
