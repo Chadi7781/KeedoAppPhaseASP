@@ -161,6 +161,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChatBotController.cs" />
     <Compile Include="Controllers\ConsultationController.cs" />
     <Compile Include="Controllers\DaycareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -233,7 +234,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\yasmin\chatJs.js" />
     <Content Include="Content\yasmin\style.css" />
+    <Content Include="Content\yasmin\styleChat.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="FrontEnd\assets\css\app-dark.min.css" />
@@ -517,6 +520,7 @@
     <Content Include="Views\Daycare\Edit.cshtml" />
     <Content Include="Views\Daycare\Delete.cshtml" />
     <Content Include="Views\Kid\Affect.cshtml" />
+    <Content Include="Views\ChatBot\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

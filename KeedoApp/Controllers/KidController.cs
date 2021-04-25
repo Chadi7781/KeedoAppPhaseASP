@@ -134,7 +134,7 @@ namespace KeedoApp.Controllers
             {
                 client.BaseAddress = new Uri("http://localhost:8080/SpringMVC/servlet/kid/");
 
-                //HTTP POST
+                //HTTP PUT
                 var putTask = client.PutAsJsonAsync<Kid>("up/"+id, kid);
                 putTask.Wait();
 
