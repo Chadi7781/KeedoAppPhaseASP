@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -98,14 +99,15 @@ namespace KeedoApp.Controllers
             IEnumerable<Meeting> meetings;
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-                ViewBag.meetings = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Meeting>>().Result;
+                 meetings = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Meeting>>().Result;
             }
             else
             {
-                ViewBag.meetings = null;
+                 meetings = null;
 
             }
 
+            ViewBag.meetingFK = new SelectList(meetings, "idMeeting", "typeMeeting");
 
 
             return View();
@@ -113,34 +115,31 @@ namespace KeedoApp.Controllers
 
         // POST: Feedback/Create
         [HttpPost]
-        public ActionResult Create(Feedback feedback , int idMeeting)
+        public async Task<ActionResult> Create(Feedback feedback )
         {
-            try
+
+            var response = await httpClient.PostAsJsonAsync(baseAddress + "Feedbacks/new-feedback-of/" + feedback.meetingFk, feedback);
+
+            if (response.IsSuccessStatusCode)
             {
-          
-                HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress+ "finished-meetings").Result;
-
-                var APIResponse = httpClient.PostAsJsonAsync<Feedback>(baseAddress + "/Feedbacks/new-feedback-of/" + idMeeting.ToString(), feedback).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
-                var jsonreponse = APIResponse.Result.Content.ReadAsAsync<String>().Result;
-                ViewBag.SuccessMessage = jsonreponse;
-
-
-                IEnumerable<Meeting> meetings;
-                if (httpResponseMessage.IsSuccessStatusCode)
-                {
-                    ViewBag.meetings = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Meeting>>().Result;
-                }
-                else
-                {
-                    ViewBag.meetings = null;
-
-                }
+                return RedirectToAction("Index");
             }
-            catch
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "finished-meetings").Result;
+            IEnumerable<Meeting> meetings;
+
+            if (httpResponseMessage.IsSuccessStatusCode)
             {
-                return View();
+                meetings = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Meeting>>().Result;
             }
-            return RedirectToAction("Index");
+            else
+            {
+                meetings = null;
+            }
+
+            ViewBag.meetingFk = new SelectList(meetings, "idMeeting", "typeMeeting");
+
+            return View(feedback);
+
 
 
         }
@@ -217,7 +216,7 @@ namespace KeedoApp.Controllers
         {
            
                 //HTTP POST
-                var putTask = httpClient.DeleteAsync(baseAddress+"/Feedbacks/delete-feedback/" + id.ToString());
+                var putTask = httpClient.DeleteAsync(baseAddress+"Feedbacks/delete-feedback/" + id.ToString());
                 putTask.Wait();
 
                 var result = putTask.Result;

@@ -1,54 +1,97 @@
 ﻿@model KeedoApp.Models.Feedback
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal" style="margin-left:50px">
-    <h4>Feedback</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+    <div class="account-pages my-5 pt-sm-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <a href="index.html" class="mb-5 d-block auth-logo">
+                            <img src="assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
+                            <img src="assets/images/logo-light.png" alt="" height="22" class="logo logo-light">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card">
+
+                        <div class="card-body p-4">
+
+                            <div class="text-center mt-2">
+                                <h5 class="text-primary">Edit Feedback</h5>
+                                <p class="text-muted">You can edit the meeting feedback </p>
+                            </div>
+                            <div class="p-2 mt-4">
+                                <form action="">
+
+                                    <div class="mb-3">
+                                        <label class="control-label col-md-5 "> Feedback Title</label>
+
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                        </div>
+
+
+
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="control-label col-md-5 "> Feedback Description</label>
+
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label col-md-5 "> Meeting</label>
+
+                                        @if (ViewBag.meetingFk != null)
+                                        {
+
+
+                                            <div class="col-md-10">
+                                                @Html.DropDownListFor(model => model.meetingFk, null, new { htmlAttributes = new { @class = "form-control" } })
+
+                                            </div>
+
+                                        }
+
+
+                                    </div>
+
+                                    <div class="form-actions no-color " style="margin-left:50%">
+                                        <button type="submit" class="btn btn-success waves-effect waves-light">Save </button> |
+                                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-dark waves-effect waves-light" })
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- end row -->
         </div>
+        <!-- end container -->
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Meeting, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.meetingFk, null, new { htmlAttributes = new { @class = "form-control" } })
-
-        </div>
-    </div>
-
-
-    <div class="form-group" style="margin-left:50px">
-        <div class="col-md-offset-2 col-md-10" style="margin-left:50px">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
-<div style="margin-left:50px">
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
