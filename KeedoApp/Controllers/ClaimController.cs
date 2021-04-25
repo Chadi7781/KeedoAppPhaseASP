@@ -55,6 +55,7 @@ namespace KeedoApp.Controllers
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "claims/retrieve-claim-details/" + id.ToString()).Result;
 
             Claim claim;
+            ClaimStatus skiped,processing,resolved;
            
             if (httpResponseMessage.IsSuccessStatusCode)
             {
@@ -64,7 +65,10 @@ namespace KeedoApp.Controllers
             {
                 claim = null;
             }
-           
+
+            ViewBag.skiped = ClaimStatus.Skiped;
+            ViewBag.processing = ClaimStatus.Processing;
+            ViewBag.resolved = ClaimStatus.Resolved;
 
             return View(claim);
         }
@@ -109,10 +113,9 @@ namespace KeedoApp.Controllers
         // GET: Claim/Edit/5
         public ActionResult Edit(int id)
         {
+
+
             Claim claim = null;
-
-
-
             var responseTask = httpClient.GetAsync(baseAddress + "claims/retrieve-claim-details/" + id);
             // responseTask.Wait();
 

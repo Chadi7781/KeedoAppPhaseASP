@@ -2,6 +2,70 @@
 @model tn.esprit.pi.entities.Claim
 
 
+
+<div class="account-pages my-5 pt-sm-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <a href="index.html" class="mb-5 d-block auth-logo">
+                        <img src="assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
+                        <img src="assets/images/logo-light.png" alt="" height="22" class="logo logo-light">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xl-5">
+                <div class="card">
+
+                    <div class="card-body p-4">
+
+                        <div class="text-center mt-2">
+                            <h5 class="text-primary">Claim Processing</h5>
+                            <p class="text-muted">You can process your Kindergarten claim  </p>
+                        </div>
+                        <div class="p-2 mt-4">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EnumDropDownListFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                         
+
+                           
+                                <div class="form-actions no-color " style="margin-left:50%">
+                                    <button type="submit" class="btn btn-success waves-effect waves-light">Save </button> |
+                                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-dark waves-effect waves-light" })
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</div>
+
+
+
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -11,7 +75,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-       
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })

@@ -1,105 +1,119 @@
 ﻿@model tn.esprit.pi.entities.Claim
 
-<div style="margin-left:50px">
-    <h4>Claim</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-           The claimant
-        </dt>
-
-        <dd>
-
-            @Html.DisplayFor(model => model.Parent.Login)
-        </dd>
-
-        <dt>
-The Claimed      
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kindergarden.Name)
-        </dd>
-
-        <dt>
-           The Claimed Kindergarten Director
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kindergarden.Director.Login)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdClaim)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdClaim)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
-
-        @if (Model.UpdatedAt != null)
-        {
-            <dd>
-                @Html.DisplayFor(model => model.UpdatedAt)
-            </dd>
-        }
-        else
-        {
-
-            <dd>Not Updated  yet</dd>
 
 
-        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckedAt)
-        </dt>
-        @if (Model.CheckedAt != null)
-        {
-            <dd>
-                @Html.DisplayFor(model => model.CheckedAt)
-            </dd>
-        }
-        else
-        {
-
-            <dd>Not checked yet</dd>
+<div class="page-content">
+    <div class="container-fluid">
 
 
-        }
+
+        <!-- end page title -->
+
+        <div class="row  align-items-center justify-content-center">
+            <div class="col-lg-6  ">
+                <div class="card">
+                    <div class="card-body">
+                        <h4> @Html.DisplayFor(model => model.Parent.Login)'s Claim</h4>
+                        <div class="invoice-title">
+
+                            @if (Model.Status == ViewBag.skiped)
+                            {
+                                <h4 class="float-end font-size-16"> <span class="badge bg-warning font-size-12 ms-2">@Html.DisplayFor(model => model.Status)</span></h4>
+
+                            }
+                            else if (Model.Status == ViewBag.processing)
+                            {
+                                <h4 class="float-end font-size-16"> <span class="badge bg-dark font-size-12 ms-2">@Html.DisplayFor(model => model.Status)</span></h4>
+
+                            }
+                            else
+                            {
+                                <h4 class="float-end font-size-16"> <span class="badge bg-success font-size-12 ms-2">@Html.DisplayFor(model => model.Status)</span></h4>
+
+                            }
+
+                        
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div>
+
+                                    <h5 class="font-size-16 ">Claimant Name :</h5>
+                                    <p> @Html.DisplayFor(model => model.Parent.Login)</p>
 
 
-    </dl>
+                                    <h5 class="font-size-16 ">Claimed Kindergarten: </h5>
+                                    <p> @Html.DisplayFor(model => model.Kindergarden.Name)</p>
+
+                                    <h5 class="font-size-16 ">Claimed Kindergarten Director:</h5>
+                                    <p>  @Html.DisplayFor(model => model.Kindergarden.Director.Login)</p>
+
+
+
+
+
+                                    <h5 class="font-size-16 ">Description :</h5>
+                                    <p> @Html.DisplayFor(model => model.Description)</p>
+
+
+                                    <h5 class="font-size-16 ">Category :</h5>
+                                    <p> @Html.DisplayFor(model => model.Category)</p>
+
+
+
+
+                                    <h5 class="font-size-16 ">Created at :</h5>
+                                    <p> @Html.DisplayFor(model => model.CreatedAt)</p>
+
+                                    <h5 class="font-size-16 ">Updated at :</h5>
+                                    @if (Model.UpdatedAt != null)
+                                    {
+                                        <p> @Html.DisplayFor(model => model.UpdatedAt)</p>
+                                    }
+                                    else
+                                    {
+                                        <p> Not Edited Yet</p>
+
+                                    }
+
+                                    <h5 class="font-size-16 ">Checked at :</h5>
+                                    @if (Model.CheckedAt != null)
+                                    {
+                                        <p> @Html.DisplayFor(model => model.CheckedAt)</p>
+                                    }
+                                    else
+                                    {
+                                        <p> Not Checked Yet</p>
+
+                                    }
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <p style="margin-left:50%">
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.IdClaim }, new { @class = "btn btn-success waves-effect waves-light" }) |
+                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-dark waves-effect waves-light" })
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
 </div>
-<p style="margin-left:50px">
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.IdClaim  }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<!-- End Page-content -->
+
+
+
