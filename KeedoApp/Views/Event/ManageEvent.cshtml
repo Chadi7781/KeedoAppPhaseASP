@@ -1,8 +1,4 @@
 ﻿
-
-
-
-
 @model IEnumerable<KeedoApp.Models.Event>
 
 @{
@@ -13,8 +9,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css" />
 
 <div id="PlaceHolderHere"></div>
+<div id="PlaceHolderHere1"></div>
 
 <div class="page-content">
     <div class="container-fluid">
@@ -44,464 +42,277 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-xl-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end mt-2">
-                            <div id="orders-chart"></div>
-                        </div>
-                        <div>
-                            <h4 class="mb-1 mt-1">$ @ViewBag.collAmount<span data-plugin="counterup">Mo</span></h4>
-                            <p class="text-muted mb-0">Top One Events View <span style="color:green;">@ViewBag.TopEventName</span> </p>
-                        </div>
-                        <p class="text-muted mt-3 mb-0">
-                            <span class="text-success me-1">
-
-                                <i class="uil-arrow-up"></i> @((((int)@ViewBag.Average) /(double)100))
 
 
-                            </span> Average Events
-                        </p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-6 col-xl-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end mt-2">
-                            <div id="orders-chart"></div>
-                        </div>
-                        <div>
-                            <h4 class="mb-1 mt-1">$ @ViewBag.collAmount<span data-plugin="counterup">Mo</span></h4>
-                            <p class="text-muted mb-0">Top One Events View <span style="color:green;">@ViewBag.TopEventName</span> </p>
-                        </div>
-                        <p class="text-muted mt-3 mb-0">
-                            <span class="text-success me-1">
+            <!-- start page title -->
+            <!-- end page title -->
 
-                                <i class="uil-arrow-up"></i> @((((int)@ViewBag.Average) /(double)100))
-
-
-                            </span> Average Events
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-xl-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end mt-2">
-                            <div id="orders-chart"></div>
-                        </div>
-                        <div>
-                            <h4 class="mb-1 mt-1">$ @ViewBag.collAmount<span data-plugin="counterup">Mo</span></h4>
-                            <p class="text-muted mb-0">Top One Events View <span style="color:green;">@ViewBag.TopEventName</span> </p>
-                        </div>
-                        <p class="text-muted mt-3 mb-0">
-                            <span class="text-success me-1">
-
-                                <i class="uil-arrow-up"></i> @((((int)@ViewBag.Average) /(double)100))
-
-
-                            </span> Average Events
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div><!-- end col-->
-
-
-        <div class="row">
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>
                         <div class="float-end">
-                            <div class="dropdown">
-                                <a class=" dropdown-toggle" href="#" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="text-muted">All Members<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                </a>
+                            <form class="d-inline-flex mb-3">
+                                <label class="form-check-label my-2 me-2" for="order-selectinput">Orders</label>
+                                <select class="form-select" id="order-selectinput">
+                                    <option selected>All</option>
+                                    <option value="1">Active</option>
+                                    <option value="2">Unpaid</option>
+                                </select>
+                            </form>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
-                                    <a class="dropdown-item" href="#">Locations</a>
-                                    <a class="dropdown-item" href="#">Revenue</a>
-                                    <a class="dropdown-item" href="#">Join Date</a>
-                                </div>
-                            </div>
                         </div>
-                        <h4 class="card-title mb-4">Top 5 Events</h4>
+                        <button id="btnAddEvent"
+                                data-target="#mymodal" data-toggle="ajax-modal" data-url="@Url.Action("CreateEventModal")"
+                                type="button" class="btn btn-success waves-effect waves-light mb-3">
+                            <i class="uil-plus"></i> Add New Events
+                        </button>
 
-                        <div data-simplebar="init" style="max-height: 336px;">
-                            <div class="simplebar-wrapper" style="margin: 0px;">
-                                <div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask">
-                                    <div class="simplebar-offset" style="right: -16.8px; bottom: 0px;">
-                                        <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden scroll;">
-                                            <div class="simplebar-content" style="padding: 0px;">
-                                                <div class="table-responsive">
-                                                    <table class="table table-borderless table-centered table-nowrap">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="width: 20px;"><img src="assets/images/users/avatar-4.jpg" class="avatar-xs rounded-circle " alt="..."></td>
-                                                                <td>
-                                                                    <h6 class="font-size-15 mb-1 fw-normal">Glenn Holden</h6>
-                                                                    <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> Nevada</p>
-                                                                </td>
-                                                                <td><span class="badge bg-soft-danger font-size-12">Cancel</span></td>
-                                                                <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-success" data-feather="trending-up"></i>$250.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><img src="assets/images/users/avatar-5.jpg" class="avatar-xs rounded-circle " alt="..."></td>
-                                                                <td>
-                                                                    <h6 class="font-size-15 mb-1 fw-normal">Lolita Hamill</h6>
-                                                                    <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> Texas</p>
-                                                                </td>
-                                                                <td><span class="badge bg-soft-success font-size-12">Success</span></td>
-                                                                <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-danger" data-feather="trending-down"></i>$110.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><img src="assets/images/users/avatar-6.jpg" class="avatar-xs rounded-circle " alt="..."></td>
-                                                                <td>
-                                                                    <h6 class="font-size-15 mb-1 fw-normal">Robert Mercer</h6>
-                                                                    <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> California</p>
-                                                                </td>
-                                                                <td><span class="badge bg-soft-info font-size-12">Active</span></td>
-                                                                <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-success" data-feather="trending-up"></i>$420.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><img src="assets/images/users/avatar-7.jpg" class="avatar-xs rounded-circle " alt="..."></td>
-                                                                <td>
-                                                                    <h6 class="font-size-15 mb-1 fw-normal">Marie Kim</h6>
-                                                                    <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> Montana</p>
-                                                                </td>
-                                                                <td><span class="badge bg-soft-warning font-size-12">Pending</span></td>
-                                                                <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-danger" data-feather="trending-down"></i>$120.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><img src="assets/images/users/avatar-8.jpg" class="avatar-xs rounded-circle " alt="..."></td>
-                                                                <td>
-                                                                    <h6 class="font-size-15 mb-1 fw-normal">Sonya Henshaw</h6>
-                                                                    <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> Colorado</p>
-                                                                </td>
-                                                                <td><span class="badge bg-soft-info font-size-12">Active</span></td>
-                                                                <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-success" data-feather="trending-up"></i>$112.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><img src="assets/images/users/avatar-2.jpg" class="avatar-xs rounded-circle " alt="..."></td>
-                                                                <td>
-                                                                    <h6 class="font-size-15 mb-1 fw-normal">Marie Kim</h6>
-                                                                    <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> Australia</p>
-                                                                </td>
-                                                                <td><span class="badge bg-soft-success font-size-12">Success</span></td>
-                                                                <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-danger" data-feather="trending-down"></i>$120.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><img src="assets/images/users/avatar-1.jpg" class="avatar-xs rounded-circle " alt="..."></td>
-                                                                <td>
-                                                                    <h6 class="font-size-15 mb-1 fw-normal">Sonya Henshaw</h6>
-                                                                    <p class="text-muted font-size-13 mb-0"><i class="mdi mdi-map-marker"></i> India</p>
-                                                                </td>
-                                                                <td><span class="badge bg-soft-danger font-size-12">Cancel</span></td>
-                                                                <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-success" data-feather="trending-up"></i>$112.00</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div> <!-- enbd table-responsive-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><div class="simplebar-placeholder" style="width: auto; height: 475px;"></div>
-                            </div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 237px; transform: translate3d(0px, 0px, 0px); display: block;"></div></div>
-                        </div> <!-- data-sidebar-->
-                    </div><!-- end card-body-->
-                </div> <!-- end card-->
-            </div><!-- end col -->
-
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="float-end">
-                            <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="text-muted">Recent<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton3">
-                                    <a class="dropdown-item" href="#">Recent</a>
-                                    <a class="dropdown-item" href="#">By Users</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h4 class="card-title mb-4">Upcoming event</h4>
-
-                        <ol class="activity-feed mb-0 ps-2" data-simplebar="init" style="max-height: 336px;">
-                            <div class="simplebar-wrapper" style="margin: 0px 0px 0px -8px;">
-                                <div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask">
-                                    <div class="simplebar-offset" style="right: -16.8px; bottom: 0px;">
-                                        <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden scroll;">
-                                            <div class="simplebar-content" style="padding: 0px 0px 0px 8px;">
-                                                <li class="feed-item">
-                                                    <div class="feed-item-list">
-                                                        <p class="text-muted mb-1 font-size-13">Today<small class="d-inline-block ms-1">12:20 pm</small></p>
-                                                        <p class="mt-0 mb-0">
-                                                            Andrei Coman magna sed porta finibus, risus
-                                                            posted a new article: <span class="text-primary">
-                                                                Forget UX
-                                                                Rowland
-                                                            </span>
-                                                        </p>
-                                                    </div>
-                                                </li>
-                                                <li class="feed-item">
-                                                    <p class="text-muted mb-1 font-size-13">22 Jul, 2020 <small class="d-inline-block ms-1">12:36 pm</small></p>
-                                                    <p class="mt-0 mb-0">Andrei Coman posted a new article: <span class="text-primary">Designer Alex</span></p>
-                                                </li>
-                                                <li class="feed-item">
-                                                    <p class="text-muted mb-1 font-size-13">18 Jul, 2020 <small class="d-inline-block ms-1">07:56 am</small></p>
-                                                    <p class="mt-0 mb-0">
-                                                        Zack Wetass, sed porta finibus, risus Chris Wallace
-                                                        Commented <span class="text-primary"> Developer Moreno</span>
-                                                    </p>
-                                                </li>
-                                                <li class="feed-item">
-                                                    <p class="text-muted mb-1 font-size-13">10 Jul, 2020 <small class="d-inline-block ms-1">08:42 pm</small></p>
-                                                    <p class="mt-0 mb-0">Zack Wetass, Chris combined Commented <span class="text-primary">UX Murphy</span></p>
-                                                </li>
-
-                                                <li class="feed-item">
-                                                    <p class="text-muted mb-1 font-size-13">23 Jun, 2020 <small class="d-inline-block ms-1">12:22 am</small></p>
-                                                    <p class="mt-0 mb-0">
-                                                        Zack Wetass, sed porta finibus, risus Chris Wallace
-                                                        Commented <span class="text-primary"> Developer Moreno</span>
-                                                    </p>
-                                                </li>
-                                                <li class="feed-item pb-1">
-                                                    <p class="text-muted mb-1 font-size-13">20 Jun, 2020 <small class="d-inline-block ms-1">09:48 pm</small></p>
-                                                    <p class="mt-0 mb-0">Zack Wetass, Chris combined Commented <span class="text-primary">UX Murphy</span></p>
-                                                </li>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><div class="simplebar-placeholder" style="width: auto; height: 516px;"></div>
-                            </div>
-                            <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div></div>
-                            <div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 218px; transform: translate3d(0px, 0px, 0px); display: block;"></div></div>
-                        </ol>
-
+                        </a>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-body">
-
-                        <div class="float-end">
-                            <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="text-muted">Monthly<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton4">
-                                    <a class="dropdown-item" href="#">Yearly</a>
-                                    <a class="dropdown-item" href="#">Monthly</a>
-                                    <a class="dropdown-item" href="#">Weekly</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h4 class="card-title">Social Source</h4>
-
-                        <div class="text-center">
-                            <div class="avatar-sm mx-auto mb-4">
-                                <span class="avatar-title rounded-circle bg-soft-primary font-size-24">
-                                    <i class="mdi mdi-facebook text-primary"></i>
-                                </span>
-                            </div>
-                            <p class="font-16 text-muted mb-2"></p>
-                            <h5><a href="#" class="text-dark">Facebook - <span class="text-muted font-16">125 sales</span> </a></h5>
-                            <p class="text-muted">Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus tincidunt.</p>
-                            <a href="#" class="text-reset font-16">Learn more <i class="mdi mdi-chevron-right"></i></a>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col-4">
-                                <div class="social-source text-center mt-3">
-                                    <div class="avatar-xs mx-auto mb-3">
-                                        <span class="avatar-title rounded-circle bg-primary font-size-16">
-                                            <i class="mdi mdi-facebook text-white"></i>
-                                        </span>
-                                    </div>
-                                    <h5 class="font-size-15">Facebook</h5>
-                                    <p class="text-muted mb-0">125 sales</p>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="social-source text-center mt-3">
-                                    <div class="avatar-xs mx-auto mb-3">
-                                        <span class="avatar-title rounded-circle bg-info font-size-16">
-                                            <i class="mdi mdi-twitter text-white"></i>
-                                        </span>
-                                    </div>
-                                    <h5 class="font-size-15">Twitter</h5>
-                                    <p class="text-muted mb-0">112 sales</p>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="social-source text-center mt-3">
-                                    <div class="avatar-xs mx-auto mb-3">
-                                        <span class="avatar-title rounded-circle bg-pink font-size-16">
-                                            <i class="mdi mdi-instagram text-white"></i>
-                                        </span>
-                                    </div>
-                                    <h5 class="font-size-15">Instagram</h5>
-                                    <p class="text-muted mb-0">104 sales</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-3 text-center">
-                            <a href="#" class="text-primary font-size-14 fw-medium">View All Sources <i class="mdi mdi-chevron-right"></i></a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- start page title -->
-        <!-- end page title -->
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div>
-                    <div class="float-end">
-                        <form class="d-inline-flex mb-3">
-                            <label class="form-check-label my-2 me-2" for="order-selectinput">Orders</label>
-                            <select class="form-select" id="order-selectinput">
-                                <option selected>All</option>
-                                <option value="1">Active</option>
-                                <option value="2">Unpaid</option>
-                            </select>
-                        </form>
-
-                    </div>
-                    <button id="btnAddEvent"
-                            data-target="#mymodal" data-toggle="ajax-modal" data-url="@Url.Action("CreateEventModal")"
-                            type="button" class="btn btn-success waves-effect waves-light mb-3">
-                        <i class="uil-plus"></i> Add New Events
-                    </button>
-
-                    </a>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <table class="table table-centered datatable dt-responsive nowrap table-card-list dataTable no-footer dtr-inline" style="        background-color: #F0F0F0;
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="1dtopg" class="table table-centered datatable dt-responsive nowrap table-card-list dataTable no-footer dtr-inline" style="        background-color: #F0F0F0;
         collapse;
         border-spacing: 0px 12px;
         width: 100%;" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
-                            <thead>
-                                <tr class="bg-transparent" role="row">
-                                    <th style="width: 24px;" class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                                <thead>
+                                    <tr class="bg-transparent" role="row">
+                                        <th style="width: 24px;" class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
 
 
 
 
                                                 : activate to sort column descending">
-                                        <div class="form-check text-center font-size-16">
-                                            <input type="checkbox" class="form-check-input" id="ordercheck">
-                                            <label class="form-check-label" for="ordercheck"></label>
-                                        </div>
-                                    </th>
-                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 95px;" aria-label="Title: activate to sort column ascending">Title</th>
-                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 105px;" aria-label="Date: activate to sort column ascending">Date</th>
-                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 133px;" aria-label="Ticket Price: activate to sort column ascending">Ticket Price</th>
-                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 63px;" aria-label="Views: activate to sort column ascending">Views</th>
-                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 163px;" aria-label="Total Places: activate to sort column ascending">Total Places</th>
-                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 163px;" aria-label="Total Places: activate to sort column ascending">Status</th>
-                                    <th style="width: 120px;" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-
-                                @foreach (var item in ViewBag.events)
-                                {
-                                    <tr role="row" class="odd">
-                                        <td class="sorting_1 dtr-control">
                                             <div class="form-check text-center font-size-16">
-                                                <input type="checkbox" class="form-check-input" id="ordercheck1">
-                                                <label class="form-check-label" for="ordercheck1"></label>
+                                                <input type="checkbox" class="form-check-input" id="ordercheck">
+                                                <label class="form-check-label" for="ordercheck"></label>
                                             </div>
-                                        </td>
-                                        <td>
-                                            @item.Title
-                                        </td>
-                                        <td>
-                                            @Html.FormatValue("yyy-MM-dd", item.StartDate.ToString("yyy-MM-dd"))
-
-                                        </td>
-
-                                        <td>
-                                            @item.Views
-
-                                        </td>
-
-
-                                        <td>
-                                            @item.TicketPrice
-
-                                        </td>
-                                        <td>
-                                            @item.PlaceNbr
-
-                                        </td>
-                                        <td>
-                                            @if (item.Status == true)
-                                            {
-                                                <div class="badge bg-pill bg-soft-success font-size-12">Sponsored</div>
-
-                                            }
-                                            else
-                                            {
-                                                <div class="badge bg-pill bg-soft-danger font-size-12">Unsponsored</div>
-                                            }
-
-
-
-
-
-                                        </td>
-
-
-                                        <td>
-                                            <a href="javascript:void(0);" class="px-3 text-primary"><i class="uil uil-pen font-size-18"></i></a>
-                                            <a href="javascript:void(0);" class="px-3 text-danger"><i class="uil uil-trash-alt font-size-18"></i></a>
-                                            <button style="background:none;border:none;" class="px-3 text-success"
-                                                    data-toggle="ajax-modal" data-target="#detailEvent" data-url="@Url.Action($"Detail/{item.IdEvenement}")">
-                                                <i class="uil uil-ellipsis-v font-size-18"></i>
-                                            </button>
-                                        </td>
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 95px;" aria-label="Title: activate to sort column ascending">Title</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 105px;" aria-label="StartDate: activate to sort column ascending">Start Date</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 133px;" aria-label="EndDate: activate to sort column ascending">End Date</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 63px;" aria-label="Ticket Price: activate to sort column ascending">Ticket Price</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 163px;" aria-label="Total Places: activate to sort column ascending">Total Places</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 163px;" aria-label="Total Places: activate to sort column ascending">Status</th>
+                                        <th style="width: 120px;" class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending">Action</th>
                                     </tr>
-
-                                }
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
 
 
+                                    @foreach (var item in ViewBag.events)
+                                    {
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1 dtr-control">
+                                                <div class="form-check text-center font-size-16">
+                                                    <input type="checkbox" class="form-check-input" id="ordercheck1">
+                                                    <label class="form-check-label" for="ordercheck1"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                @item.Title
+                                            </td>
+                                            <td>
+
+
+                                                @item.StartDate.ToString("yyy-MM-dd")
+                                            </td>
+
+                                            <td>
+
+                                                @item.EndDate.ToString("yyy-MM-dd")
+                                            </td>
+
+
+                                            <td>
+                                                @item.TicketPrice
+
+                                            </td>
+                                            <td>
+                                                @item.PlacesNbr
+
+                                            </td>
+                                            <td>
+                                                @if (item.Status == true)
+                                                {
+                                                    <div class="badge bg-pill bg-soft-success font-size-12">Sponsored</div>
+
+                                                }
+                                                else
+                                                {
+                                                    <div class="badge bg-pill bg-soft-danger font-size-12">Unsponsored</div>
+                                                }
+
+
+
+
+
+                                            </td>
+
+
+                                            <td>
+                                                <input name="IdEvenement" value="@item.IdEvenement" hidden="true" />
+                                                <input name="address" value="@item.Address" hidden="true" />
+                                                <button type="button" id="btnEdit"
+                                                        data-toggle="ajax-modal" data-target="#exampleModalScrollable" data-url="@Url.Action($"UpdateEventModal/{item.IdEvenement}")"
+                                                        style="background:none;border:none;" class="px-3 text-primary">
+                                                    <i class="uil uil-pen font-size-18"></i>
+                                                </button>
+
+
+                                                <button type="button" id="btnDelete" style="background:none;border:none;" class="px-3 text-danger" onclick="confirmDelete(@item.IdEvenement)"><i class="uil uil-trash-alt font-size-18"></i></button>
+
+                                                <button style="background:none;border:none;" class="px-3 text-success"
+                                                        data-toggle="ajax-modal" data-target="#detailEvent" data-url="@Url.Action($"DetailEvent/{item.IdEvenement}")">
+                                                                                                        
+
+                                                   
+
+                                                    <i class="uil uil-ellipsis-v font-size-18"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-info waves-effect waves-light"
+                                                        onclick="affecterEvent(@item.IdEvenement)">
+                                                    Affecter
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                    }
+                                </tbody>
+                            </table>
+
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-     
 
-    </div> <!-- container-fluid -->
 
-    <br />
-    <br />
-    <br />
-    <br />
+        </div> <!-- container-fluid -->
 
-</div>
-<!-- End Page-content -->
+        <br />
+        <br />
+        <br />
+        <br />
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- End Page-content -->
+    <script type="text/javascript">
+
+
+        //Remove Event SweetAlert+jquery+ajax
+        function confirmDelete(idEvent) {
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#f42020",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }).then(function (isConfirm) {
+                if (isConfirm.value) {
+                    $.ajax({
+                        url: "/Event/DeleteEvent",
+                        type: "POST",
+                        data: { id: idEvent },
+                        success: function (data) {
+                            console.log("dara" + data);
+                            if (data.status) {
+                                swal("Done!", "It was succesfully deleted!", "success");
+                                setInterval('refreshPage()', 2000);
+                            }
+
+                        }
+                    });
+                } else {
+                    swal("Cancelled", "Failed to delete event :)", "error");
+                }
+            })
+
+
+        }
+
+
+
+
+
+        //Affecter category evetnt
+        function affecterEvent(id) {
+
+            console.log("hii id event = " + id)// manish nesm fik douda
+
+            swal({
+                title: 'Select Outage Tier',
+                input: 'select',
+                inputOptions: {
+                    'FILM': 'FILM',
+                    'THEATRE': 'THEATRE',
+                    'SOLIDARITY_PROJECT': 'SOLIDARITY_PROJECT'
+                },
+                inputPlaceholder: 'required',
+                showCancelButton: true,
+                closeOnConfirm: false,
+                inputValidator: function (value) {
+                    return new Promise(function (resolve, reject) {
+                        if (value !== '') {
+                            resolve();
+                        } else {
+                            resolve('You need to select a Tier');
+                        }
+                    });
+                }
+            }).then(function (result) {
+                if (!result.isConfirmed) {
+
+                    //ajax request
+                    $.ajax({
+                        url: "/Event/Affecter",
+                        type: "POST",
+                        data: { category: result.value, id: id },
+                        success: function (data) {
+                            console.log("dara" + data);
+                            console.log("id" + id);
+                            console.log("category" + result.value);
+                            console.log("datra" + data.response);
+                            if (data.status) {
+                                swal({
+                                    icon: 'success',
+                                    html: 'You selected: ' + result.value
+                                });
+                                setInterval('refreshPage()', 2000);
+                            }
+
+                        }
+                    });
+
+
+
+                    //
+                    swal("Done!", "you selected category " + result.value, "success");
+
+                }
+            });
+
+
+
+        }
+
+        function refreshPage() {
+            location.reload(true);
+        }
+    </script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>

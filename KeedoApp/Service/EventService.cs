@@ -1,18 +1,9 @@
 ﻿using KeedoApp.Helper;
 using KeedoApp.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace KeedoApp.Service
@@ -34,6 +25,34 @@ namespace KeedoApp.Service
 
 
 
+
+        /**************Display Event By Id (Detail)**************/
+
+        public Event getEventById(int id)
+        {
+            HttpResponseMessage httpResponseMessage = client.GetAsync(springMvcUrl + "/event/retrieve-Event-ById/" + id.ToString()).Result;
+            Event events = null;
+
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+
+
+                events = httpResponseMessage.Content.ReadAsAsync<Event>().Result;
+
+
+            }
+            else
+            {
+                events = null;
+            }
+            return events;
+        }
+
+
+
+        /***************Add Event ***************************/
+
+
         public HttpResponseMessage addEvent(FormCollection formCollection)
         {
 
@@ -46,20 +65,44 @@ namespace KeedoApp.Service
             ///  string image = HttpContext.Current.Request["image"];
             ///string json = HttpContext.Current.Request["evJson"];
             ///   if (Directory.Exists(DirectoryPath))
-          
-                var filestream = new FileStream("C:/Users/Lenovo/Desktop/" + formCollection["image"], FileMode.Open);
+            ///   
+
+
+            //Desrialize 
+
+            var list = new Dictionary<string, string>();
+            list.Add("evJson", formCollection["evJson"]);
+            string toJson = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(list);
+
+            var filestream = new FileStream("C:/Users/Lenovo/Desktop/" + formCollection["image"], FileMode.Open);
             var fileName = System.IO.Path.GetFileName(formCollection["image"]);
 
-            var stringContent = new StringContent(JsonConvert.SerializeObject(formCollection["evJson"]));
+            //  Newtonsoft.Json.Linq.JObject json = JObject.Parse(formCollection["evJson"]);
+
+            var stringContent = new StringContent(formCollection["evJson"]);
+            stringContent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+
             System.Diagnostics.Debug.WriteLine(">>>>>>>>>>>" + stringContent);
+
+
+
+
+
+
+            //Convert JSON into Model
+
+
+
+
             m.Add(stringContent, "evJson");
 
-            
+
             m.Add(new StreamContent(filestream), "image", fileName);
 
             var response = client.PostAsync(springMvcUrl + "/event/add-event",
                 m).ContinueWith(p => p.Result.EnsureSuccessStatusCode());
 
+            System.Diagnostics.Debug.WriteLine("api == " + response.Result);
             if (response.IsCompleted)
                 return response.Result;
             else
@@ -69,10 +112,57 @@ namespace KeedoApp.Service
 
 
 
+        /*****************Delete Event ****************************/
+        public bool deleteEventById(int id)
+        {
+            try
+            {
+                var APIResponse = client.DeleteAsync(springMvcUrl + "/event/delete-event/" + id.ToString());
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
+
+
+        /*********************Update Event*************************/
+
+        public bool Update(Event e, int id)
+        {
+            try
+            {
+                var APIResponse = client.PutAsJsonAsync<Event>(springMvcUrl + "/event/update-event/" + id, e);
+
+                APIResponse.Wait();
+                var result = APIResponse.Result;
+                System.Diagnostics.Debug.WriteLine(APIResponse.Result);
+                if (result.IsSuccessStatusCode)
+                    return true;
+                else
+                    return false;
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
+        /**************************Affecter Event Category*******************************/
+        [HttpPost]
+        public bool AffecterEventCategory(string category, int id)
+        {
+
+            client.PutAsync("event/affecter-category-event/" + category + "/" + id, null).ContinueWith((postTask) => postTask.Result.EnsureSuccessStatusCode());
+            return true;
+        }
     }
 
+
+
 }
-
-
-

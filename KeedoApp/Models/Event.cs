@@ -13,363 +13,153 @@ namespace KeedoApp.Models
 	public class Event
 	{
 
-		private const long serialVersionUID = 1L;
-		private int idEvenement;
-		private string title;
-		private DateTime startDate;
-		private DateTime endDate;
-		private string description;
-		private bool status;
-		private string address;
 
-
-		private byte[] image;
-
-
-
-		private float ticketPrice;
-
-
-		private float collAmount;
-
-
-		private int participantsNbr;
-
-		private int placesNbr;
-
-
-
-		private bool earlyParticipants;
-		private int nbrTicketEarlyParticipants;
-
-		private EventCategory category;
-		private int views;
-
-		private List<Participation> participations;
-
-
-
-		internal Jackpot jackpot;
-
-		private List<Notification> notifications;
-
-
-		private float discountPercentage;
-
-		private List<Advertisement> advertisements;
-
-
-		private IList<Donation> donation;
-
-
-		private List<Evaluation> evaluations;
-
-
-		private Kindergarden Kindergarden;
-
-
-		public Event(int idEvenement, string title, DateTime date, DateTime hour, string description, bool status, string address, byte[] image, float ticketPrice, float collAmount, int participantsNbr, int placesNbr, bool earlyParticipants, int nbrTicketEarlyParticipants, EventCategory category, int views, List<Participation> participations, Jackpot jackpot, List<Notification> notifications, float discountPercentage, List<Advertisement> advertisements, List<Donation> donation) : base()
-		{
-			this.idEvenement = idEvenement;
-			this.title = title;
-			this.startDate = date;
-			this.endDate = hour;
-			this.description = description;
-			this.status = status;
-			this.address = address;
-			this.image = image;
-			this.ticketPrice = ticketPrice;
-			this.collAmount = collAmount;
-			this.participantsNbr = participantsNbr;
-			this.placesNbr = placesNbr;
-			this.category = category;
-			this.views = views;
-			this.participations = participations;
-			this.jackpot = jackpot;
-			this.notifications = notifications;
-			this.discountPercentage = discountPercentage;
-			this.advertisements = advertisements;
-			this.donation = donation;
-			this.earlyParticipants = earlyParticipants;
-			this.nbrTicketEarlyParticipants = nbrTicketEarlyParticipants;
-		}
-
-
-
-
-
-		public virtual IList<Donation> Donation
-		{
-			get
-			{
-				return donation;
-			}
-			set
-			{
-				this.donation = value;
-			}
-		}
-
-		[JsonProperty("placeNbr")]
-		public int PlaceNbr { 
-			get
-            {
-				return placesNbr;
-
-			}
-			set
-            {
-				this.placesNbr = value; 
-
-			}
-		
-		}
-
-		[JsonProperty("endDate")]
-
-		public DateTime EndDate
-		{
-			get
-			{
-				return endDate;
-
-			}
-			set
-			{
-				this.endDate = value;
-
-			}
-
-		}
-
-
-
-
-
-
-
-
-
-
-
-		public Event() : base()
-		{
-		}
-
-
-
-
-
-		public virtual float DiscountPercentage
-		{
-			get
-			{
-				return discountPercentage;
-			}
-			set
-			{
-				this.discountPercentage = value;
-			}
-		}
-
-		[JsonProperty("image")]
-
-		public virtual byte[] Image
-		{
-			get
-			{
-				return image ;
-			}
-			set
-			{
-				this.image = value;
-			}
-		}
-
-
-
-
-		public virtual List<Advertisement> Advertisements
-		{
-			get
-			{
-				return advertisements;
-			}
-			set
-			{
-				this.advertisements = value;
-			}
-		}
-
-
-		public virtual int Views
-		{
-			get
-			{
-				return views;
-			}
-			set
-			{
-				this.views = value;
-			}
-		}
-
-
-
-
-		public virtual int IdEvenement
-		{
-			get
-			{
-				return idEvenement;
-			}
-			set
-			{
-				this.idEvenement = value;
-			}
-		}
-
+		[JsonProperty("idEvenement")]
+		public int IdEvenement { get; set; }
 
 		[JsonProperty("title")]
 
-		public virtual string Title
-		{
-			get
-			{
-				return title;
-			}
-			set
-			{
-				this.title = value;
-			}
-		}
+		public string Title { get; set; }
 
+		[JsonProperty("startDate")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime StartDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
 
+        [JsonProperty("endDate")]
 
-		[JsonProperty("ticketPriceEvent")]
-
-		public virtual float TicketPrice
-		{
-			get
-			{
-				return ticketPrice;
-			}
-			set
-			{
-				this.ticketPrice = value;
-			}
-		}
-
-
-
-
-
+		public DateTime EndDate { get; set; }   
 		[JsonProperty("description")]
-		public virtual string Description
+
+		public string Description { get; set; }
+		[JsonProperty("status")]
+
+		public bool Status { get; set; }
+		[JsonProperty("address")]
+
+		public string Address { get; set; }
+
+		[JsonProperty("image")]
+
+		public byte[] Image { get; set; }
+
+
+		[JsonProperty("ticketPrice")]
+
+		public float TicketPrice { get; set; }
+
+		[JsonProperty("collAmount")]
+
+		public float CollAmount { get; set; }
+
+		[JsonProperty("participantsNbr")]
+
+		public int ParticipantsNbr { get; set; }
+
+
+		[JsonProperty("placesNbr")]
+
+		public int PlacesNbr { get; set; }
+
+
+        [JsonProperty("earlyParticipants")]
+
+        public bool EarlyParticipants { get; set; }
+        [JsonProperty("nbrTicketEarlyParticipants")]
+
+        public int NbrTicketEarlyParticipants { get; set; }
+        [JsonProperty("category")]
+
+        public EventCategory Category { get; set; }
+		public int Views { get; set; }
+
+		public List<Participation> Participations { get; set; }
+
+
+
+		public Jackpot Jackpot { get; set; }
+
+		public List<Notification> Notifications { get; set; }
+
+        [JsonProperty("discountPercentage")]
+
+        public float DiscountPercentage { get; set; }
+
+		public List<Advertisement> Advertisements { get; set; }
+
+
+		public IList<Donation> Donation { get; set; }
+
+
+		public List<Evaluation> Evaluations { get; set; }
+
+
+		public Kindergarden Kindergarden { get; set; }
+
+        public Event(int idEvenement, string title, DateTime startDate, DateTime endDate, string description, bool status, string address, byte[] image, float ticketPrice, float collAmount, int participantsNbr, int placesNbr, bool earlyParticipants, int nbrTicketEarlyParticipants, EventCategory category, int views, List<Participation> participations, Jackpot jackpot, List<Notification> notifications, float discountPercentage, List<Advertisement> advertisements, IList<Donation> donation, List<Evaluation> evaluations, Kindergarden kindergarden)
+        {
+            IdEvenement = idEvenement;
+            Title = title;
+            StartDate = startDate;
+            EndDate = endDate;
+            Description = description;
+            Status = status;
+            Address = address;
+            Image = image;
+            TicketPrice = ticketPrice;
+            CollAmount = collAmount;
+            ParticipantsNbr = participantsNbr;
+            PlacesNbr = placesNbr;
+            EarlyParticipants = earlyParticipants;
+            NbrTicketEarlyParticipants = nbrTicketEarlyParticipants;
+            Category = category;
+            Views = views;
+            Participations = participations;
+            Jackpot = jackpot;
+            Notifications = notifications;
+            DiscountPercentage = discountPercentage;
+            Advertisements = advertisements;
+            Donation = donation;
+            Evaluations = evaluations;
+            Kindergarden = kindergarden;
+        }
+
+        public Event(string title, DateTime startDate, DateTime endDate, string description, bool status, string address, byte[] image, float ticketPrice, float collAmount, int participantsNbr, int placesNbr, bool earlyParticipants, int nbrTicketEarlyParticipants, EventCategory category, int views, List<Participation> participations, Jackpot jackpot, List<Notification> notifications, float discountPercentage, List<Advertisement> advertisements, IList<Donation> donation, List<Evaluation> evaluations, Kindergarden kindergarden)
+        {
+            Title = title;
+            StartDate = startDate;
+            EndDate = endDate;
+            Description = description;
+            Status = status;
+            Address = address;
+            Image = image;
+            TicketPrice = ticketPrice;
+            CollAmount = collAmount;
+            ParticipantsNbr = participantsNbr;
+            PlacesNbr = placesNbr;
+            EarlyParticipants = earlyParticipants;
+            NbrTicketEarlyParticipants = nbrTicketEarlyParticipants;
+            Category = category;
+            Views = views;
+            Participations = participations;
+            Jackpot = jackpot;
+            Notifications = notifications;
+            DiscountPercentage = discountPercentage;
+            Advertisements = advertisements;
+            Donation = donation;
+            Evaluations = evaluations;
+            Kindergarden = kindergarden;
+        }
+
+        public Event() : base()
 		{
-			get
-			{
-				return description;
-			}
-			set
-			{
-				this.description = value;
-			}
 		}
 
 
-		public virtual bool Status
-		{
-			get
-			{
-				return status;
-			}
-			set
-			{
-				this.status = value;
-			}
-		}
-
-
-		public virtual string Address
-		{
-			get
-			{
-				return address;
-			}
-			set
-			{
-				this.address = value;
-			}
-		}
-		public virtual List<Notification> Notifications
-		{
-			get
-			{
-				return notifications;
-			}
-			set
-			{
-				this.notifications = value;
-			}
-		}
 
 
 
-
-		public virtual bool EarlyParticipants
-		{
-			get
-			{
-				return earlyParticipants;
-			}
-			set
-			{
-				this.earlyParticipants = value;
-			}
-		}
-
-
-
-
-
-
-
-
-
-		[JsonProperty("NbrTicketEarlyParticipants")]
-		public virtual int NbrTicketEarlyParticipants
-		{
-			get
-			{
-				return nbrTicketEarlyParticipants;
-			}
-			set
-			{
-				this.nbrTicketEarlyParticipants = value;
-			}
-		}
-
-
-		public virtual DateTime StartDate
-		{
-			get
-			{
-				return startDate;
-			}
-			set
-			{
-				this.startDate = value;
-			}
-		}
-		public virtual EventCategory Category { get; set; }
-		
-
-		public override string ToString()
-		{
-			return base.ToString();
-		}
 	}
 }
-
-

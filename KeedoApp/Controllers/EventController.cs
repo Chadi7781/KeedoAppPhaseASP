@@ -41,49 +41,123 @@ namespace KeedoApp.Controllers
 
 
 
+        public IEnumerable<string> bestEventsParticipants()
+        {
+            IEnumerable<string> eventsPart = null;
+
+            HttpResponseMessage httpResponseMessage = client.GetAsync(springMvcUrl + "/event/displayBestEventsByParticipations").Result;
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                ViewBag.eventsPart = httpResponseMessage.Content.ReadAsAsync<IEnumerable<string>>().Result;
+
+            }
+            else
+                ViewBag.eventsPart = null;
+
+            return eventsPart;
+        }
+
+
+
         // GET: Event
         public ActionResult ManageEvent()
         {
             IEnumerable<Event> events;
 
-            try
+            HttpResponseMessage httpResponseMessage = client.GetAsync(springMvcUrl + "/event/displayAllevents").Result;
+            var method = client.GetAsync(springMvcUrl + "/event/displayEventsByCollAmount").Result.Content.ReadAsStringAsync().Result.ToString();
+
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            if (httpResponseMessage.IsSuccessStatusCode)
             {
-                HttpResponseMessage httpResponseMessage = client.GetAsync(springMvcUrl + "/event/displayAllevents").Result;
-                var method = client.GetAsync(springMvcUrl + "/event/displayEventsByCollAmount").Result.Content.ReadAsStringAsync().Result.ToString();
 
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                if (httpResponseMessage.IsSuccessStatusCode)
-                {
+                //recuperation 1 er json affichage events
+                ViewBag.events = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Event>>().Result;
+                //recuperation 2 eme json collamount
 
-                    //recuperation 1 er json affichage events
-                    ViewBag.events = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Event>>().Result;
-                    //recuperation 2 eme json collamount
+                var deserial = JsonConvert.DeserializeObject<dynamic>(method);
+                var collAmount = deserial[0].CollAmount;
+                var Average = deserial[0].Average;
+                var topEventName = deserial[0].TopEvent;
+                ViewBag.collAmount = collAmount;
+                ViewBag.Average = Average;//@ViewBag.Average
+                ViewBag.topEventName = topEventName;
 
-                    var deserial = JsonConvert.DeserializeObject<dynamic>(method);
-                    var collAmount = deserial[0].CollAmount;
-                    var Average = deserial[0].Average;
-                    var topEventName = deserial[0].TopEvent;
-                    ViewBag.collAmount = collAmount;
-                    ViewBag.Average = Average;//@ViewBag.Average
-                    ViewBag.topEventName = topEventName;
-
-                }
-
-                else
-                {
-                    ViewBag.events = null;
-                }
-                return View();
             }
-            catch
+
+            else
             {
-                return View("Error");
+                ViewBag.events = null;
             }
+            return View();
+
+
+        }
+
+
+        [HttpGet]
+        public ActionResult DetailEvent(int id)
+
+        {
+            Event e = eventService.getEventById(id);
+            if (e != null)
+            {
+                ViewBag.ImageUrl = "error";
+                var str = System.Text.Encoding.UTF8.GetString(e.Image);
+
+                ViewBag.ImageUrl = "https://localhost:44330/Upload/" + str;
+                return PartialView("_DetailEvent", e);
+
+            }
+            return View();
+
+        }
+
+
+        //Add Event Controller
+        [HttpPost]
+        public JsonResult CreateEvent(FormCollection formCollection)
+        {
+            var response = false;
+
+            string folderPath = Server.MapPath("~/Upload/");  //Create a Folder in your Root directory on your solution.
+            string fileName = formCollection["image"];
+            string imagePath = folderPath + fileName;
+            byte[] imageArray = System.IO.File.ReadAllBytes(formCollection["image"]);
+
+            string base64ImageRepresentation = Convert.ToBase64String(imageArray);
+
+            string base64StringData = "data:image/png;base64," + base64ImageRepresentation; // Your base 64 string data
+            string cleandata = base64StringData.Replace("data:image/png;base64,", "");
+            byte[] data = System.Convert.FromBase64String(cleandata);
+            MemoryStream ms = new MemoryStream(data);
+            System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+            img.Save(imagePath, System.Drawing.Imaging.ImageFormat.Jpeg); 
+
+
+
+
+
+            eventService.addEvent(formCollection);
+            response = true;
+
+            return new JsonResult
+            {
+                Data = new
+                {
+                    response = response
+                }
+            };
+
 
         }
 
 
 
+
+
+        //Get Create Event partial view
 
         [HttpGet]
         public ActionResult CreateEventModal()
@@ -91,79 +165,75 @@ namespace KeedoApp.Controllers
             return PartialView("_CreateEvent");
         }
 
-
-        [HttpPost]
-        public JsonResult CreateEvent(FormCollection formCollection)
-        {
-            var response = false;
-
-
-            eventService.addEvent(formCollection);
-              response = true;
-        
-            
-            return new JsonResult { Data = new { response = response
-    }
-};
-
-
-        }
-
-
-
-
-
+        //Get Create Event partial view
 
         [HttpGet]
-        public ActionResult Detail(int id)
+        public ActionResult UpdateEventModal(int id)
         {
-            HttpResponseMessage httpResponseMessage = client.GetAsync(springMvcUrl + "/event/retrieve-Event-ById/" + id.ToString()).Result;
-            Event events;
-
-            if (httpResponseMessage.IsSuccessStatusCode)
+            Event e = eventService.getEventById(id);
+            if (e != null)
             {
-
-
-                events = httpResponseMessage.Content.ReadAsAsync<Event>().Result;
-
-                string imageDataURL = string.Format("data:image/png;base64,{0}", events.Image);
+                // string imageBase64Data = Convert.ToBase64String(e.Image);
+                string imageDataURL = string.Format("data:image/png;base64,{0}", e.Image);
                 if (imageDataURL == null)
-                    ViewBag.ImageData = "Image null";
+                    //System.Diagnostics.Debug.WriteLine("Image null");
+                    ViewBag.ImageData = "error";
                 else
                     ViewBag.ImageData = imageDataURL;
+                return PartialView("_UpdateEvent", e);
 
             }
-            else
-            {
-                events = null;
-            }
-            return PartialView("_DetailEvent", events);
-        }
-
-
-        // GET: Event/Edit/5
-        public ActionResult Edit(int id)
-        {
             return View();
         }
 
-
+        //Delete Event
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public JsonResult DeleteEvent(int id)
         {
-            //HTTP POST
-            var putTask = client.DeleteAsync(springMvcUrl + "/delete-event/" + id.ToString());
-            putTask.Wait();
+            var status = false;
 
-            var result = putTask.Result;
-            if (result.IsSuccessStatusCode)
+
+            if (eventService.deleteEventById(id))
             {
 
-                return RedirectToAction("ManageEvent");
+                status = true;
             }
-            System.Diagnostics.Debug.WriteLine("entered here" + result);
-            return View();
+
+            return new JsonResult { Data = new { status = status } };
         }
 
+
+
+        //Update Event
+        [HttpPost]
+        public JsonResult Edit(Event Event)
+        {
+
+
+            int idEvent = Event.IdEvenement;
+
+            var response = false;
+            if (eventService.Update(Event, idEvent))
+            {
+                response = true;
+            }
+            return new JsonResult { Data = new { response = response } };
+        }
+
+
+        //Update Event
+        [HttpPost]
+        public JsonResult Affecter(string category, int id)
+        {
+
+
+            var response = false;
+            if (eventService.AffecterEventCategory(category, id))
+            {
+                response = true;
+            }
+            return new JsonResult { Data = new { response = response } };
+        }
     }
 }
+

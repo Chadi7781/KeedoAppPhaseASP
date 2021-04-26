@@ -1,81 +1,75 @@
-﻿@model KeedoApp.Models.Event
+﻿
 
-<!--Detail-->
-<div class="modal fade" id="detailEvent">
-    <div class="modal-dialog">
+@model KeedoApp.Models.Event
+
+
+<div class="modal fade bs-example-modal-xl show" id="detailEvent" tabindex="-1" aria-labelledby="myExtraLargeModalLabel" style="display: block; padding-right: 16px;" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="detailEvent">Detail Event</h4>
-            
+                <h5 class="modal-title mt-0" id="myExtraLargeModalLabel">Extra large modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
             </div>
-
+            <hr />
             <div class="modal-body">
-                <form>
 
-                    <div class="form-group">
-                        <label asp-for="IdEvenement" hidden="true"> @Model.IdEvenement</label>
-                    </div>
+                <img src="@ViewBag.ImageUrl" />
 
 
-                    <div class="form-group">
-                        <label asp-for="Title">Title: @Model.Title</label>
-                    </div>
-                    <div class="form-group">
+                <label asp-for="IdEvenement" hidden="true"> @Model.IdEvenement</label>
+                <hr style="color:red;" />
+                <h3 class="mb-3">
+                    <i class="uil-bookmark-full">
+                        <span style="        color: #e83e8c;
+        font-size: 20px;"><b>@Model.Title</b></span>
+    </i>
+</h3>
+<p>
+    <i class="uil uil-calendar-alt">
+        <span>
+            Start Date
+            @Html.FormatValue("yyy-MM-dd", @Model.StartDate.ToString("yyy-MM-dd"))
+        </span>
+        <span>
+            End Date
+            <i class="uil uil-calendar-alt"></i>
+            @Html.FormatValue("yyy-MM-dd", @Model.EndDate.ToString("yyy-MM-dd"))
+        </span>
+    </i>
+    <br />
+    <i class="uil-users-alt">
 
-                        <label asp-for="Date">
-                            Date debut:@Html.FormatValue("yyy-MM-dd", @Model.StartDate.ToString("yyy-MM-dd"))
-                        </label>
+        <span>Number Early participants : @Model.NbrTicketEarlyParticipants </span>
 
+    </i>
+    <br />
+    <i class="uil-dollar-alt">
 
-                    </div>
-                    <div class="form-group">
+        <span>Discount Percentage : @Model.DiscountPercentage % </span>
 
-                        <label asp-for="Date">
-                            Date debut:@Html.FormatValue("yyy-MM-dd", @Model.EndDate.ToString("yyy-MM-dd"))
-                        </label>
+    </i>
+    <br />
+    <i class="uil-location-pin-alt">
 
+        <span>Adress : @Model.Address </span>
 
-                    </div>
-                    <div class="form-group">
-
-                        <label asp-for="Date">
-                            @ViewBag.time
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Category"> Category :@Model.Category</label>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Description"> Description : @Model.Description</label>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="DiscountPercentage">Discount Percentage: @Model.DiscountPercentage</label>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="EarlyParticipants">EarlyParticipants: @Model.EarlyParticipants</label>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Address">Address: @Model.Address</label>
-                    </div>
-                    <img src="@ViewBag.ImageData" />
-
-                </form>
+    </i>
 
 
-            </div>
+</p>
 
-        <div class="modal-footer">
-        </div>
+<p class="mb-0">
+    @Model.Description
+</p>
 
-    </div>
+
+
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
 </div>
 
 
 
 
-<!---->
-
-
-
-
-    
