@@ -81,6 +81,74 @@ namespace KeedoApp.Controllers
             }
         }
 
+        // GET: Post
+        public ActionResult Newsfeed(string searchString)
+        {
+
+            BigViewModel bvm= new BigViewModel();
+
+            HttpResponseMessage httplikemessage;
+            HttpResponseMessage httpcmtmessage;
+
+            HttpResponseMessage httpResponseMessage;
+            if (String.IsNullOrEmpty(searchString))
+            {
+                System.Diagnostics.Debug.WriteLine("entered Index");
+
+                httpResponseMessage = httpClient.GetAsync(baseAddress + "Post/get-all-posts").Result;
+
+
+                if (httpResponseMessage.IsSuccessStatusCode)
+                {
+                    bvm.Post = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Post>>().Result;
+
+                    foreach (Post p in bvm.Post)
+                    {
+                        httplikemessage = httpClient.GetAsync(baseAddress + "Liking/count-post-likes/" + p.IdPost).Result;
+                        httpcmtmessage = httpClient.GetAsync(baseAddress + "Comment/count-post-comments/" + p.IdPost).Result;
+
+                        p.Likenb = httplikemessage.Content.ReadAsStringAsync().Result.ToString();
+                        p.Cmtnb = httpcmtmessage.Content.ReadAsStringAsync().Result.ToString();
+                        // System.Diagnostics.Debug.WriteLine("this is the id" + p.IdPost+ "this is nblike" + httplikemessage.Content.ReadAsStringAsync().Result.ToString());
+                        p.cmts= httpClient.GetAsync(baseAddress + "Comment/comments-by-post/" + p.IdPost.ToString()).Result.Content.ReadAsAsync<List<Comment>>().Result;
+                        System.Diagnostics.Debug.WriteLine("the list of comments" + p.cmts);
+                    }
+                }
+                else
+                {
+                    bvm.Post = null;
+                }
+
+                return View(bvm);
+            }
+            else
+            {
+                httpResponseMessage = httpClient.GetAsync(baseAddress + "Post/search-by-admin/?pattern=" + searchString).Result;
+                if (httpResponseMessage.IsSuccessStatusCode)
+                {
+
+                    bvm.Post = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Post>>().Result;
+                    foreach (Post p in bvm.Post)
+                    {
+                        httplikemessage = httpClient.GetAsync(baseAddress + "Liking/count-post-likes/" + p.IdPost).Result;
+                        httpcmtmessage = httpClient.GetAsync(baseAddress + "Comment/count-post-comments/" + p.IdPost).Result;
+
+                        p.Likenb = httplikemessage.Content.ReadAsStringAsync().Result.ToString();
+                        p.Cmtnb = httpcmtmessage.Content.ReadAsStringAsync().Result.ToString();
+                        // System.Diagnostics.Debug.WriteLine("this is the id" + p.IdPost+ "this is nblike" + httplikemessage.Content.ReadAsStringAsync().Result.ToString());
+                        p.cmts = httpClient.GetAsync(baseAddress + "Comment/comments-by-post/" + p.IdPost.ToString()).Result.Content.ReadAsAsync<List<Comment>>().Result;
+                        System.Diagnostics.Debug.WriteLine("the list of comments" + p.cmts);
+                    }
+                }
+                else
+                {
+                    bvm.Post = null;
+                }
+
+                return View(bvm);
+            }
+        }
+
         // GET: Post/Details/5
         public ActionResult Details(int id)
         {
@@ -427,6 +495,28 @@ namespace KeedoApp.Controllers
 
             return RedirectToAction("Index");
 
+        }
+
+
+
+
+        public ActionResult ClientComment()
+        {
+            return RedirectToAction("Newsfeed");
+        }
+
+        // POST: Post/Create
+        [HttpPost]
+        public ActionResult ClientComment(int id, Comment comment)
+        {
+            var postTask = httpClient.PostAsJsonAsync<Comment>(baseAddress + "Comment/add-comment/" + id.ToString(), comment);
+            postTask.Wait();
+
+            var result = postTask.Result;
+
+
+                return RedirectToAction("Newsfeed");
+          
         }
     }
 }

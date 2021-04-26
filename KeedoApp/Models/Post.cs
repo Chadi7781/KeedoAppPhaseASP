@@ -26,6 +26,7 @@ namespace KeedoApp.Models
 		private User user;
 		private String likenb;
 		private String cmtnb;
+		public List<Comment> cmts { get; set; }
 
 
 
