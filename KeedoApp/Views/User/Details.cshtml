@@ -1,0 +1,127 @@
+﻿@model KeedoApp.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>User</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.IdUser)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IdUser)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TelNum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TelNum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Birthdate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Birthdate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Mail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Mail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Login)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Login)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Delegatee)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Delegatee)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AccountNonLocked)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AccountNonLocked)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FailedAttempt)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FailedAttempt)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Blocked)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Blocked)
+            </dd>
+
+
+        </dl>
+    </div>
+    <p>
+        <a class="px-3 text-primary">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.idUser })<i class="uil uil-file-edit-alt font-size-18"> </i>
+        </a> | <br />
+        @Html.ActionLink("Back to List", "GestionUtilisateur")
+    </p>
+</body>
+</html>

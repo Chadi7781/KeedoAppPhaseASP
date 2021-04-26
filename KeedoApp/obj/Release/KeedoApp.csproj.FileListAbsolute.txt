@@ -91,3 +91,7 @@ C:\Users\Lenovo\source\repos\KeedoAppPhaseASP\KeedoApp\obj\Release\KeedoApp.cspr
 C:\Users\Lenovo\source\repos\KeedoAppPhaseASP\KeedoApp\obj\Release\KeedoApp.csproj.CopyComplete
 C:\Users\Lenovo\source\repos\KeedoAppPhaseASP\KeedoApp\obj\Release\KeedoApp.dll
 C:\Users\Lenovo\source\repos\KeedoAppPhaseASP\KeedoApp\obj\Release\KeedoApp.pdb
+C:\Users\Iskander\Desktop\imen master\KeedoAppPhaseASP\KeedoApp\obj\Release\KeedoApp.csprojAssemblyReference.cache
+C:\Users\Iskander\Desktop\imen master\KeedoAppPhaseASP\KeedoApp\obj\Release\KeedoApp.csproj.CoreCompileInputs.cache
+C:\Users\Iskander\Desktop\imen master\KeedoAppPhaseASP\KeedoApp\obj\Release\KeedoApp.dll
+C:\Users\Iskander\Desktop\imen master\KeedoAppPhaseASP\KeedoApp\obj\Release\KeedoApp.pdb

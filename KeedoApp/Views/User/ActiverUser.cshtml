@@ -1,0 +1,31 @@
+﻿@model KeedoApp.Models.User
+
+@{
+    ViewBag.Title = "ActiverUser";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Activate</title>
+</head>
+<body>
+    <h3>Are you sure you want to Activer User this?</h3>
+    <div>
+        <h4>User</h4>
+        <hr />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="ActiverUser" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "GestionUtilisateur")
+            </div>
+        }
+    </div>
+</body>
+</html>

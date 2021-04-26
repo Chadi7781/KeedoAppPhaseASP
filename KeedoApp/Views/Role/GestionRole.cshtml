@@ -1,0 +1,72 @@
+﻿@model IEnumerable<KeedoApp.Models.Role>
+
+@{
+    ViewBag.Title = "GestionRole";
+}
+
+<h2>GestionRole</h2>
+<p>
+    <a class="px-3 text-primary"> @Html.ActionLink("CreateRole", "CreateRole")|<i class="uil uil-file-edit-alt font-size-18"> </i></a>
+</p>
+
+
+<table class="table table-primary table-striped mb-0">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdRole)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.roleType)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.roles)
+    {
+        <tr>
+            <td>
+                @item.IdRole
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.roleType
+            </td>
+
+            <td>
+                <a class="px-3 text-primary">
+                    @Html.ActionLink("EditRole", "EditRole", new { id = item.idRole })|<i class="uil uil-file-edit-alt font-size-18"> </i>
+                </a> |
+                <a class="px-3 text-primary">  @Html.ActionLink("DeleteRole", "DeleteRole", new { id = item.idRole })| <i class="uil uil-file-times font-size-18"></i></a>
+            </td>
+        </tr>
+    }
+
+
+</table>
+<div class="col-sm-6">
+    <div class="float-sm-end">
+        <ul class="pagination mb-sm-0">
+            <li class="page-item disabled">
+                <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link">1</a>
+            </li>
+            <li class="page-item active">
+                <a href="#" class="page-link">2</a>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link">3</a>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
