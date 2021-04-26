@@ -509,6 +509,8 @@ namespace KeedoApp.Controllers
         [HttpPost]
         public ActionResult ClientComment(int id, Comment comment)
         {
+            comment.CommentContent = (Request["message"].ToString());
+            System.Diagnostics.Debug.WriteLine("this is the msg" + comment.CommentContent);
             var postTask = httpClient.PostAsJsonAsync<Comment>(baseAddress + "Comment/add-comment/" + id.ToString(), comment);
             postTask.Wait();
 
@@ -518,5 +520,70 @@ namespace KeedoApp.Controllers
                 return RedirectToAction("Newsfeed");
           
         }
+        // GET: Post/Create
+        public ActionResult ClientCreate()
+        {
+            return RedirectToAction("Newsfeed");
+        }
+
+        // POST: Post/Create
+        [HttpPost]
+        public ActionResult ClientCreate(Post post)
+        {
+            post.PostContent = (Request["postxt"].ToString());
+            post.MediaLink = (Request["medialinkshare"].ToString());
+
+            var postTask = httpClient.PostAsJsonAsync<Post>(baseAddress + "Post/add-post", post);
+            postTask.Wait();
+
+            var result = postTask.Result;
+
+            if (result.IsSuccessStatusCode)
+            {
+
+                return RedirectToAction("Newsfeed");
+            }
+            return View();
+        }
+        public ActionResult ClientShare(int id)
+        {
+            return (ClientShare(id, null));
+        }
+
+        // POST: Post/Create
+        [HttpPost]
+        public ActionResult ClientShare(int id, Post post)
+        {
+            var postTask = httpClient.PostAsync(baseAddress + "Post/share-post/" + id.ToString(), null);
+            postTask.Wait();
+
+            var result = postTask.Result;
+
+
+
+            return RedirectToAction("Newsfeed");
+
+        }
+
+        // GET: Post/Delete/5
+        public ActionResult ClientDelete(int id)
+        {
+            return (ClientDelete(id,null));
+        }
+
+
+        // POST: Post/Delete/5
+        [HttpPost]
+        public ActionResult ClientDelete(int id, FormCollection collection)
+        {
+            //HTTP POST
+            var putTask = httpClient.DeleteAsync(baseAddress + "Post/delete-post/" + id.ToString());
+            putTask.Wait();
+
+            var result = putTask.Result;
+            return RedirectToAction("Newsfeed");
+
+        }
+
     }
 }
