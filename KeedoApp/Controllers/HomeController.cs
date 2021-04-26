@@ -10,11 +10,11 @@ namespace KeedoApp.Controllers
     {
         //Client
 
-/*
+
         public ActionResult IndexClient()
         {
             return View("IndexClient");
-        }*/
+        }
         //Admin
         public ActionResult Index()
         {
