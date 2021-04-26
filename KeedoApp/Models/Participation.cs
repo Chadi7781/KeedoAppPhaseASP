@@ -5,8 +5,6 @@ namespace KeedoApp.Models
 {
 
 
-
-	[Serializable]
 	public class Participation
 	{
 
@@ -72,7 +70,7 @@ namespace KeedoApp.Models
 		}
 
 
-		public virtual Event Eventt
+		public virtual Event Event
 		{
 			get
 			{
@@ -83,6 +81,9 @@ namespace KeedoApp.Models
 				this.eventt = value;
 			}
 		}
+
+
+
 
 
 	}
