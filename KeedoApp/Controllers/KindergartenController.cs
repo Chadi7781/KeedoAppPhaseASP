@@ -49,6 +49,54 @@ namespace KeedoApp.Controllers.Kindergarten
         }
 
 
+
+        // GET: Kindergarten
+        public ActionResult ClientIndex()
+        {
+
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Kindergartens/retrieve-all-kindergartens").Result;
+            HttpResponseMessage httpResponseMessage2 = httpClient.GetAsync(baseAddress + "kid/static/nb").Result;
+            HttpResponseMessage httpResponseMessage3 = httpClient.GetAsync(baseAddress + "daycare/nb").Result;
+            int kids;
+            int daycares;
+            IEnumerable<Kindergarden> kindergardens;
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                kindergardens = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Kindergarden>>().Result;
+            }
+            else
+            {
+                kindergardens = null;
+
+            }
+            if (httpResponseMessage2.IsSuccessStatusCode)
+            {
+
+                ViewBag.kids = httpResponseMessage2.Content.ReadAsAsync<int>().Result;
+            }
+            else
+            {
+                ViewBag.kids = null;
+            }
+
+            if (httpResponseMessage3.IsSuccessStatusCode)
+            {
+
+                ViewBag.daycares = httpResponseMessage3.Content.ReadAsAsync<int>().Result;
+            }
+            else
+            {
+                ViewBag.daycares = null;
+            }
+
+
+
+            return View(kindergardens);
+
+        }
+
+
+
         public ActionResult Search1(string name)
         {
             

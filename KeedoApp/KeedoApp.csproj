@@ -711,6 +711,7 @@
     <Content Include="Views\Response\Create.cshtml" />
     <Content Include="Views\Response\Details.cshtml" />
     <Content Include="Views\Feedback\Response.cshtml" />
+    <Content Include="Views\Kindergarten\ClientIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
