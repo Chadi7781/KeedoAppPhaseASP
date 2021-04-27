@@ -196,6 +196,8 @@
                                         <li><span class="fa fa-pencil-alt"></span><a href="news-single.html">by @item.Login</a></li>
                                         <li><span class="fa fa-calendar-alt"></span><a href="news-single.html">at @item.CreateDate</a></li>
                                         <li><span class="fa fa-comments"></span><a href="news-single.html">@item.Cmtnb comments</a></li>
+                                        <li><span class="fa fa-heart"></span><a href="news-single.html">@item.Likenb likes</a></li>
+
                                     </ul>
                                     <h3>@item.PostContent</h3>
                                     <div class="float-right">
@@ -215,87 +217,108 @@
 
                                     </div>
                                 </div>
-                                <form method="post" action="@Url.Action("ClientEdit", "Post", new { id= item.IdPost})" id='text_id' style='display:none'>
-                                    <div class="row clearfix">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                            <textarea class="darma" name="updatepostxt" placeholder="Write Post" id="postxt"></textarea>
-                                            <textarea class="darma" name="updatemedialink" placeholder="attached file" id="medialink"></textarea>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                            <button class="btn btn-outline-info waves-effect waves-light" type="submit" name="submit-form">Post</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            
-                            <!-- Other Option -->
-                            <div class="post-share-options clearfix">
-                                <div class="float-left">
-                                    <ul class="tags">
-                                        <li class="title">Tags:</li>
-                                        <li><a href="#">Education</a></li>
-                                        <li><a href="#">Classrooms</a></li>
-                                        <li><a href="#">Baby</a></li>
-                                    </ul>
-                                </div>
+                                <div class="comment-form">
 
-                                <div class="float-right">
-                                    <ul class="social-icon-colored">
-                                        <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-
-
-
-                            <!--Comments Area-->
-
-                            @if (!(@item.Cmtnb).Equals("0"))
-                            {
-                                <div class="comments-area">
-                                    <div class="group-title"><h3>@item.Cmtnb Comments</h3></div>
-                                    @foreach (var comment in item.cmts)
-                                    {
-                                        <div class="comment-box">
-                                            <div class="comment">
-                                                <div class="author-thumb"><img src="http:\\localhost\img\resource\author-2.jpg" alt=""></div>
-                                                <div class="comment-info clearfix"><strong> @comment.Login</strong><div class="comment-time">@comment.CreateDate</div></div>
-                                                <div class="text">@comment.CommentContent</div>
+                                    <form method="post" action="@Url.Action("ClientEdit", "Post", new { id= item.IdPost})" id='text_id' style='display:none'>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                                <textarea class="darma" name="updatepostxt" placeholder="Write Post" id="postxt"></textarea>
+                                                <textarea class="darma" name="updatemedialink" placeholder="attached file" id="medialink"></textarea>
                                             </div>
-                                            <div class="float-right">
-                                                <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientDeleteComment", "Post" , new { id= comment.IdComment})'">
-                                                    Delete
-                                                </button>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                                <button class="btn btn-outline-info waves-effect waves-light" type="submit" name="submit-form">Update</button>
                                             </div>
                                         </div>
-
-
-                                    }
+                                    </form>
                                 </div>
-                            }
 
-                            <!-- Comment Form -->
-                            <div class="comment-form">
-                                <div class="group-title"><h3>Leave a Comment</h3></div>
-                                <!--Comment Form-->
-                                <form method="post" action="@Url.Action("ClientComment", "Post", new { id= item.IdPost})">
-                                    <div class="row clearfix">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                            <textarea class="darma" name="message" placeholder="Write Comment" id="comment"></textarea>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                            <button class="theme-btn btn-style-one" type="submit" name="submit-form">Post Comment</button>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
-                            <!--End Comment Form -->
+
+                                <!-- Other Option -->
+                                <div class="post-share-options clearfix">
+                                    <div class="float-left">
+                                        <ul class="tags">
+                                            <li class="title">Tags:</li>
+                                            <li><a href="#">Education</a></li>
+                                            <li><a href="#">Classrooms</a></li>
+                                            <li><a href="#">Baby</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="float-right">
+                                        <ul class="social-icon-colored">
+                                            <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+                                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                                            <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
 
 
-                        </div>
+
+                                <!--Comments Area-->
+
+                                @if (!(@item.Cmtnb).Equals("0"))
+                                {
+                                    <div class="comments-area">
+                                        <div class="group-title"><h3>@item.Cmtnb Comments</h3></div>
+                                        @foreach (var comment in item.cmts)
+                                        {
+                                            <div class="comment-box">
+                                                <div class="comment">
+                                                    <div class="author-thumb"><img src="http:\\localhost\img\resource\author-2.jpg" alt=""></div>
+                                                    <div class="comment-info clearfix"><strong> @comment.Login</strong><div class="comment-time">@comment.CreateDate</div></div>
+                                                    <div class="text">@comment.CommentContent</div>
+                                                </div>
+                                                <div class="float-right">
+                                                    <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientDeleteComment", "Post" , new { id= comment.IdComment})'">
+                                                        Delete
+                                                    </button>
+                                                    <button type="button" id="updatecommentbutton" class="btn btn-outline-info waves-effect waves-light" onClick='document.getElementById("comment_id").style.display = "block"; document.getElementById("updatecommentbutton").style.display = "none"'> Update</button>
+
+                                                </div>
+                                                <!-- Edit comment -->
+                                                <div class="comment-form">
+                                                    <!--Comment Form-->
+                                                    <form method="post" action="@Url.Action("ClientEditComment", "Post", new { id= comment.IdComment})" id='comment_id' style='display:none'>
+                                                        <div class="row clearfix">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                                                <textarea class="darma" name="editmessage" placeholder="Write Comment" id="editmessage"></textarea>
+                                                            </div>
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                                                <button class="btn btn-outline-info waves-effect waves-light" type="submit" name="submit-form">Update</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!--End Comment Form -->
+                                            </div>
+
+
+                                        }
+                                    </div>
+                                }
+
+                                <!-- Comment Form -->
+                                <div class="comment-form">
+                                    <div class="group-title"><h3>Leave a Comment</h3></div>
+                                    <!--Comment Form-->
+                                    <form method="post" action="@Url.Action("ClientComment", "Post", new { id= item.IdPost})">
+                                        <div class="row clearfix">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                                <textarea class="darma" name="message" placeholder="Write Comment" id="comment"></textarea>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                                <button class="theme-btn btn-style-one" type="submit" name="submit-form">Post Comment</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!--End Comment Form -->
+
+
+                            </div>
                             }
                         </div>
                     </div>

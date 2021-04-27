@@ -672,6 +672,29 @@ namespace KeedoApp.Controllers
 
         }
 
+        public ActionResult ClientEditComment(int id)
+        {
+            return View();
+        }
+
+
+
+        // POST: Post/Edit/5
+        [HttpPost]
+        public ActionResult ClientEditComment(int id, Comment comment)
+        {
+            comment.CommentContent = (Request["editmessage"].ToString());
+            var putTask = httpClient.PutAsJsonAsync<Comment>(baseAddress + "Comment/update-comment/" + id.ToString(), comment);
+            putTask.Wait();
+
+            var result = putTask.Result;
+
+            
+
+                return RedirectToAction("Newsfeed");
+            
+
+        }
 
     }
 }
