@@ -1,0 +1,88 @@
+﻿@model KeedoApp.Models.Response
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
+<div>
+    <h4>Response</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dd>
+            @Html.DisplayFor(model => model.Question.Feedback.Description)
+        </dd>
+
+        
+        <dd>
+            @Html.DisplayFor(model => model.Question.Questions)
+        </dd>
+
+        @if (Model.Rating != 0)
+        {
+
+          
+
+
+
+            for (int i = 0; i < Model.Rating; i++)
+            {
+
+                <span class="fa fa-star checked"></span>
+
+
+
+
+            }
+
+            for (int i = 0; i < (10 - Model.Rating); i++)
+            {
+                <span class="fa fa-star "></span>
+
+            }
+
+        }
+        else if (Model.SatisfactionDegree != null)
+        {
+           
+
+            <dd>
+                @Html.DisplayFor(model => model.SatisfactionDegree)
+            </dd>
+        }
+        else
+        {
+
+          
+            <dd>
+                @Html.DisplayFor(model => model.Responses)
+            </dd>
+
+        }
+
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedAt)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -9,6 +9,11 @@
                 <h3 class="text-primary">Latest Kindergartens</h3>
                 @Html.ActionLink("Add Kindergarten", "Create", null, new { @class = "btn btn-success waves-effect waves-light", @style = "margin-left:85%" })
 
+                <form method="post" action="">
+
+
+                    <input type="text" name="search" class="form-control" />
+                </form>
                 </br> </br>
                 </br>
                 <div class="table-responsive">
@@ -39,53 +44,53 @@
 
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    <div class="form-check font-size-16">
-                                        <input type="checkbox" class="form-check-input" id="customCheck2">
-                                        <label class="form-check-label" for="customCheck2">&nbsp;</label>
-                                    </div>
-                                </td>
-                                <td><a href="javascript: void(0);" class="text-body fw-bold"></a>   @Html.DisplayFor(modelItem => item.Id)</td>
-                                <td>  @Html.DisplayFor(modelItem => item.Name)</td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Director.Login)
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Location)
-                                </td>
-
-
-
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CreatedAt)
-                                </td>
-                                @if (item.UpdatedAt != null)
-                                {
+                                <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.UpdatedAt)
+                                        <div class="form-check font-size-16">
+                                            <input type="checkbox" class="form-check-input" id="customCheck2">
+                                            <label class="form-check-label" for="customCheck2">&nbsp;</label>
+                                        </div>
                                     </td>
-                                }
-                                else
-                                {
+                                    <td><a href="javascript: void(0);" class="text-body fw-bold"></a>   @Html.DisplayFor(modelItem => item.Id)</td>
+                                    <td>  @Html.DisplayFor(modelItem => item.Name)</td>
                                     <td>
-                                        Not Updated Yet
+                                        @Html.DisplayFor(modelItem => item.Director.Login)
                                     </td>
-                                }
 
-                                <td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Location)
+                                    </td>
 
-                                    <!-- Button trigger modal -->
 
 
-                                    <i class="uil uil-pen font-size-18 text-primary" onclick="location.href = '@(Url.Action("Edit", new { id = item.Id }))'"> </i>
-                                    <i class="uil uil-eye font-size-18 text-dark" onclick="location.href = '@(Url.Action("Details", new { id = item.Id }))'"> </i>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreatedAt)
+                                    </td>
+                                    @if (item.UpdatedAt != null)
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UpdatedAt)
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            Not Updated Yet
+                                        </td>
+                                    }
 
-                                    <i class="uil uil-trash font-size-18 text-danger" onclick="location.href = '@(Url.Action("Delete", new { id = item.Id }))'"> </i>
+                                    <td>
 
-                                </td>
-                            </tr>
+                                        <!-- Button trigger modal -->
+
+
+                                        <i class="uil uil-pen font-size-18 text-primary" onclick="location.href = '@(Url.Action("Edit", new { id = item.Id }))'"> </i>
+                                        <i class="uil uil-eye font-size-18 text-dark" onclick="location.href = '@(Url.Action("Details", new { id = item.Id }))'"> </i>
+
+                                        <i class="uil uil-trash font-size-18 text-danger" onclick="location.href = '@(Url.Action("Delete", new { id = item.Id }))'"> </i>
+
+                                    </td>
+                                </tr>
 
                             }
                         </tbody>
@@ -97,5 +102,3 @@
     </div>
 </div>
 <!-- end row -->
-
-

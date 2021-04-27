@@ -33,7 +33,7 @@ namespace KeedoApp
                         routes.IgnoreRoute("{resource}.axd/{*pathInfo}");         
             */
 
-            /*
+        
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             //CLient
             routes.MapRoute(
@@ -41,14 +41,14 @@ namespace KeedoApp
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "IndexClient", id = UrlParameter.Optional }
             );
-            */
+         
             //ADmin
-
+            /*
             routes.MapRoute(
     name: "DefaultAdmin",
     url: "{controller}/{action}/{id}",
     defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-);
+);*/
         }
     }
 }

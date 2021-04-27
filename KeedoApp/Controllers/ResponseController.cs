@@ -46,29 +46,53 @@ namespace KeedoApp.Controllers
         // GET: Response/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Responses/retrieve-response/" + id.ToString()).Result;
+            Response response;
+           
+
+      
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                response = httpResponseMessage.Content.ReadAsAsync<Response>().Result;
+            }
+            else
+            {
+                response = null;
+            }
+           /*
+            ViewBag.satisfaction = QuestionType.Satisfaction;
+            ViewBag.rating = QuestionType.Stars;
+            ViewBag.text = QuestionType.Text;
+           */
+
+            return View(response);
         }
 
         // GET: Response/Create
-        public ActionResult Create()
+        public ActionResult Create(  )
         {
+
+
+
             return View();
         }
 
         // POST: Response/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(int id, Response response)
         {
-            try
+            var postTask = httpClient.PostAsJsonAsync<Response>(baseAddress + "Responses/responseTo/" + id.ToString(), response);
+            postTask.Wait();
+
+            var result = postTask.Result;
+
+            if (result.IsSuccessStatusCode)
             {
-                // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
+
         }
 
         // GET: Response/Edit/5

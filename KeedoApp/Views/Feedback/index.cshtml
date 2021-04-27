@@ -23,12 +23,13 @@
                                         <label class="form-check-label" for="customCheck1">&nbsp;</label>
                                     </div>
                                 </th>
-                                <th>Feedback ID</th>
+                                <th>#</th>
                                 <th>Feedback Title</th>
-                                <th>Feedback Description</th>
+                                <th>Description</th>
                                 <th>Relevent Meeting </th>
+                                <th>Kindergarten</th>
                                 <th>Parent Name</th>
-
+                                <th>Kindergarten Director</th>
                                 <th>Created At</th>
                                 <th>Updated At</th>
 
@@ -61,7 +62,14 @@
                                     @Html.DisplayFor(modelItem => item.Meeting.TypeMeeting)
                                 </td>
                                 <td>
+                                    @Html.DisplayFor(modelItem => item.Meeting.Kindergarden.Name)
+                                </td>
+                                <td>
                                     @Html.DisplayFor(modelItem => item.Meeting.Users.Login)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Meeting.Kindergarden.Director.Login)
                                 </td>
 
                                 <td>
@@ -80,17 +88,18 @@
                                     </td>
                                 }
 
-                                <td>
+                            <td>
 
-                                    <!-- Button trigger modal -->
+                                <!-- Button trigger modal -->
 
 
-                                    <i class="uil uil-pen font-size-18 text-primary" onclick="location.href = '@(Url.Action("Edit", new { id = item.IdFeedback }))'"> </i>
-                                    <i class="uil uil-eye font-size-18 text-dark" onclick="location.href = '@(Url.Action("Details", new { id = item.IdFeedback }))'"> </i>
+                                <i class="uil uil-pen font-size-18 text-primary" onclick="location.href = '@(Url.Action("Edit", new { id = item.IdFeedback }))'"> </i>
+                                <i class="uil uil-eye font-size-18 text-dark" onclick="location.href = '@(Url.Action("Details", new { id = item.IdFeedback }))'"> </i>
+                                <i class="uil uil-eye font-size-18 text-dark" onclick="location.href = '@(Url.Action("Response", new { id = item.IdFeedback }))'"> </i>
 
-                                    <i class="uil uil-trash font-size-18 text-danger" onclick="location.href = '@(Url.Action("Delete", new { id = item.IdFeedback }))'"> </i>
+                                <i class="uil uil-trash font-size-18 text-danger" onclick="location.href = '@(Url.Action("Delete", new { id = item.IdFeedback }))'"> </i>
 
-                                </td>
+                            </td>
                             </tr>
 
                             }

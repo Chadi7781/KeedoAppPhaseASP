@@ -45,10 +45,11 @@ namespace KeedoApp.Controllers
 
         // GET: Question/Details/5
         [HttpGet]
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
 
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Questions/retrieve-question-details/" + id.ToString()).Result;
+
             Question question;
             if (httpResponseMessage.IsSuccessStatusCode)
             {
@@ -60,6 +61,8 @@ namespace KeedoApp.Controllers
             {
                 question = null;
             }
+
+           
 
             return View(question);
         }

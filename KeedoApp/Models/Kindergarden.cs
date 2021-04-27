@@ -16,7 +16,7 @@ namespace KeedoApp.Models
 
 		private string name;
 		private string location;
-
+		private string description;
 		private ISet<Claim> claims;
 
 		public int? directorFk { get; set; }
@@ -67,7 +67,17 @@ namespace KeedoApp.Models
 				this.name = value;
 			}
 		}
-
+		public virtual string Description
+		{
+			get
+			{
+				return description;
+			}
+			set
+			{
+				this.description = value;
+			}
+		}
 		public virtual string Location
 		{
 			get

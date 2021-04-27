@@ -178,6 +178,7 @@
     <Compile Include="Models\ExchangeRequest.cs" />
     <Compile Include="Models\ExchangeStatus.cs" />
     <Compile Include="Models\FeedBack.cs" />
+    <Compile Include="Models\FeedbackView.cs" />
     <Compile Include="Models\Follow.cs" />
     <Compile Include="Models\FollowRequest.cs" />
     <Compile Include="Models\Geocalisation.cs" />
@@ -707,6 +708,9 @@
     <Content Include="Views\Shared\ClientTemplate\_SideBar.cshtml" />
     <Content Include="Views\Shared\ClientTemplate\_Styles.cshtml" />
     <Content Include="Views\Claim\Delete.cshtml" />
+    <Content Include="Views\Response\Create.cshtml" />
+    <Content Include="Views\Response\Details.cshtml" />
+    <Content Include="Views\Feedback\Response.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

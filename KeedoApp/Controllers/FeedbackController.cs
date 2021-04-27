@@ -251,5 +251,71 @@ namespace KeedoApp.Controllers
 
             return View(questions);
         }
+
+
+
+        public ActionResult Response(int id)
+        {
+
+
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Feedbacks/retrieve-feedback-details/" + id.ToString()).Result;
+            HttpResponseMessage httpResponseMessage2 = httpClient.GetAsync(baseAddress + "Questions/retrieve-feedback-questions/" + id.ToString()).Result;
+            Feedback feedback;
+            IEnumerable<Question> questions;
+
+            QuestionType questionType;
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                feedback = httpResponseMessage.Content.ReadAsAsync<Feedback>().Result;
+            }
+            else
+            {
+                feedback = null;
+            }
+            if (httpResponseMessage2.IsSuccessStatusCode)
+            {
+                ViewBag.questions = httpResponseMessage2.Content.ReadAsAsync<IEnumerable<Question>>().Result;
+            }
+            else
+            {
+                ViewBag.questions = null;
+            }
+
+            ViewBag.satisfaction = QuestionType.Satisfaction;
+            ViewBag.rating = QuestionType.Stars;
+            ViewBag.text = QuestionType.Text;
+
+
+            return View(feedback);
+        }
+
+
+
+
+
+        [HttpPost]
+        public async Task<ActionResult> Response(int id ,Response rep)
+        {
+
+
+            rep.Responses = (Request["text"].ToString());
+            
+            var response = await httpClient.PostAsJsonAsync(baseAddress + "Responses/responseTo/" + id, rep);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Response");
+            }
+           
+
+        
+
+            return View(rep);
+
+
+
+        }
+
+
     }
 }

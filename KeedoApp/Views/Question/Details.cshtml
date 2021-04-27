@@ -14,30 +14,7 @@
 
 
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Response)
-        </dt>
-        @if (@Model.Response.Responses != null)
-        {
-            <dd>
-                @Html.DisplayFor(model => model.Response.Responses)
-            </dd>
-        }
-        else if (@Model.Response.Rating != null)
-        {
-            <dd>
-                @Html.DisplayFor(model => model.Response.Rating)
-            </dd>
- }
-        else
-        {
-            <dd>
-                @Html.DisplayFor(model => model.Response.SatisfactionDegree)
-            </dd>
-
-        }
-
-
+       
         <dt>
             @Html.DisplayNameFor(model => model.Type)
         </dt>

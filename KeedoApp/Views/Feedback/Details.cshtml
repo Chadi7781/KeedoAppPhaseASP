@@ -60,7 +60,7 @@
 
 
 
-                                        @item.Response.SatisfactionDegree
+                                      
 
                                     </dd>
                                 }
@@ -69,17 +69,11 @@
 
                                     <h6>Q : @item.Questions</h6>
 
-                                    @item.Response.Responses
-
                                 }
                                 else
                                 {
                                     <h6>Q : @item.Questions</h6>
-                                    for (int i = 0; i < @item.Response.Rating; i++)
-                                    {
-                                        <span class="fa fa-star checked"></span>
-
-                                    }
+                               
 
 
                                 }
@@ -110,93 +104,3 @@
 
 
 
-
-<div style="margin-left:50px">
-    <h4>Feedback</h4>
-    <hr />
-    <dl class="dl-horizontal">
-   
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Meeting)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Meeting.TypeMeeting)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Questions)
-        </dt>
-        @foreach (var item in ViewBag.questions)
-        {
-
-            if (@item.Type == ViewBag.satisfaction)
-            {
-                @item.Questions
-                <dd>
-
-
-
-                    @item.Response.SatisfactionDegree
-
-                </dd>
-            }
-            else if (@item.Type == ViewBag.text)
-            {
-
-                @item.Questions
-
-                @item.Response.Responses
-
-            }
-            else
-            {
-                @item.Questions
-                for (int i = 0; i < @item.Response.Rating; i++)
-                {
-                    <span class="fa fa-star checked"></span>
-
-                }
-
-
-            }
-        }
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedAt)
-        </dd>
-
-    </dl>
-</div>
-<p style="margin-left:50px">
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdFeedback }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

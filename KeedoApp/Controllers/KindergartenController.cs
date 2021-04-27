@@ -48,6 +48,29 @@ namespace KeedoApp.Controllers.Kindergarten
 
         }
 
+
+        public ActionResult Search1(string name)
+        {
+            
+            HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "Kindergartens/kindergarden/"+name).Result;
+
+            Kindergarden kindergarden;
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                kindergarden = httpResponseMessage.Content.ReadAsAsync<Kindergarden>().Result;
+            }
+            else
+            {
+                kindergarden = null;
+
+            }
+
+
+
+            return View(kindergarden);
+
+        }
+
         // GET: Kindergarten/Details/5
 
 

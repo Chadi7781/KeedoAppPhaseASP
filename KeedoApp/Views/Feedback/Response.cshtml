@@ -1,0 +1,135 @@
+﻿@model KeedoApp.Models.Feedback
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
+
+<div class="account-pages my-5 pt-sm-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <a href="index.html" class="mb-5 d-block auth-logo">
+                        <img src="assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
+                        <img src="assets/images/logo-light.png" alt="" height="22" class="logo logo-light">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xl-5">
+                <div class="card">
+
+                    <div class="card-body p-4">
+
+                        <div class="text-center mt-2">
+                            <h3 class="text-primary"> Feedback </h3>
+                            <p class="text-muted">You can give your feedback related to the  meeting passed with the director  </p>
+                        </div>
+                        <div class="p-2 mt-4">
+
+
+
+                            <div class="mb-3">
+                                <label class="control-label col-md-5 "> </label>
+
+                             
+
+
+
+                            </div>
+
+                            @foreach (var item in ViewBag.questions)
+                            {
+                                <form method="post" action="@Url.Action("Response", null, new { id= @item.Id})">
+
+
+
+
+                                    <dt>
+                                        @item.Questions
+                                    </dt>
+
+                                    @if (@item.Type == ViewBag.satisfaction)
+                                    {
+                                        <dd>
+
+                                           
+
+                                            <input type="radio" name="degree" value="Very_satisfied" />Very_satisfied<br />
+                                            <input type="radio" name="degree" value="Somewhat_satisfied" />Somewhat_satisfied<br />
+                                            <input type="radio" name="degree" value="Dissatisfied" />Dissatisfied<br />
+                                            <input type="radio" name="degree" value="Very_dissatisfied" />Very_dissatisfied<br />
+
+
+
+
+
+
+                                        </dd>
+                                    }
+                                    else if (@item.Type == ViewBag.text)
+                                    {
+
+                                        <input type="text" name="text" />
+
+                                    }
+                                    else
+                                    {
+                                        for (int i = 0; i < 10; i++)
+                                        {
+
+                                            <span class="fa fa-star checked"></span>
+
+
+
+
+                                        }
+                                    }
+
+
+
+
+
+
+
+                                    <div class="form-actions no-color " style="margin-left:70%">
+                                        <button class="theme-btn btn-style-one" type="submit" name="submit-form">Save Response</button>
+
+                                    </div>
+
+
+
+
+                                </form>
+
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</div>
+
+
+
+
+
+
+
+

@@ -372,61 +372,35 @@
 <section class="program-section">
     <div class="auto-container">
         <div class="sec-title text-center">
-            <span class="title">Select Program</span>
-            <h2>Our Programs</h2>
+            <span class="title">Latest Kindergartens</span>
+            <h2>Our Kindergartens</h2>
         </div>
 
         <div class="row">
             <!-- Program Block -->
-            <div class="program-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
-                <div class="inner-box">
-                    <div class="image-box">
-                        <figure class="image"><a href="numbers-matching.html"><img src="~/FrontEnd/Client/images/resource/program-1.jpg" alt=""></a></figure>
-                    </div>
-                    <div class="lower-content">
-                        <h4><a href="numbers-matching.html">Numbers Matching</a></h4>
-                        <div class="text">Lorem ipsum avail but the major have suffer in some form.</div>
-                        <ul class="program-info">
-                            <li><span>Age:</span> 2-3 years</li>
-                            <li><span>Time:</span> 9:00-11:00</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Program Block -->
-            <div class="program-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                <div class="inner-box">
-                    <div class="image-box">
-                        <figure class="image"><a href="paper-plates-art.html"><img src="~/FrontEnd/Client/images/resource/program-2.jpg" alt=""></a></figure>
-                    </div>
-                    <div class="lower-content">
-                        <h4><a href="paper-plates-art.html">Paper Plates Art</a></h4>
-                        <div class="text">Lorem ipsum avail but the major have suffer in some form.</div>
-                        <ul class="program-info">
-                            <li><span>Age:</span> 2-3 years</li>
-                            <li><span>Time:</span> 9:00-11:00</li>
-                        </ul>
+            @foreach (var item in ViewBag.kindergartens)
+            {
+                <div class="program-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><a href="numbers-matching.html"><img src="~/FrontEnd/Client/images/resource/program-1.jpg" alt=""></a></figure>
+                        </div>
+                        <div class="lower-content">
+                            <h4><a href="numbers-matching.html">@item.Name</a></h4>
+                            <div class="text">@item.Description</div>
+                            <ul class="program-info">
+                                <li><span>Kids :</span> @ViewBag.kids</li>
+                                <li><span>Daycares :</span> @ViewBag.daycares</li>
+                                <li><span>Location:</span> @item.Location</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
 
-            <!-- Program Block -->
-            <div class="program-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
-                <div class="inner-box">
-                    <div class="image-box">
-                        <figure class="image"><a href="create-cartoon-egg.html"><img src="~/FrontEnd/Client/images/resource/program-3.jpg" alt=""></a></figure>
-                    </div>
-                    <div class="lower-content">
-                        <h4><a href="create-cartoon-egg.html">Create Egg Cartoon</a></h4>
-                        <div class="text">Lorem ipsum avail but the major have suffer in some form.</div>
-                        <ul class="program-info">
-                            <li><span>Age:</span> 2-3 years</li>
-                            <li><span>Time:</span> 9:00-11:00</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
+
         </div>
 
         <div class="btn-box">
