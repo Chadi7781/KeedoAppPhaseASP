@@ -584,6 +584,25 @@ namespace KeedoApp.Controllers
             return RedirectToAction("Newsfeed");
 
         }
+        public ActionResult ReportPost(int id)
+        {
+            return (ReportPost(id, null));
+        }
+
+        // POST: Post/Create
+        [HttpPost]
+        public ActionResult ReportPost(int id, FormCollection collection)
+        {
+            var postTask = httpClient.PostAsync(baseAddress + "Post/report-post/" + id.ToString(), null);
+
+            postTask.Wait();
+
+            var result = postTask.Result;
+
+
+            return RedirectToAction("Newsfeed");
+
+        }
 
     }
 }
