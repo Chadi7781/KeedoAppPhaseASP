@@ -1,0 +1,62 @@
+﻿@model IEnumerable<KeedoApp.Models.EmpruntBook>
+
+@{
+    ViewBag.Title = "EmpruntEnCours";
+}
+
+
+<div class="auto-container">
+    <div class="sec-title text-center">
+        <span class="title">Library Management </span>
+        <h2>We are welcome to available book</h2>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <!-- Mission Block -->
+            <div class="mission-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+                <div class="inner-box">
+                    <figure class="image"><img src="/FrontEnd/assets/images/enfant-livre.png" alt=""></figure>
+                    <div class="lower-content">
+
+                        <h3> loan book in progress</h3>
+                        <b>      @Html.DisplayNameFor(model => model.IdEmprunt) </b>
+                        @Html.DisplayFor(modelItem => item.IdEmprunt)
+                        <br />
+                        <b>   @Html.DisplayNameFor(model => model.DebutDate)  </b>
+                        @Html.DisplayFor(modelItem => item.DebutDate)
+
+
+                        @Html.DisplayNameFor(model => model.FinDate)
+
+                        @Html.DisplayFor(modelItem => item.FinDate)
+                        @Html.DisplayNameFor(model => model.Prolonge)
+                        @Html.DisplayFor(modelItem => item.Prolonge)
+                        @Html.DisplayNameFor(model => model.Rendu)
+
+                        @Html.DisplayFor(modelItem => item.Rendu)
+                        @Html.DisplayNameFor(model => model.Detail)
+
+                        @Html.DisplayFor(modelItem => item.Detail)
+
+
+                        <br />
+                    <center>
+                        <button type="button" class="btn btn-success waves-effect waves-light">
+                            <i class="uil uil-check me-2"></i>  @Html.ActionLink("stop the loan", "LivreRendu", new { idEmprunt = item.IdEmprunt }, new { id = "OT", style = "color: White " })
+                        </button><br /><br />
+                        <button type="button" class="btn btn-warning waves-effect waves-light">
+                            <i class="uil uil-exclamation-triangle me-2"></i>  @Html.ActionLink("extend duration", "ProlongEmprunt", new { idEmprunt = item.IdEmprunt }, new { id = "OT", style = "color: White " })
+                        </button>
+                    </center>
+
+
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

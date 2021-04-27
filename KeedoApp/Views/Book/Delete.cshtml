@@ -1,0 +1,91 @@
+﻿@model KeedoApp.Models.Book
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Isbn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Isbn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuteurNom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuteurNom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuteurPrenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuteurPrenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Collection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Collection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Etiquette)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Etiquette)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StockTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StockDisponible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockDisponible)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<p>
+    <button class="btn btn-success waves-effect waves-light" type="submit">
+        <i class="uil uil-check me-2"></i> Delete
+    </button>
+    <button class="btn btn-danger"> <i class="uil uil-times me-1"></i> @Html.ActionLink("Back to List", "Book", null, new { id = "OT", style = "color: White " })</button>
+
+</p>
+    }
+</div>

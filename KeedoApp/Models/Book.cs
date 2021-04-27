@@ -11,7 +11,7 @@ namespace KeedoApp.Models
 	{
 		private int id;
 
-	
+
 		private string isbn;
 
 
@@ -21,7 +21,7 @@ namespace KeedoApp.Models
 
 		private string auteurPrenom;
 
-	
+
 		private string collection;
 
 		private string etiquette;

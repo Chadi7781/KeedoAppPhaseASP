@@ -1,0 +1,67 @@
+﻿@model KeedoApp.Models.Driver
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Driver</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt class="font-size-16 mb-3">
+            @Html.DisplayNameFor(model => model.IdDriver)
+        </dt>
+
+        <dd>
+           
+            @Html.DisplayFor(model => model.IdDriver)
+        </dd>
+
+        <dt class="font-size-16 mb-3">
+            <i class="uil-clipboard-alt"></i>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt class="font-size-16 mb-3">
+            <i class="uil-clipboard-alt"></i>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+         
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt class="font-size-16 mb-3">
+            <i class="uil uil-phone me-1"></i>
+            @Html.DisplayNameFor(model => model.TelNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelNum)
+        </dd>
+
+        <dt class="font-size-16 mb-3"><i class="uil-home"></i>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button class="btn btn-danger"> <i class="uil uil-times me-1"></i> @Html.ActionLink("Back to List", "Driver", null, new { id = "OT", style = "color: White " })</button>
+   
+<button type="button" class="btn btn-warning waves-effect waves-light">
+    <i class="uil uil-exclamation-triangle me-2"></i>  @Html.ActionLink("Edit", "Edit", new { idDriver = Model.IdDriver }, new { id = "OT", style = "color: White " }) 
+</button>
+</p>

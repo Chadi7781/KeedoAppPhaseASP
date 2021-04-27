@@ -1,0 +1,76 @@
+﻿@model IEnumerable<KeedoApp.Models.Book>
+
+@{
+    ViewBag.Title = "BookDisponibleClient";
+}
+
+
+
+    <div class="auto-container">
+        <div class="sec-title text-center">
+            <span class="title">Library Management </span>
+            <h2>We are welcome to available book</h2>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <!-- Mission Block -->
+                <div class="mission-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+                    <div class="inner-box">
+                        <figure class="image"><img src="/FrontEnd/assets/images/enfant-livre.png" alt=""></figure>
+                        <div class="lower-content">
+
+                            <h3> Available book</h3>
+
+                            <b> @Html.DisplayNameFor(model => model.Isbn) :</b>
+                            @Html.DisplayFor(modelItem => item.Isbn)
+
+                            <br />
+                            <b>@Html.DisplayNameFor(model => model.Titre) :</b>
+                            @Html.DisplayFor(modelItem => item.Titre)
+                            <br />
+                            <b> @Html.DisplayNameFor(model => model.AuteurNom) :</b>
+                            @Html.DisplayFor(modelItem => item.AuteurNom)
+                            <br />
+
+                            <b> @Html.DisplayNameFor(model => model.AuteurPrenom) :</b>
+                            @Html.DisplayFor(modelItem => item.AuteurPrenom)
+                            <br />
+                            <b>@Html.DisplayNameFor(model => model.Collection) :</b>
+                            @Html.DisplayFor(modelItem => item.Collection)
+                            <br />
+                            <b>  @Html.DisplayNameFor(model => model.Etiquette) :</b>
+                            @Html.DisplayFor(modelItem => item.Etiquette)
+                            <br />
+                            <b> @Html.DisplayNameFor(model => model.StockTotal) :</b>
+                            @Html.DisplayFor(modelItem => item.StockTotal)
+                            <br />
+                            <b>  @Html.DisplayNameFor(model => model.StockDisponible) :</b>
+                            @Html.DisplayFor(modelItem => item.StockDisponible)
+                            <br /><br />
+                                  <a class="has-arrow waves-effect">
+                                      @Html.ActionLink("Details", "Details", new { Id = item.Id })|<i class="uil-invoice"></i>
+                                      
+                                          <b>
+                                              show more...
+                                          </b>
+                                  </a>
+                            
+                           
+                            <center>
+                              
+                                <div class="col-md-4">
+                                    <div>
+                                        <button type="button" class="btn btn-success waves-effect waves-light mb-3"><i class="uil uil-file-alt me-1"></i> @Html.ActionLink("borrow book", "../empruntBook/CreeEmprunt", new { idBook = item.Id }, new { id = "OT", style = "color: White " }) 
+                                        </button>
+                                    </div>
+                                </div>
+                            </center>
+
+                        </div>
+                    </div>
+                </div>
+            }</div>
+            
+    </div>

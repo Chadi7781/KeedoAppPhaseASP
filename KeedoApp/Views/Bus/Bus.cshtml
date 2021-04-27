@@ -1,0 +1,134 @@
+﻿@model IEnumerable<KeedoApp.Models.Bus>
+@{
+    ViewBag.Title = "Bus";
+}
+
+<div class="col-12">
+    <div class="page-title-box d-flex align-items-center justify-content-between">
+        <h2 class="mb-0">Bus List</h2>
+    </div>
+</div>
+
+<td> @ViewBag.result</td>
+
+<form>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="float-end">
+                <div class=" mb-3">
+
+
+                    Search: <input type="text" name="SearchString" />
+                    <input type="submit" value="Filter" />
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<table class="table table-primary table-striped mb-0">
+    <thead>
+        <tr class="bg-transparent">
+            <th>
+                <div class="form-check text-center">
+                    <input type="checkbox" class="form-check-input" id="invoicecheck">
+                    <label class="form-check-label" for="invoicecheck"></label>
+                </div>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdBus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Departure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeDep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Disponible)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <div class="form-check text-center">
+                        <input type="checkbox" class="form-check-input" id="invoicecheck1">
+                        <label class="form-check-label" for="invoicecheck1"></label>
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdBus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Departure)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destination)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeDep)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Disponible)
+                </td>
+
+                <td>
+                    <a class="has-arrow waves-effect">
+                        @Html.ActionLink("Details", "Details", new { idBus = item.IdBus })|<i class="uil-invoice"></i>
+                    </a>
+                    <a class="px-3 text-primary">@Html.ActionLink("Edit", "Edit", new { IdBus = item.IdBus })|<i class="uil uil-pen font-size-18"> </i></a>
+
+                    <a class="px-3 text-danger"> @Html.ActionLink("Delete", "Delete", new { IdBus = item.IdBus })|<i class="uil uil-trash-alt font-size-18"></i></a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+
+
+<div class="col-sm-6">
+    <div class="float-sm-end">
+        <ul class="pagination mb-sm-0">
+            <li class="page-item disabled">
+                <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
+            </li>
+            <li class="page-item active">
+                <a href="#" class="page-link">1</a>
+            </li>
+            <li class="page-item ">
+                <a href="#" class="page-link">2</a>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link">3</a>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>

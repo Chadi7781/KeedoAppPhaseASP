@@ -5,15 +5,19 @@ using System.Web;
 
 namespace KeedoApp.Models
 {
-	
+
 	public class EmpruntCreation
 	{
 
-		private string userId;
-		private string bookId;
+		//public string userId;
+		//	public string bookId;
+		public int? bookId { get; set; }
+		public Book book { get; set; }
 
+		public int? userId { get; set; }
+		public User user { get; set; }
 
-		public virtual string UserId
+		/*public virtual string UserId
 		{
 			get
 			{
@@ -34,7 +38,7 @@ namespace KeedoApp.Models
 			{
 				this.bookId = value;
 			}
-		}
+		}*/
 
 	}
 }

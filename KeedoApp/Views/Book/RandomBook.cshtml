@@ -1,0 +1,75 @@
+﻿@model IEnumerable<KeedoApp.Models.Book>
+
+@{
+    ViewBag.Title = "RandomBook";
+}
+
+<h2>RandomBook</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Isbn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuteurNom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuteurPrenom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Collection)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Etiquette)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StockTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StockDisponible)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Isbn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuteurNom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuteurPrenom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Collection)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Etiquette)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StockTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StockDisponible)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

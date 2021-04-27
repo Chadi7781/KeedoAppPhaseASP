@@ -1,0 +1,84 @@
+﻿@model KeedoApp.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Isbn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Isbn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuteurNom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuteurNom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuteurPrenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuteurPrenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Collection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Collection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Etiquette)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Etiquette)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StockTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StockDisponible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockDisponible)
+        </dd>
+
+    </dl>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+    <a class="has-arrow waves-effect">@Html.ActionLink("borrow book", "../empruntBook/CreeEmprunt", new { id = Model.Id }) borrow book <i class="uil-book-alt"></i></a>
+</p>

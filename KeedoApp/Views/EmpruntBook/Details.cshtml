@@ -1,0 +1,67 @@
+﻿@model KeedoApp.Models.EmpruntBook
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EmpruntBook</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdEmprunt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdEmprunt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DebutDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DebutDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prolonge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prolonge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rendu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rendu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+   
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

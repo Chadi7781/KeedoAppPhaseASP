@@ -1,0 +1,64 @@
+﻿@model KeedoApp.Models.EmpruntBook
+
+@{
+    ViewBag.Title = "CreeEmprunt";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="auto-container">
+    <div class="sec-title text-center">
+        <span class="title">Library Management </span>
+        <h2>We are welcome to borrow book</h2>
+    </div>
+    <div class="auto-container">
+        <div class="contact-form">
+            <div class="event-detail-section">
+                <div class="auto-container">
+                    <div class="row">
+                        <!--Content Side-->
+                        <div class="content-side col-lg-8 col-md-12 col-sm-12">
+                            <div class="event-detail">
+                                <div class="author-box">
+                                    <div class="inner-box">
+                                        <div class="image-box"><img src="/FrontEnd/assets/images/enfant2.jpg" alt=""></div>
+                                        <h2><h2 class="name">Borrow book</h2></h2>
+                                        <p>
+                                            <center><h4>“Sleep is good, he said, and books are better.”</h4> </center>
+
+                                        </p>
+                                        <center>
+                                            <ul class="contact-info">
+                                                <li><h7>Are you sure to borrow this book?</h7></li>
+
+
+                                            </ul>
+                                        </center>
+                                        <center>
+                                            <button type="submit" value="Create" class="btn btn-success waves-effect waves-light">
+                                                <i class="uil uil-check me-2"></i>  Yes
+                                            </button>
+                                            <button type="button" class="btn btn-warning waves-effect waves-light">
+                                                <i class="uil uil-exclamation-triangle me-2"></i>   @Html.ActionLink("Back to List", "EmpruntEnCours")
+                                            </button>
+                                        </center>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    }
+

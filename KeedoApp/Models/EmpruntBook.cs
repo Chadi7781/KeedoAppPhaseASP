@@ -16,9 +16,10 @@ namespace KeedoApp.Models
 		private DateTime debutDate;
 
 		private DateTime finDate;
-	private bool isProlonge = false;
-private bool isRendu = false;
+		private bool isProlonge = false;
+		private bool isRendu = false;
 		private string detail;
+
 
 
 		public EmpruntBook() : base()

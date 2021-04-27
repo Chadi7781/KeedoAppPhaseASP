@@ -1,0 +1,84 @@
+﻿@model KeedoApp.Models.Bus
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="font-size-16 mb-3">
+            @Html.DisplayNameFor(model => model.IdBus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdBus)
+        </dd>
+
+        <dt class="font-size-16 mb-3">
+            <i class="uil-clipboard-alt"></i>
+            @Html.DisplayNameFor(model => model.Departure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departure)
+        </dd>
+
+        <dt class="font-size-16 mb-3">
+            <i class="uil-clipboard-alt"></i>
+            @Html.DisplayNameFor(model => model.Destination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destination)
+        </dd>
+
+        <dt class="font-size-16 mb-3">
+            <i class="uil-clock-three"></i>
+            @Html.DisplayNameFor(model => model.TimeDep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeDep)
+        </dd>
+
+        <dt class="font-size-16 mb-3">
+            <i class="uil-clock-three"></i>
+            @Html.DisplayNameFor(model => model.TimeA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeA)
+        </dd>
+
+        <dt class="font-size-16 mb-3">
+            <i class="uil-clipboard-alt"></i>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </dt>
+
+        <dd>
+     
+            @Html.DisplayFor(model => model.Capacity)
+        </dd>
+
+        <dt class="font-size-16 mb-3">
+            <i class="uil-clipboard-alt"></i>
+            @Html.DisplayNameFor(model => model.Disponible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponible)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button class="btn btn-danger"> <i class="uil uil-times me-1"></i> @Html.ActionLink("Back to List", "Bus", null, new { id = "OT", style = "color: White " })</button>
+
+    <button type="button" class="btn btn-warning waves-effect waves-light">
+        <i class="uil uil-exclamation-triangle me-2"></i>  @Html.ActionLink("Edit", "Edit", new { idDriver = Model.IdBus }, new { id = "OT", style = "color: White " })
+    </button>
+</p>
