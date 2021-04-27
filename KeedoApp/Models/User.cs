@@ -627,6 +627,10 @@ namespace KeedoApp.Models
 			}
 		}
 
+		// Yasmin
+		public string ReturnFirstLast { get { return firstName + " " + lastName; } }
+
+
 
 	}
 }

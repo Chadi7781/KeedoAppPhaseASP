@@ -20,7 +20,7 @@ namespace KeedoApp.Models
 
 		private DateTime timeChecked;
 
-		
+
 		private bool isRead;
 
 		private User userSend;
