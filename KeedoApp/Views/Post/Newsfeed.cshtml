@@ -1,0 +1,525 @@
+﻿@using KeedoApp.Models;
+@model BigViewModel 
+
+@{
+    ViewBag.Title = "Newsfeed";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Keedo | Newsfeed </title>
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="http:\\localhost\img\logo.png" height="80" width="90" type="image/x-icon">
+    <link rel="icon" href="http:\\localhost\img\logo.png" height="80" width="90" type="image/x-icon">
+
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+
+
+        <!-- Main Header -->
+        <header class="main-header">
+            <!-- Header Upper -->
+            <div class="header-upper">
+                <div class="auto-container">
+                    <div class="nav-outer clearfix">
+
+
+                        <div class="responsive-logo"><a href="index.html"><img src="http:\\localhost\img\logo.png" alt="" title="Keedo"></a></div>
+
+                        <!-- Main Menu -->
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="navbar-header">
+                                <!-- Togg le Button -->
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="icon flaticon-menu-button"></span>
+                                </button>
+                            </div>
+
+                        </nav>
+                        <!-- Main Menu End-->
+                    </div>
+                </div>
+            </div>
+            <!--End Header Upper-->
+            <!-- Header Lower -->
+            <div class="header-lower">
+                <div class="auto-container">
+                    <div class="outer-box">
+
+
+                        <!--Logo-->
+                        <div class="logo-outer">
+                            <div class="logo"><a href="index.html"><img src="http:\\localhost\img\logo.png" alt="" height="80" width="90" title="keedo"></a></div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Header  -->
+            <div class="sticky-header">
+                <div class="auto-container clearfix">
+                    <!--Logo-->
+                    <div class="logo pull-left">
+                        <a href="index.html" title=""><img src="http:\\localhost\img\logo.png" height="80" width="90" alt="" title=""></a>
+                    </div>
+                    <!--Right Col-->
+                    <div class="pull-right">
+                        <!-- Main Menu -->
+                        <nav class="main-menu">
+                            <div class="navbar-collapse show collapse clearfix">
+                                <ul class="navigation clearfix">
+                                    <li class="dropdown">
+                                        <a href="index.html">Home</a>
+                                        <ul>
+                                            <li><a href="index.html">Home page 01</a></li>
+                                            <li><a href="index-2.html">Home page 02</a></li>
+                                            <li class="dropdown">
+                                                <a href="index.html">Header Styles</a>
+                                                <ul>
+                                                    <li><a href="index.html">Header Style One</a></li>
+                                                    <li><a href="index-2.html">Header Style Two</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li class="dropdown">
+                                        <a href="events.html">Events</a>
+                                        <ul>
+                                            <li><a href="events.html">Events</a></li>
+                                            <li><a href="event-detail.html">Event Detail</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="programs.html">Programs</a>
+                                        <ul>
+                                            <li><a href="numbers-matching.html">Numbers Matching</a></li>
+                                            <li><a href="paper-plates-art.html">Paper Plates Art</a></li>
+                                            <li><a href="create-cartoon-egg.html">Create Egg Cartoon</a></li>
+                                            <li><a href="cooking-fun-cake.html">Cooking Fun Cake</a></li>
+                                            <li><a href="super-colors-game.html">Super Colors Game</a></li>
+                                            <li><a href="learning-disciplines.html">Learning Disciplines</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="gallery.html">Gallery</a></li>
+                                    <li class="current dropdown">
+                                        <a href="news.html">Our News</a>
+                                        <ul>
+                                            <li><a href="news.html">Our News</a></li>
+                                            <li><a href="news-single.html">News Single</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </nav><!-- Main Menu End-->
+                    </div>
+                </div>
+            </div><!-- End Sticky Menu -->
+        </header>
+        <!-- End Main Header -->
+        <!--Page Title-->
+        <section class="page-title" style="background-image:url(http:\\localhost\img\background\1.jpg);">
+            <div class="auto-container">
+                <div class="inner-container clearfix">
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="https://localhost:44330/Home/IndexClient">Home</a></li>
+                        <li><a href="news.html">Profile</a></li>
+                    </ul>
+                    <h1>Newsfeed</h1>
+                </div>
+            </div>
+        </section>
+        <!--End Page Title-->
+        <!-- Sidebar Page Container -->
+        <div class="sidebar-page-container">
+            <div class="auto-container">
+                <div class="row">
+                    <!--Content Side-->
+                    <div class="content-side col-lg-8 col-md-12 col-sm-12">
+                        <div class="news-detail">
+                            <!-- add Post form -->
+                            <div class="comment-form">
+                                <div class="group-title"><h3>Share your thoughts</h3></div>
+                                <!--Post Form-->
+                                <form method="post" action="@Url.Action("ClientCreate", "Post")">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                            <textarea class="darma" name="postxt" placeholder="Write Post" id="postxt"></textarea>
+                                            <textarea class="darma" name="medialink" placeholder="attached file" id="medialink"></textarea>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                            <button class="theme-btn btn-style-one" type="submit" name="submit-form">Post</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--End add Post Form -->
+                            <!-- News Block -->
+                            @foreach (var item in Model.Post)
+                            {
+                        <div class="news-block">
+                            <div class="author-box style-two">
+                                <div class="inner-box">
+                                    <div class="image-box"><img src="http:\\localhost\img\resource\author-img.jpg" alt=""></div>
+
+                                    <h3 class="name">@item.Login</h3>
+                                </div>
+                            </div>
+                            <div class="inner-box">
+                                <div class="image-box">
+                                    @if (!string.IsNullOrEmpty(item.MediaLink))
+                                    {
+                                        <figure class="image wow fadeIn"><img src="@Url.Content(item.MediaLink)" alt=""></figure>
+                                    }
+                                </div>
+                                <div class="lower-content">
+                                    <ul class="post-info">
+                                        <li><span class="fa fa-pencil-alt"></span><a href="news-single.html">by @item.Login</a></li>
+                                        <li><span class="fa fa-calendar-alt"></span><a href="news-single.html">at @item.CreateDate</a></li>
+                                        <li><span class="fa fa-comments"></span><a href="news-single.html">@item.Cmtnb comments</a></li>
+                                    </ul>
+                                    <h3>@item.PostContent</h3>
+                                    <div class="float-right">
+                                        <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientShare", "Post" , new { id= item.IdPost})'">
+                                            Share
+                                        </button>
+                                        <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientDelete", "Post" , new { id= item.IdPost})'">
+                                            Delete
+                                        </button>
+                                        <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ReportPost", "Post" , new { id= item.IdPost})'">
+                                            Report
+                                        </button>
+                                        <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientLike", "Post" , new { id= item.IdPost})'">
+                                            Like
+                                        </button>
+                                    </div>
+                                </div>
+                                <textarea cols='50' rows='20' name='text' id='text_id' class="darma" style='display:none'> </textarea>
+
+                                <button type="button" class="btn btn-outline-info waves-effect waves-light" onClick='document.getElementById("text_id").style.display = "block" '> Click me !</button>
+                            </div>
+                            
+                            <!-- Other Option -->
+                            <div class="post-share-options clearfix">
+                                <div class="float-left">
+                                    <ul class="tags">
+                                        <li class="title">Tags:</li>
+                                        <li><a href="#">Education</a></li>
+                                        <li><a href="#">Classrooms</a></li>
+                                        <li><a href="#">Baby</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="float-right">
+                                    <ul class="social-icon-colored">
+                                        <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+                                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+
+
+                            <!--Comments Area-->
+
+                            @if (!(@item.Cmtnb).Equals("0"))
+                            {
+                                <div class="comments-area">
+                                    <div class="group-title"><h3>@item.Cmtnb Comments</h3></div>
+                                    @foreach (var comment in item.cmts)
+                                    {
+                                        <div class="comment-box">
+                                            <div class="comment">
+                                                <div class="author-thumb"><img src="http:\\localhost\img\resource\author-2.jpg" alt=""></div>
+                                                <div class="comment-info clearfix"><strong> @comment.Login</strong><div class="comment-time">@comment.CreateDate</div></div>
+                                                <div class="text">@comment.CommentContent</div>
+                                            </div>
+                                            <div class="float-right">
+                                                <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientDeleteComment", "Post" , new { id= comment.IdComment})'">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
+
+
+                                    }
+                                </div>
+                            }
+
+                            <!-- Comment Form -->
+                            <div class="comment-form">
+                                <div class="group-title"><h3>Leave a Comment</h3></div>
+                                <!--Comment Form-->
+                                <form method="post" action="@Url.Action("ClientComment", "Post", new { id= item.IdPost})">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                            <textarea class="darma" name="message" placeholder="Write Comment" id="comment"></textarea>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                            <button class="theme-btn btn-style-one" type="submit" name="submit-form">Post Comment</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--End Comment Form -->
+
+
+                        </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!--Sidebar Side-->
+                    <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+                        <aside class="sidebar">
+                            <!-- Search -->
+                            <div class="sidebar-widget search-box">
+                                <form method="post" action="https://localhost:44330/Post/Newsfeed">
+                                    <div class="form-group">
+                                        <input type="search" name="SearchString" value="" placeholder="Search" required>
+                                        <button type="submit"><span class="icon fa fa-search"></span></button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Categories
+                            <div class="sidebar-widget categories">
+                                <div class="sidebar-title"><h5>Categories</h5></div>
+                                <ul class="category-list">
+                                    <li class="active"><a href="news-single.html">Education</a></li>
+                                    <li><a href="news-single.html">Entertaining</a></li>
+                                    <li><a href="news-single.html">Play Group</a></li>
+                                    <li><a href="news-single.html">Nursery</a></li>
+                                    <li><a href="news-single.html">Nutrition</a></li>
+                                </ul>
+                            </div>-->
+                            <!-- Post Widget -->
+                            <div class="sidebar-widget posts-widget">
+                                <div class="sidebar-title"><h5>Recent Posts</h5></div>
+                                <div class="widget-content">
+
+                                    <!-- Post -->
+                                    <article class="post">
+                                        <div class="post-inner">
+                                            <figure class="image"><a href="events.html"><img src="http:\\localhost\img\resource\post-thumb-1.jpg" alt=""></a></figure>
+                                            <div class="date"><span class="far fa-calendar-alt"></span> 13 Feb, 2019</div>
+                                            <h5><a href="events.html">How to Create a Learning Environment</a></h5>
+                                        </div>
+                                    </article>
+
+                                    <!-- Post -->
+                                    <article class="post">
+                                        <div class="post-inner">
+                                            <figure class="image"><a href="events.html"><img src="http:\\localhost\img\resource\post-thumb-2.jpg" alt=""></a></figure>
+                                            <div class="date"><span class="far fa-calendar-alt"></span>20 Feb, 2019</div>
+                                            <h5><a href="events.html">The Indoor Activities for Everyone</a></h5>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+
+                            <!-- Tags -->
+                            <div class="sidebar-widget popular-tags">
+                                <div class="sidebar-title"><h5>Popular Tags</h5></div>
+                                <ul class="tags-list clearfix">
+                                    <li><a href="#">Education</a></li>
+                                    <li><a href="#">Classrooms</a></li>
+                                    <li><a href="#">Baby</a></li>
+                                    <li><a href="#">Caring</a></li>
+                                    <li><a href="#">Music</a></li>
+                                    <li><a href="#">Childrens</a></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Sidebar Page Container -->
+        <!--Main Footer-->
+        <footer class="main-footer">
+            <div class="anim-icons">
+                <span class="icon icon-sparrow wow zoomIn" data-wow-delay="400ms"></span>
+                <span class="icon icon-rainbow-2 wow zoomIn" data-wow-delay="800ms"></span>
+                <span class="icon icon-star-3"></span>
+                <span class="icon icon-star-3 two"></span>
+                <span class="icon icon-sun"></span>
+                <span class="icon icon-plane wow zoomIn" data-wow-delay="1200ms"></span>
+            </div>
+
+            <!--Scroll to top-->
+            <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon icon-arrow-up"></span></div>
+
+            <!--footer upper-->
+            <div class="footer-upper">
+                <div class="auto-container">
+                    <div class="row clearfix">
+                        <!--Big Column-->
+                        <div class="big-column col-xl-5 col-lg-12 col-md-12 col-sm-12">
+                            <div class="row clearfix">
+
+                                <!--Footer Column-->
+                                <div class="footer-column col-lg-6 col-md-6 col-sm-12">
+                                    <div class="footer-widget logo-widget">
+                                        <div class="logo">
+                                            <a href="index.html"><img src="http:\\localhost\img\footer-logo.png" alt="" /></a>
+                                        </div>
+                                        <div class="text">Etiam rhoncus sit amet adip scing sed ipsum. Lorem ipsum dolor sit amet adipiscing sem neque.</div>
+
+                                    </div>
+                                </div>
+
+                                <!--Footer Column-->
+                                <div class="footer-column col-lg-5 col-md-6 col-sm-12">
+                                    <div class="footer-widget contact-widget">
+                                        <h4 class="widget-title">Contact</h4>
+                                        <div class="widget-content">
+                                            <ul class="contact-info">
+                                                <li><a href="tel:6668880000"><span class="fa fa-phone-square"></span>666 888 0000</a></li>
+                                                <li><a href="mailto:info@bebio.com"><span class="fa fa-envelope"></span>info@bebio.com</a></li>
+                                                <li><span class="fa fa-map"></span> 66 top broklyn street new york</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Big Column-->
+                        <div class="big-column col-xl-7 col-lg-12 col-md-12 col-sm-12">
+                            <div class="row clearfix">
+                                <!--Footer Column-->
+                                <div class="footer-column col-xl-3 col-lg-3 col-md-6 col-sm-4">
+                                    <div class="footer-widget links-widget">
+                                        <h4 class="widget-title">Links</h4>
+                                        <div class="widget-content">
+                                            <ul class="list">
+                                                <li><a href="#">About</a></li>
+                                                <li><a href="#">Contact</a></li>
+                                                <li><a href="#">Our Gallery</a></li>
+                                                <li><a href="#">Programs</a></li>
+                                                <li><a href="#">Events</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Footer Column-->
+                                <div class="footer-column col-xl-4 col-lg-3 col-md-6 col-sm-12">
+                                    <div class="footer-widget activites-widget">
+                                        <h4 class="widget-title">Activities</h4>
+                                        <div class="widget-content">
+                                            <ul class="list">
+                                                <li><a href="#">Table/Floor Toys</a></li>
+                                                <li><a href="#">Outdoor Games</a></li>
+                                                <li><a href="#">Sand Play</a></li>
+                                                <li><a href="#">Play Dough</a></li>
+                                                <li><a href="#">Building Blocks</a></li>
+                                                <li><a href="#">Water Play</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Footer Column-->
+                                <div class="footer-column col-xl-5 col-lg-6 col-md-12 col-sm-12">
+                                    <div class="footer-widget newsletter-widget">
+                                        <h4 class="widget-title">Newsletter</h4>
+                                        <div class="newsletter-form">
+                                            <form method="post" action="http://t.commonsupport.xyz/bebio/contact.html">
+                                                <div class="form-group">
+                                                    <input type="email" name="email" value="" placeholder="Enter Your Email" required="">
+                                                    <button type="submit" class="theme-btn btn-style-one">Subscribe</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Footer Bottom-->
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <ul class="social-icon-colored">
+                        <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                    <div class="copyright"> Copyrights &copy; 2019 Bebio - Kinder Garten HTML Template</div>
+                </div>
+            </div>
+        </footer>
+        <!--End Main Footer-->
+
+    </div>
+    <!--End pagewrapper-->
+    <!--Search Popup-->
+    <div id="search-popup" class="search-popup">
+        <div class="close-search theme-btn"><span class="fa fa-times"></span></div>
+        <div class="popup-inner">
+            <div class="overlay-layer"></div>
+            <div class="search-form">
+                <form method="post" action="http://t.commonsupport.xyz/bebio/index.html">
+                    <div class="form-group">
+                        <fieldset>
+                            <input type="search" class="form-control" name="search-input" value="" placeholder="Search Here" required>
+                            <input type="submit" value="Search Now!" class="theme-btn">
+                        </fieldset>
+                    </div>
+                </form>
+
+                <br>
+                <h3>Recent Search Keywords</h3>
+                <ul class="recent-searches">
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">SEO</a></li>
+                    <li><a href="#">Logistics</a></li>
+                    <li><a href="#">Freedom</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/owl.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/parallax.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+<!-- Mirrored from t.commonsupport.xyz/bebio/news-single.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Apr 2021 11:24:24 GMT -->
+</html>

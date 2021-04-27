@@ -1,0 +1,97 @@
+﻿@model KeedoApp.Models.Post
+
+@{
+    ViewBag.Title = "DeleteReported";
+}
+
+<h2>DeleteReported</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdPost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdPost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifyDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifyDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MediaLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MediaLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Likenb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Likenb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cmtnb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cmtnb)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Reported")
+        </div>
+    }
+</div>

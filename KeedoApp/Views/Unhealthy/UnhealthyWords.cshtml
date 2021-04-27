@@ -1,0 +1,32 @@
+﻿@model IEnumerable<KeedoApp.Models.UnhealthyWord>
+
+@{
+    ViewBag.Title = "UnhealthyWords";
+}
+
+<h2>UnhealthyWords</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Word)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Word)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

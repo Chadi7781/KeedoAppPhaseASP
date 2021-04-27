@@ -1,0 +1,80 @@
+﻿@model IEnumerable<KeedoApp.Models.Post>
+
+@{
+    ViewBag.Title = "Timeline";
+}
+
+<h2>Timeline</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PostContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MediaLink)
+        </th>
+        <th>
+            <p>Likes</p>
+        </th>
+        <th>
+            <p>Comments</p>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifyDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Owner)
+            </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.MediaLink))
+                {
+                    <img src="@Url.Content(item.MediaLink)" height="40" width="50">
+                }
+            </td>
+            <td>
+                @Html.ActionLink(item.Likenb, "Likes", new { id = item.IdPost })
+            </td>
+            <td>
+                @Html.ActionLink(item.Cmtnb, "Comments", new { id = item.IdPost })
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>

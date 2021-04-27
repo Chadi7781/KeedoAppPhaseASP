@@ -1,0 +1,82 @@
+﻿@model IEnumerable<KeedoApp.Models.Post>
+
+@{
+    ViewBag.Title = "Reported";
+}
+
+<h2>Reported</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PostContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MediaLink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+        </th>
+        <th>
+            <p>Likes</p>
+        </th>
+        <th>
+            <p>Comments</p>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifyDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Owner)
+            </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.MediaLink))
+                {
+                    <img src="@Url.Content(item.MediaLink)" height="40" width="50">
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+            <td>
+                @Html.ActionLink(item.Likenb, "Likes", new { id = item.IdPost })
+
+
+            </td>
+            <td>
+                @Html.ActionLink(item.Cmtnb, "Comments", new { id = item.IdPost })
+
+            </td>
+            <td>
+                @Html.ActionLink("Approve", "Approve", new { id = item.IdPost }) |
+                @Html.ActionLink("Delete", "DeleteReported", new { id = item.IdPost })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
