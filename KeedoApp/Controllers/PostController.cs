@@ -531,7 +531,7 @@ namespace KeedoApp.Controllers
         public ActionResult ClientCreate(Post post)
         {
             post.PostContent = (Request["postxt"].ToString());
-            post.MediaLink = (Request["medialinkshare"].ToString());
+            post.MediaLink = (Request["medialink"].ToString());
 
             var postTask = httpClient.PostAsJsonAsync<Post>(baseAddress + "Post/add-post", post);
             postTask.Wait();
@@ -603,6 +603,26 @@ namespace KeedoApp.Controllers
             return RedirectToAction("Newsfeed");
 
         }
+
+        public ActionResult ClientLike(int id)
+        {
+            return (ClientLike(id, null));
+        }
+        // POST: Post/Create
+        [HttpPost]
+        public ActionResult ClientLike(int id, Liking like)
+        {
+            var postTask = httpClient.PostAsJsonAsync<Liking>(baseAddress + "Liking/add-like/" + id.ToString(), null);
+            postTask.Wait();
+
+            var result = postTask.Result;
+
+
+
+            return RedirectToAction("Newsfeed");
+
+        }
+
 
     }
 }
