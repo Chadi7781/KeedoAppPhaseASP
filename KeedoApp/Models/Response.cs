@@ -14,12 +14,12 @@ namespace KeedoApp.Models
 
 		private DateTime createdAt;
 
-
-		private string response;
+		private Nullable<DateTime> updatedAt;
+		private string responses;
 
 		private Satistfaction satisfactionDegree;
 
-	private int rating;
+		private int rating;
 
 
 		private Question question;
@@ -30,7 +30,7 @@ namespace KeedoApp.Models
 		}
 
 
-		
+
 
 		public virtual int Id
 		{
@@ -62,27 +62,6 @@ namespace KeedoApp.Models
 
 
 
-	
-
-
-
-
-
-
-		public virtual Satistfaction SatisfactionDegree
-		{
-			get
-			{
-				return satisfactionDegree;
-			}
-			set
-			{
-				this.satisfactionDegree = value;
-			}
-		}
-
-
-
 
 		public virtual int Rating
 		{
@@ -96,9 +75,29 @@ namespace KeedoApp.Models
 			}
 		}
 
+		public virtual string Responses
+		{
+			get
+			{
+				return responses;
+			}
+			set
+			{
+				this.responses = value;
+			}
+		}
 
-
-
+		public virtual Satistfaction SatisfactionDegree
+		{
+			get
+			{
+				return satisfactionDegree;
+			}
+			set
+			{
+				this.satisfactionDegree = value;
+			}
+		}
 		public virtual DateTime CreatedAt
 		{
 			get
@@ -112,37 +111,17 @@ namespace KeedoApp.Models
 		}
 
 
-
-
-		public override string ToString()
+		public virtual Nullable<DateTime> UpdatedAt
 		{
-			return "Response [id=" + id + ", createdAt=" + createdAt + ", response=" + response + ", satisfactionDegree=" + satisfactionDegree + ", rating=" + rating + "]";
+			get
+			{
+				return updatedAt;
+			}
+			set
+			{
+				this.updatedAt = value;
+			}
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	}

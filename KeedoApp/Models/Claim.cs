@@ -4,9 +4,6 @@ using System;
 namespace tn.esprit.pi.entities
 {
 
-
-
-
 	[Serializable]
 	public class Claim
 	{
@@ -14,20 +11,20 @@ namespace tn.esprit.pi.entities
 		private const long serialVersionUID = 1L;
 
 		private int idClaim;
-		
-		
 		private string description;
-				private ClaimCategory category;
-		private User user;
+		private ClaimCategory category;
+		public int? parentFk { get; set; }
+		private User parent;
+		public int? kindergardenFk { get; set; }
 		private Kindergarden kindergarden;
 
 		private DateTime createdAt;
 
-		private DateTime updatedAt;
+		private Nullable<DateTime> updatedAt;
 
 
 		private ClaimStatus status;
-		private DateTime checkedAt;
+		private Nullable<DateTime> checkedAt;
 
 		public Claim() : base()
 		{
@@ -72,15 +69,15 @@ namespace tn.esprit.pi.entities
 		}
 
 
-		public virtual User User
+		public virtual User Parent
 		{
 			get
 			{
-				return user;
+				return parent;
 			}
 			set
 			{
-				this.user = value;
+				this.parent = value;
 			}
 		}
 
@@ -116,7 +113,7 @@ namespace tn.esprit.pi.entities
 		}
 
 
-		public virtual DateTime UpdatedAt
+		public virtual Nullable<DateTime> UpdatedAt
 		{
 			get
 			{
@@ -142,7 +139,7 @@ namespace tn.esprit.pi.entities
 		}
 
 
-		public virtual DateTime CheckedAt
+		public virtual Nullable<DateTime> CheckedAt
 		{
 			get
 			{
@@ -153,17 +150,6 @@ namespace tn.esprit.pi.entities
 				this.checkedAt = value;
 			}
 		}
-
-
-		public override string ToString()
-		{
-			return "Claim [idClaim=" + idClaim + ", description=" + description + ", category=" + category + ", kindergarden=" + kindergarden + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", status=" + status + ", checkedAt=" + checkedAt + "]";
-		}
-
-
-
-
-
 
 
 

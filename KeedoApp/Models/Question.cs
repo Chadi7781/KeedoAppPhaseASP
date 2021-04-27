@@ -15,13 +15,15 @@ namespace KeedoApp.Models
 
 		private string questions;
 
-		
+
 		private QuestionType type;
 
 		private Response response;
-
+		public int? feedbackFk { get; set; }
 		private Feedback feedback;
 		private DateTime createdAt;
+		private Nullable<DateTime> updatedAt;
+
 		public virtual int Id
 		{
 			get
@@ -59,7 +61,7 @@ namespace KeedoApp.Models
 			}
 		}
 
-		public virtual Response Response
+		public Response Response
 		{
 			get
 			{
@@ -101,13 +103,19 @@ namespace KeedoApp.Models
 		}
 
 
-
-
-
-		public override string ToString()
+		public virtual Nullable<DateTime> UpdatedAt
 		{
-			return "Question [id=" + id + ", questions=" + questions + ", type=" + type + ", response=" + response + ", createdAt=" + createdAt + "]";
+			get
+			{
+				return updatedAt;
+			}
+			set
+			{
+				this.updatedAt = value;
+			}
 		}
+
+
 
 
 

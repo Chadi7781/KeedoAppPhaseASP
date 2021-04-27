@@ -7,10 +7,6 @@ namespace KeedoApp.Models
 
 {
 
-
-
-
-
 	[Serializable]
 	public class Kindergarden
 	{
@@ -19,32 +15,21 @@ namespace KeedoApp.Models
 		private int id;
 
 		private string name;
-
+		private string location;
+		private string description;
 		private ISet<Claim> claims;
 
+		public int? directorFk { get; set; }
 
 		private User director;
 
 
 		private DateTime createdAt;
 
-		private DateTime updatedAt;
+		private Nullable<DateTime> updatedAt;
 
 
 
-		private IList<Event> events;
-
-		public virtual IList<Event> Events
-		{
-			get
-			{
-				return events;
-			}
-			set
-			{
-				this.events = value;
-			}
-		}
 
 
 		public Kindergarden() : base()
@@ -82,8 +67,28 @@ namespace KeedoApp.Models
 				this.name = value;
 			}
 		}
-
-
+		public virtual string Description
+		{
+			get
+			{
+				return description;
+			}
+			set
+			{
+				this.description = value;
+			}
+		}
+		public virtual string Location
+		{
+			get
+			{
+				return location;
+			}
+			set
+			{
+				this.location = value;
+			}
+		}
 
 
 		public virtual ISet<Claim> Claims
@@ -129,7 +134,7 @@ namespace KeedoApp.Models
 		}
 
 
-		public virtual DateTime UpdatedAt
+		public virtual Nullable<DateTime> UpdatedAt
 		{
 			get
 			{
