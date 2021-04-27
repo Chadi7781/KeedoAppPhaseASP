@@ -18,10 +18,10 @@ namespace KeedoApp.Models
 		}
 
 
-		
 
 
-		
+
+
 		public virtual DateTime ReportDate
 		{
 			get
@@ -55,7 +55,7 @@ namespace KeedoApp.Models
 				this.post = value;
 			}
 		}
-		
+
 
 
 

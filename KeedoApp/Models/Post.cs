@@ -14,15 +14,20 @@ namespace KeedoApp.Models
 
 		private int idPost;
 		private string postContent;
+		private string login;
 		private PostMediaType media;
 		private DateTime createDate;
-		private DateTime modifyDate;
-		private int owner;
-		private string mediaLink;
+		private String modifyDate;
+		private String owner;
+		private String mediaLink;
 		private IList<Comment> comments = new List<Comment>();
 		private ISet<Liking> likes = new HashSet<Liking>();
 		private ISet<Report> reports;
 		private User user;
+		private String likenb;
+		private String cmtnb;
+		public List<Comment> cmts { get; set; }
+
 
 
 		public Post() : base()
@@ -54,6 +59,18 @@ namespace KeedoApp.Models
 			}
 		}
 
+		public virtual string Login
+		{
+			get
+			{
+				return login;
+			}
+			set
+			{
+				this.login = value;
+			}
+		}
+
 
 		public virtual PostMediaType Media
 		{
@@ -81,7 +98,7 @@ namespace KeedoApp.Models
 		}
 
 
-		public virtual DateTime ModifyDate
+		public virtual String ModifyDate
 		{
 			get
 			{
@@ -94,7 +111,7 @@ namespace KeedoApp.Models
 		}
 
 
-		public virtual int Owner
+		public virtual String Owner
 		{
 			get
 			{
@@ -147,7 +164,7 @@ namespace KeedoApp.Models
 
 
 
-		public virtual string MediaLink
+		public virtual String MediaLink
 		{
 			get
 			{
@@ -171,11 +188,32 @@ namespace KeedoApp.Models
 				this.reports = value;
 			}
 		}
-
+		public virtual String Likenb
+		{
+			get
+			{
+				return likenb;
+			}
+			set
+			{
+				this.likenb = value;
+			}
+		}
+		public virtual String Cmtnb
+		{
+			get
+			{
+				return cmtnb;
+			}
+			set
+			{
+				this.cmtnb = value;
+			}
+		}
 
 		public override string ToString()
 		{
-			return "Post [idPost=" + idPost + ", postContent=" + postContent + ", media=" + media + ", createDate=" + createDate + ", modifyDate=" + modifyDate + ", owner=" + owner + ", mediaLink=" + mediaLink + ", comments=" + comments + ", likes=" + likes + ", reports=" + reports + ", user=" + user + "]";
+			return "Post [idPost=" + idPost + ", postContent=" + postContent + ", login=" + login + ", media = " + media + ", createDate=" + createDate + ", modifyDate=" + modifyDate + ", owner=" + owner + ", mediaLink=" + mediaLink + ", comments=" + comments + ", likes=" + likes + ", reports=" + reports + ", user=" + user + ", likenb=" + likenb + ", cmtnb=" + cmtnb + "]";
 		}
 
 	}

@@ -17,6 +17,7 @@ namespace KeedoApp.Models
 		private Post post;
 		private User user;
 		private DateTime likeDate;
+		private string login;
 		private NotificationSNW notificationsnw;
 
 		public Liking() : base()
@@ -106,13 +107,23 @@ namespace KeedoApp.Models
 		}
 
 
-
+		public virtual string Login
+		{
+			get
+			{
+				return login;
+			}
+			set
+			{
+				this.login = value;
+			}
+		}
 
 
 
 		public override string ToString()
 		{
-			return "Liking [idLiking=" + idLiking + ", post=" + post + ", user=" + user + ", likeDate=" + likeDate + ", notificationsnw=" + notificationsnw + "]";
+			return "Liking [idLiking=" + idLiking + ", post=" + post + ", user=" + user + ", likeDate=" + likeDate + ", login=" + login + ", notificationsnw=" + notificationsnw + "]";
 		}
 
 

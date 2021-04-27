@@ -11,11 +11,12 @@ namespace KeedoApp.Models
 	{
 
 		private const long serialVersionUID = 1L;
-	
+
 		private int idComment;
 		private string commentContent;
+		private string login;
 		private DateTime createDate;
-		private DateTime modifyDate;
+		private String modifyDate;
 		private Post post;
 		private User user;
 		private NotificationSNW notificationsnw;
@@ -48,7 +49,17 @@ namespace KeedoApp.Models
 				this.commentContent = value;
 			}
 		}
-
+		public virtual string Login
+		{
+			get
+			{
+				return login;
+			}
+			set
+			{
+				this.login = value;
+			}
+		}
 
 		public virtual DateTime CreateDate
 		{
@@ -63,7 +74,7 @@ namespace KeedoApp.Models
 		}
 
 
-		public virtual DateTime ModifyDate
+		public virtual String ModifyDate
 		{
 			get
 			{
@@ -120,7 +131,7 @@ namespace KeedoApp.Models
 
 		public override string ToString()
 		{
-			return "Comment [idComment=" + idComment + ", commentContent=" + commentContent + ", createDate=" + createDate + ", modifyDate=" + modifyDate + ", post=" + post + ", user=" + user + ", notificationsnw=" + notificationsnw + "]";
+			return "Comment [idComment=" + idComment + ", commentContent=" + commentContent + ", login=" + login + ", createDate=" + createDate + ", modifyDate=" + modifyDate + ", post=" + post + ", user=" + user + ", notificationsnw=" + notificationsnw + "]";
 		}
 
 
@@ -129,4 +140,3 @@ namespace KeedoApp.Models
 
 	}
 }
-
