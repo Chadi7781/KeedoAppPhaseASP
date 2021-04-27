@@ -93,14 +93,25 @@
                         <i class="uil-user-circle"></i>
                         <span>Users</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="https://localhost:44330/User/GestionUtilisateur">User management</a></li>
-                        
-                    </ul>
+                    @if (HttpContext.Current.Session["User"] != null && HttpContext.Current.Session["Role"].Equals("Admin"))
+                    {
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="https://localhost:44330/User/GestionUtilisateur">User management</a></li>
+
+                        </ul>
+                    }
+                    else if (HttpContext.Current.Session["User"] == null)
+                    {
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="https://localhost:44330/User/login">Login</a></li>
+
+                        </ul>
+
+                    }
                 </li>
 
-                
-                <li class="menu-title">Roles</li>
+         @if (HttpContext.Current.Session["User"] != null && HttpContext.Current.Session["Role"].Equals("Admin")) { 
+            <li class="menu-title">Roles</li>
                 <!--<li>
             <a href="calendar.html" class="waves-effect">
                 <i class="uil-calender"></i>
@@ -127,7 +138,7 @@
                         <li><a href="https://localhost:44330/Role/CreateRole">Add a role</a></li>
                     </ul>
                 </li>
-
+                }
 
                 <li class="menu-title">Events</li>
                 <li>
