@@ -172,117 +172,120 @@
                                     </div>
                                 </form>
                             </div>
-                            <!--End Comment Form -->
+                            <!--End add Post Form -->
                             <!-- News Block -->
                             @foreach (var item in Model.Post)
                             {
-                                <div class="news-block">
-                                    <div class="author-box style-two">
-                                        <div class="inner-box">
-                                            <div class="image-box"><img src="http:\\localhost\img\resource\author-img.jpg" alt=""></div>
+                        <div class="news-block">
+                            <div class="author-box style-two">
+                                <div class="inner-box">
+                                    <div class="image-box"><img src="http:\\localhost\img\resource\author-img.jpg" alt=""></div>
 
-                                            <h3 class="name">@item.Login</h3>
-                                        </div>
-                                    </div>
-                                    <div class="inner-box">
-                                        <div class="image-box">
-                                            @if (!string.IsNullOrEmpty(item.MediaLink))
-                                            {
-                                                <figure class="image wow fadeIn"><img src="@Url.Content(item.MediaLink)" alt=""></figure>
-                                            }
-                                        </div>
-                                        <div class="lower-content">
-                                            <ul class="post-info">
-                                                <li><span class="fa fa-pencil-alt"></span><a href="news-single.html">by @item.Login</a></li>
-                                                <li><span class="fa fa-calendar-alt"></span><a href="news-single.html">at @item.CreateDate</a></li>
-                                                <li><span class="fa fa-comments"></span><a href="news-single.html">@item.Cmtnb comments</a></li>
-                                            </ul>
-                                            <h3>@item.PostContent</h3>
-                                            <div class="float-right">
-                                                <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientShare", "Post" , new { id= item.IdPost})'">
-                                                    Share
-                                                </button>
-                                                <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientDelete", "Post" , new { id= item.IdPost})'">
-                                                    Delete
-                                                </button>
-                                                <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ReportPost", "Post" , new { id= item.IdPost})'">
-                                                    Report
-                                                </button>
-                                                <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientLike", "Post" , new { id= item.IdPost})'">
-                                                    Like
-                                                </button>
-                                            </div>
-                                        </div>
-                                        </div>
-
-                                    <!-- Other Option -->
-                                    <div class="post-share-options clearfix">
-                                        <div class="float-left">
-                                            <ul class="tags">
-                                                <li class="title">Tags:</li>
-                                                <li><a href="#">Education</a></li>
-                                                <li><a href="#">Classrooms</a></li>
-                                                <li><a href="#">Baby</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="float-right">
-                                            <ul class="social-icon-colored">
-                                                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-youtube"></span></a></li>
-                                                
-                                            </ul>
-                                        </div>
-                                    </div>
-
-
-
-                                    <!--Comments Area-->
-
-                                    @if (!(@item.Cmtnb).Equals("0"))
+                                    <h3 class="name">@item.Login</h3>
+                                </div>
+                            </div>
+                            <div class="inner-box">
+                                <div class="image-box">
+                                    @if (!string.IsNullOrEmpty(item.MediaLink))
                                     {
+                                        <figure class="image wow fadeIn"><img src="@Url.Content(item.MediaLink)" alt=""></figure>
+                                    }
+                                </div>
+                                <div class="lower-content">
+                                    <ul class="post-info">
+                                        <li><span class="fa fa-pencil-alt"></span><a href="news-single.html">by @item.Login</a></li>
+                                        <li><span class="fa fa-calendar-alt"></span><a href="news-single.html">at @item.CreateDate</a></li>
+                                        <li><span class="fa fa-comments"></span><a href="news-single.html">@item.Cmtnb comments</a></li>
+                                    </ul>
+                                    <h3>@item.PostContent</h3>
+                                    <div class="float-right">
+                                        <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientShare", "Post" , new { id= item.IdPost})'">
+                                            Share
+                                        </button>
+                                        <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientDelete", "Post" , new { id= item.IdPost})'">
+                                            Delete
+                                        </button>
+                                        <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ReportPost", "Post" , new { id= item.IdPost})'">
+                                            Report
+                                        </button>
+                                        <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientLike", "Post" , new { id= item.IdPost})'">
+                                            Like
+                                        </button>
+                                    </div>
+                                </div>
+                                <textarea cols='50' rows='20' name='text' id='text_id' class="darma" style='display:none'> </textarea>
+
+                                <button type="button" class="btn btn-outline-info waves-effect waves-light" onClick='document.getElementById("text_id").style.display = "block" '> Click me !</button>
+                            </div>
+                            
+                            <!-- Other Option -->
+                            <div class="post-share-options clearfix">
+                                <div class="float-left">
+                                    <ul class="tags">
+                                        <li class="title">Tags:</li>
+                                        <li><a href="#">Education</a></li>
+                                        <li><a href="#">Classrooms</a></li>
+                                        <li><a href="#">Baby</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="float-right">
+                                    <ul class="social-icon-colored">
+                                        <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+                                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+
+
+                            <!--Comments Area-->
+
+                            @if (!(@item.Cmtnb).Equals("0"))
+                            {
                                 <div class="comments-area">
                                     <div class="group-title"><h3>@item.Cmtnb Comments</h3></div>
                                     @foreach (var comment in item.cmts)
                                     {
-                                <div class="comment-box">
-                                    <div class="comment">
-                                        <div class="author-thumb"><img src="http:\\localhost\img\resource\author-2.jpg" alt=""></div>
-                                        <div class="comment-info clearfix"><strong> @comment.Login</strong><div class="comment-time">@comment.CreateDate</div></div>
-                                        <div class="text">@comment.CommentContent</div>
-                                    </div>
-                                    <div class="float-right">
-                                        <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientDeleteComment", "Post" , new { id= comment.IdComment})'">
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-                                        
-
-                                    }
-                                </div>
-                                    }
-
-                                    <!-- Comment Form -->
-                                    <div class="comment-form">
-                                        <div class="group-title"><h3>Leave a Comment</h3></div>
-                                        <!--Comment Form-->
-                                        <form method="post" action="@Url.Action("ClientComment", "Post", new { id= item.IdPost})">
-                                            <div class="row clearfix">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                                    <textarea class="darma" name="message" placeholder="Write Comment" id="comment"></textarea>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                                    <button class="theme-btn btn-style-one" type="submit" name="submit-form">Post Comment</button>
-                                                </div>
+                                        <div class="comment-box">
+                                            <div class="comment">
+                                                <div class="author-thumb"><img src="http:\\localhost\img\resource\author-2.jpg" alt=""></div>
+                                                <div class="comment-info clearfix"><strong> @comment.Login</strong><div class="comment-time">@comment.CreateDate</div></div>
+                                                <div class="text">@comment.CommentContent</div>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <!--End Comment Form -->
+                                            <div class="float-right">
+                                                <button type="button" class="btn btn-outline-info waves-effect waves-light" onclick="location.href='@Url.Action("ClientDeleteComment", "Post" , new { id= comment.IdComment})'">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
 
 
+                                    }
                                 </div>
+                            }
+
+                            <!-- Comment Form -->
+                            <div class="comment-form">
+                                <div class="group-title"><h3>Leave a Comment</h3></div>
+                                <!--Comment Form-->
+                                <form method="post" action="@Url.Action("ClientComment", "Post", new { id= item.IdPost})">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                            <textarea class="darma" name="message" placeholder="Write Comment" id="comment"></textarea>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                            <button class="theme-btn btn-style-one" type="submit" name="submit-form">Post Comment</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--End Comment Form -->
+
+
+                        </div>
                             }
                         </div>
                     </div>
