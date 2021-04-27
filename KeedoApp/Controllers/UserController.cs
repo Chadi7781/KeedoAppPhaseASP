@@ -26,10 +26,6 @@ namespace KeedoApp.Controllers
         // GET: User
         public ActionResult GestionUtilisateur(string searchString)
         {
-            if (Session["AccessToken"] == "" && Session["Role"] == "" && Session["User"] == "")
-            {
-                return RedirectToAction("login");
-            }
 
             HttpResponseMessage httpResponseMessage;
             var _AccessToken = Session["AccessToken"];
@@ -82,32 +78,33 @@ namespace KeedoApp.Controllers
         [CaptchaValidator]
         public ActionResult login(LoginObject.Login login, bool captchaValid)
         {
-            Session["AccessToken"] = "";
-            Session["Role"] = "";
-            Session["User"] = "";
-            baseAddress = "http://localhost:8080/SpringMVC/servlet/User/Access";
-            if (!(ModelState.IsValid || login.username.Equals("") || login.password.Equals("")))
+            Session["AccessToken"] = null;
+            Session["Role"] = null;
+            Session["User"] = null;
+            String token = "";
+            String roles = "";
+            String userres = "";
+            if (!login.username.Equals("") && !login.password.Equals(""))
             {
-                var APIResponse = httpClient.PostAsJsonAsync<LoginObject.Login>(baseAddress + "/login", login).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
+                var adresse = "http://localhost:8080/SpringMVC/servlet/User/Access";
+                var APIResponse = httpClient.PostAsJsonAsync<LoginObject.Login>(adresse + "/login", login).ContinueWith(postTask => postTask.Result.EnsureSuccessStatusCode());
                 var jsonreponse = APIResponse.Result.Content.ReadAsAsync<LoginObject.jwtResponse>().Result;
-                String resultat = jsonreponse.AccessToken;
-                if (jsonreponse.Roles.Length > 0)
+                token = jsonreponse.AccessToken;
+                roles = jsonreponse.role;
+                userres = jsonreponse.username;
+                if (roles.Length > 0)
                 {
-                    if (jsonreponse.username != null)
-                    {
-                        var APIResponse2 = httpClient.GetAsync(baseAddress + "/findUserBylogin/" + jsonreponse.username).Result;
-                        if (APIResponse2.IsSuccessStatusCode)
-                        {
-                            User user = (User)APIResponse2.Content.ReadAsAsync<IEnumerable<Models.User>>().Result;
-                            Session["idCurrentUser"] = user.idUser;
-                        }
+                    Session["AccessToken"] = token;
+                    Session["Role"] = roles;
+                    Session["User"] = userres;
+                    if (roles.Equals("Admin")){
+                        return RedirectToAction("GestionUtilisateur");
                     }
-                    Session["AccessToken"] = jsonreponse.AccessToken;
-                    Session["Role"] = jsonreponse.role;
-                    Session["User"] = jsonreponse.username;
-                    return RedirectToAction("GestionUtilisateur");
+                    //else if (roles.Equals("AutreRole"){
+                        //return RedirectToAction("GestionUtilisateur");
+                    //}
                 }
-                ViewBag.resultat = resultat;
+                ViewBag.resultat = token;
             }
             return View();
         }
@@ -144,10 +141,20 @@ namespace KeedoApp.Controllers
             }
             return View();
         }
-        public ActionResult Edit(int id, User user)
+        public ActionResult Edit(int? id, User user)
         {
             var _AccessToken = Session["AccessToken"];
             httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
+            if (id == null) {
+                String nomuser = Session["User"].ToString();
+                HttpResponseMessage httpResponseMessage= httpClient.GetAsync(baseAddress + "/findUserBylogin/" + nomuser).Result;
+                if (httpResponseMessage.IsSuccessStatusCode)
+                {
+
+                    user = httpResponseMessage.Content.ReadAsAsync<User>().Result;
+                    return View(user);
+                }
+            }
             if (user.LastName.Equals(""))
             {
                 HttpResponseMessage httpResponseMessage;
@@ -294,8 +301,6 @@ namespace KeedoApp.Controllers
         {
             return View();
         }
-
-
 
     }
 }
