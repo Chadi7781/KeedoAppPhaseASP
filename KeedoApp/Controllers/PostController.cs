@@ -643,5 +643,35 @@ namespace KeedoApp.Controllers
 
 
         }
+
+        public ActionResult ClientEdit(int id)
+        {
+            return View();
+        }
+
+
+
+        // POST: Post/Edit/5
+        [HttpPost]
+        public ActionResult ClientEdit(int id, Post post)
+        {
+            post.PostContent = (Request["updatepostxt"].ToString());
+            post.MediaLink = (Request["updatemedialink"].ToString());
+            //HTTP POST
+            var putTask = httpClient.PutAsJsonAsync<Post>(baseAddress + "Post/update-post/" + id.ToString(), post);
+            putTask.Wait();
+
+            var result = putTask.Result;
+
+            if (result.IsSuccessStatusCode)
+            {
+
+                return RedirectToAction("Newsfeed");
+            }
+            return View();
+
+        }
+
+
     }
 }
