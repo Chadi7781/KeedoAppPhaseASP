@@ -623,6 +623,25 @@ namespace KeedoApp.Controllers
 
         }
 
+        public ActionResult ClientDeleteComment(int id)
+        {
+            return (ClientDeleteComment(id, null));
+        }
 
+        // POST: Post/Delete/5
+        [HttpPost]
+        public ActionResult ClientDeleteComment(int id, FormCollection collection)
+        {
+            //HTTP POST
+            var putTask = httpClient.DeleteAsync(baseAddress + "Comment/delete-comment/" + id.ToString());
+            putTask.Wait();
+
+            var result = putTask.Result;
+            
+
+            return RedirectToAction("Newsfeed");
+            
+
+        }
     }
 }
