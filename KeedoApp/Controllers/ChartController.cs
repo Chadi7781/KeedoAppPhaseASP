@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KeedoApp.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,24 @@ namespace KeedoApp.Controllers
 {
     public class ChartController : Controller
     {
+
+        ChartService chartService = new ChartService();
         // GET: Chart
         public ActionResult Index()
         {
+
+            ViewBag.CountEvent = chartService.countEvent();
+            ViewBag.CountEventCollAmount = chartService.countEventCollAmount();
+            ViewBag.countAVGEventCollAmount = chartService.countAVGEventCollAmount();
+            ViewBag.countParticipations = chartService.countParticipations();
+            ViewBag.countDonations = chartService.countDonations();
+            ViewBag.displaybestEventsByViews = chartService.displaybestEventsByViews();
+            ViewBag.displayEventsByCollAmount = chartService.displayEventsByCollAmount();
+            ViewBag.getEventsToday = chartService.getEventsToday();
+
+
+
+
             return View();
         }
 

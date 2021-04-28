@@ -1,0 +1,456 @@
+﻿
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Dashboard</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Minible</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+            <div class="col-md-6 col-xl-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-end mt-2">
+                            <div id="total-revenue-chart"></div>
+                        </div>
+                        <div>
+                            <h4 class="mb-1 mt-1"> Amount Events Collect <span data-plugin="counterup"> @ViewBag.CountEventCollAmount </span>DT</h4>
+                            <p class="text-muted mb-0">
+                                Total Event     <span data-plugin="counterup" style="font-size:20px;color:black;">@ViewBag.CountEvent</span>
+
+</div>
+                        <p class="text-muted mt-3 mb-0">
+                            <span class="text-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>@ViewBag.countAVGEventCollAmount %</span> Average Collect Amount
+                        </p>
+                    </div>
+                </div>
+            </div> <!-- end col-->
+
+            <div class="col-md-6 col-xl-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-end mt-2">
+                            <div id="orders-chart"> </div>
+                        </div>
+                        <div>
+                            <h4 class="mb-1 mt-1"> Participants :
+                            
+                            
+                            
+                            <span data-plugin="counterup"> @ViewBag.countParticipations </span></h4>
+
+                            <p class="text-muted mb-0">Participations</p>
+                        </div>
+                        <p class="text-muted mt-3 mb-0">
+                            <span class="text-danger me-1"><i class="mdi mdi-arrow-down-bold me-1"></i>0.82%</span> since last week
+                        </p>
+                    </div>
+                </div>
+            </div> <!-- end col-->
+
+            <div class="col-md-6 col-xl-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-end mt-2">
+                            <div id="customers-chart"> </div>
+                        </div>
+                        <div>
+                            <h4 class="mb-1 mt-1">
+                                Participants :
+
+
+
+                                <span data-plugin="counterup"> @ViewBag.countDonations </span>
+                            </h4>                            <p class="text-muted mb-0">Customers</p>
+                        </div>
+                        <p class="text-muted mt-3 mb-0">
+                            <span class="text-danger me-1"><i class="mdi mdi-arrow-down-bold me-1"></i>6.24%</span> since last week
+                        </p>
+                    </div>
+                </div>
+            </div> <!-- end col-->
+
+            <div class="col-md-6 col-xl-3">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-end mt-2">
+                            <div id="growth-chart"></div>
+                        </div>
+                        <div>
+                            <h4 class="mb-1 mt-1">+ <span data-plugin="counterup">12.58</span>%</h4>
+                            <p class="text-muted mb-0">Growth</p>
+                        </div>
+                        <p class="text-muted mt-3 mb-0">
+                            <span class="text-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>10.51%</span> since last week
+                        </p>
+                    </div>
+                </div>
+            </div> <!-- end col-->
+        </div> <!-- end row-->
+
+        <div class="row">
+            <div class="col-xl-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-end">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle text-reset" href="#" id="dropdownMenuButton5"
+                                   data-bs-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <span class="fw-semibold">Sort By:</span> <span class="text-muted">Yearly<i class="mdi mdi-chevron-down ms-1"></i></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton5">
+                                    <a class="dropdown-item" href="#">Monthly</a>
+                                    <a class="dropdown-item" href="#">Yearly</a>
+                                    <a class="dropdown-item" href="#">Weekly</a>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="card-title mb-4">Sales Price Ticket</h4>
+
+                        <div class="mt-1">
+                            <ul class="list-inline main-chart mb-0">
+                                <li class="list-inline-item chart-border-left me-0 border-0">
+                                    <h3 class="text-primary">$<span data-plugin="counterup">@ViewBag.CountEventCollAmount </span><span class="text-muted d-inline-block font-size-15 ms-3">Income</span></h3>
+                                </li>
+                                <li class="list-inline-item chart-border-left me-0">
+                                    <h3>
+                                        <span data-plugin="counterup">@ViewBag.countParticipations</span><span class="text-muted d-inline-block font-size-15 ms-3">Sales Tickets</span>
+                                    </h3>
+                                </li>
+                                <li class="list-inline-item chart-border-left me-0">
+                                    <h3><span data-plugin="counterup">@ViewBag.countDonations</span>%<span class="text-muted d-inline-block font-size-15 ms-3">Donations</span></h3>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-3">
+                            <div id="sales-analytics-chart" class="apex-charts" dir="ltr"></div>
+                        </div>
+                    </div> <!-- end card-body-->
+                </div> <!-- end card-->
+            </div> <!-- end col-->
+
+            <div class="col-xl-4">
+                <div class="card bg-primary">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-sm-8">
+                                <p class="text-white font-size-18">Enhance your <b>Campaign</b> for better outreach <i class="mdi mdi-arrow-right"></i></p>
+                                <div class="mt-4">
+                                    <a href="javascript: void(0);" class="btn btn-success waves-effect waves-light">Upgrade Account!</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="mt-4 mt-sm-0">
+                                    <img src="~/FrontEnd/
+                                         
+                                         
+                                         
+                                         
+                                         assets/images/setup-analytics-amico.svg" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end card-body-->
+                </div> <!-- end card-->
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-end">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle text-reset" href="#" id="dropdownMenuButton1"
+                                   data-bs-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <span class="fw-semibold">Sort By:</span> <span class="text-muted">Yearly<i class="mdi mdi-chevron-down ms-1"></i></span>
+                                </a>
+
+                              
+                            </div>
+                        </div>
+
+                        <h4 class="card-title mb-4">Top 5 Views Events </h4>
+                        @foreach (var top in ViewBag.displaybestEventsByViews)
+                        {
+                    <div class="row align-items-center g-0 mt-3">
+                        <div class="col-sm-3">
+                            <p class="text-truncate mt-1 mb-0">
+                                <i class="uil-eye text-primary me-2"></i>                                     @top.Substring(0, @top.IndexOf("="))
+                            </p>
+                        </div>                        
+
+
+                    <div class="col-sm-9">
+                        <h5 class="font-size-16 mb-0">@top.Substring(@top.LastIndexOf('=') + 1) <span>Views</span></h5>
+                    </div>
+            
+                    </div> <!-- end row-->
+
+                        }
+
+
+                     
+                    </div> <!-- end card-body-->
+                </div> <!-- end card-->
+            </div> <!-- end Col -->
+        </div> <!-- end row-->
+
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-end">
+                            <div class="dropdown">
+                                <a class=" dropdown-toggle" href="#" id="dropdownMenuButton2"
+                                   data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="text-muted">All Members<i class="mdi mdi-chevron-down ms-1"></i></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
+                                    <a class="dropdown-item" href="#">Locations</a>
+                                    <a class="dropdown-item" href="#">Revenue</a>
+                                    <a class="dropdown-item" href="#">Join Date</a>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="card-title mb-4">Top 5 Events Collect Amount</h4>
+                      
+                        <div data-simplebar style="max-height: 336px;">
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-centered table-nowrap">
+                                    <tbody>
+                                        @foreach (var coll in ViewBag.displayEventsByCollAmount)
+                                        {
+                                            <tr>
+                                                <td style="width: 20px;"><img src="assets/images/users/avatar-4.jpg" class="avatar-xs rounded-circle " alt="..."></td>
+                                                <td>
+                                                    <h6 class="font-size-15 mb-1 fw-normal">@coll.Substring(0, coll.IndexOf("="))</h6>
+                                                </td>
+                                                <td class="text-muted fw-semibold text-end"><i class="icon-xs icon me-2 text-success" data-feather="trending-up">@coll.Substring(coll.LastIndexOf('=') + 1)</i></td>
+                                            </tr>
+
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div> <!-- enbd table-responsive-->
+                        </div> <!-- data-sidebar-->
+                    </div><!-- end card-body-->
+                </div> <!-- end card-->
+            </div><!-- end col -->
+
+            <div class="col-xl-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-end">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="dropdownMenuButton3"
+                                   data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="text-muted">Recent<i class="mdi mdi-chevron-down ms-1"></i></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton3">
+                                    <a class="dropdown-item" href="#">Recent</a>
+                                    <a class="dropdown-item" href="#">By Users</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="card-title mb-4">Recent Activity</h4>
+
+                        <ol class="activity-feed mb-0 ps-2" data-simplebar style="max-height: 336px;">
+
+                            @foreach (var today in ViewBag.getEventsToday)
+                            {
+                                <li class="feed-item">
+                                    <div class="feed-item-list">
+                                        <p class="text-muted mb-1 font-size-13">@today.Title<small class="d-inline-block ms-1">12:20 pm</small></p>
+                                        <p class="mt-0 mb-0">
+                                            Address : @today.Address
+                                            Kindergarden : @today.Kindergarden.Name<span class="text-primary">
+                                                
+                                            </span>
+                                        </p>
+                                    </div>
+                                </li>
+
+                            }
+
+
+                        </ol>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="float-end">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="dropdownMenuButton4"
+                                   data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="text-muted">Monthly<i class="mdi mdi-chevron-down ms-1"></i></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton4">
+                                    <a class="dropdown-item" href="#">Yearly</a>
+                                    <a class="dropdown-item" href="#">Monthly</a>
+                                    <a class="dropdown-item" href="#">Weekly</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="card-title">Social Source</h4>
+
+                        <div class="text-center">
+                            <div class="avatar-sm mx-auto mb-4">
+                                <span class="avatar-title rounded-circle bg-soft-primary font-size-24">
+                                    <i class="mdi mdi-facebook text-primary"></i>
+                                </span>
+                            </div>
+                            <p class="font-16 text-muted mb-2"></p>
+                            <h5><a href="#" class="text-dark">Facebook - <span class="text-muted font-16">125 sales</span> </a></h5>
+                            <p class="text-muted">Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus tincidunt.</p>
+                            <a href="#" class="text-reset font-16">Learn more <i class="mdi mdi-chevron-right"></i></a>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-4">
+                                <div class="social-source text-center mt-3">
+                                    <div class="avatar-xs mx-auto mb-3">
+                                        <span class="avatar-title rounded-circle bg-primary font-size-16">
+                                            <i class="mdi mdi-facebook text-white"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="font-size-15">Facebook</h5>
+                                    <p class="text-muted mb-0">125 sales</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="social-source text-center mt-3">
+                                    <div class="avatar-xs mx-auto mb-3">
+                                        <span class="avatar-title rounded-circle bg-info font-size-16">
+                                            <i class="mdi mdi-twitter text-white"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="font-size-15">Twitter</h5>
+                                    <p class="text-muted mb-0">112 sales</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="social-source text-center mt-3">
+                                    <div class="avatar-xs mx-auto mb-3">
+                                        <span class="avatar-title rounded-circle bg-pink font-size-16">
+                                            <i class="mdi mdi-instagram text-white"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="font-size-15">Instagram</h5>
+                                    <p class="text-muted mb-0">104 sales</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 text-center">
+                            <a href="#" class="text-primary font-size-14 fw-medium">View All Sources <i class="mdi mdi-chevron-right"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+
+
+    </div> <!-- container-fluid -->
+</div>
+<!-- End Page-content -->
+
+
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <script>document.write(new Date().getFullYear())</script> © Minible.
+            </div>
+            <div class="col-sm-6">
+                <div class="text-sm-end d-none d-sm-block">
+                    Crafted with <i class="mdi mdi-heart text-danger"></i> by <a href="https://themesbrand.com/" target="_blank" class="text-reset">Themesbrand</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+            </div>
+<!-- end main content-->
+        </div>
+<!-- END layout-wrapper -->
+<!-- Right Sidebar -->
+<div class="right-bar">
+    <div data-simplebar class="h-100">
+
+        <div class="rightbar-title d-flex align-items-center px-3 py-4">
+
+            <h5 class="m-0 me-2">Settings</h5>
+
+            <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                <i class="mdi mdi-close noti-icon"></i>
+            </a>
+        </div>
+
+
+
+        <!-- Settings -->
+        <hr class="mt-0" />
+        <h6 class="text-center mb-0">Choose Layouts</h6>
+
+        <div class="p-4">
+            <div class="mb-2">
+                <img src="assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="">
+            </div>
+            <div class="form-check form-switch mb-3">
+                <input type="checkbox" class="form-check-input theme-choice" id="light-mode-switch" checked />
+                <label class="form-check-label" for="light-mode-switch">Light Mode</label>
+            </div>
+
+            <div class="mb-2">
+                <img src="assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="">
+            </div>
+            <div class="form-check form-switch mb-3">
+                <input type="checkbox" class="form-check-input theme-choice" id="dark-mode-switch" data-bsStyle="assets/css/bootstrap-dark.min.css" data-appStyle="assets/css/app-dark.min.css" />
+                <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
+            </div>
+
+            <div class="mb-2">
+                <img src="assets/images/layouts/layout-3.jpg" class="img-fluid img-thumbnail" alt="">
+            </div>
+            <div class="form-check form-switch mb-5">
+                <input type="checkbox" class="form-check-input theme-choice" id="rtl-mode-switch" data-appStyle="assets/css/app-rtl.min.css" />
+                <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
+            </div>
+
+
+        </div>
+
+    </div> <!-- end slimscroll-menu-->
+</div>
+<!-- /Right-bar -->
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
