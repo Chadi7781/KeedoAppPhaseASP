@@ -198,7 +198,9 @@ namespace KeedoApp.Controllers
         // GET: Post/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            // return View();
+            var model = new Post();
+            return View("Edit", model);
         }
 
 
@@ -218,7 +220,7 @@ namespace KeedoApp.Controllers
 
                 return RedirectToAction("Index");
             }
-            return View();
+            return View(new Post());
 
         }
 
