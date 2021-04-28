@@ -1,0 +1,67 @@
+﻿@model IEnumerable<tn.esprit.pi.entities.Daycare>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div>
+    @Html.Partial("_Notifications")
+</div>
+<table class="table">
+    <tr>
+        <th>
+            Price per month
+        </th>
+        <th>
+            Total price
+        </th>
+        <th>
+            Period
+        </th>
+        <th>
+            Date begin
+        </th>
+        <th>
+            Date end
+        </th>
+        <th>
+            Capacity
+        </th>
+        <th>
+            Nbr inscription
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.price_M)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price_T)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.periode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateBegin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nbInscrit)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idDaycare }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idDaycare }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idDaycare })
+            </td>
+        </tr>
+    }
+
+</table>

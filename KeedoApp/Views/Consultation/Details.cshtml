@@ -1,0 +1,52 @@
+﻿@model KeedoApp.Models.Consultation
+
+<div>
+    <h4>Consultation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Date consultation
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateConsultation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.time)
+        </dd>
+
+        <dt>
+            Created by
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.director.ReturnFirstLast)
+        </dd>
+
+        <dt>
+            Doctor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doctor.ReturnFirstLast)
+        </dd>
+
+        <dt>
+            Kid
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kid.FirstNameLastName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idConsultation }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

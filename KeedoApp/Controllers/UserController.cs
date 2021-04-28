@@ -100,9 +100,9 @@ namespace KeedoApp.Controllers
                     if (roles.Equals("Admin")){
                         return RedirectToAction("GestionUtilisateur");
                     }
-                    //else if (roles.Equals("AutreRole"){
-                        //return RedirectToAction("GestionUtilisateur");
-                    //}
+                    else {
+                        return RedirectToAction("Index", "Kid");
+                    }
                 }
                 ViewBag.resultat = token;
             }

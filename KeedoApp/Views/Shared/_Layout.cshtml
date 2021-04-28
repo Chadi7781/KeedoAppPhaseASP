@@ -24,7 +24,7 @@
 
         <div class="vertical-menu">
 
-            @Html.Partial("~/Views/Shared/AdminTemplate/_SideBar.cshtml");
+            @Html.Partial("~/Views/Shared/AdminTemplate/_SideBar.cshtml")
         </div>
 
         <!-- Left Sidebar End -->
@@ -32,14 +32,16 @@
         <!-- Start right Content here -->
         <!-- ============================================================== -->
         <div class="main-content">
-
-                    @RenderBody()
+            <div class="container">
+                @RenderBody()
+            </div>
+                    
                     <!-- end row -->
 
 
 
 
-            @Html.Partial("~/Views/Shared/AdminTemplate/_Footer.cshtml");
+            @Html.Partial("~/Views/Shared/AdminTemplate/_Footer.cshtml")
 
         </div>
         <!-- end main content-->

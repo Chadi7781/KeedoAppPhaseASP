@@ -30,6 +30,7 @@ namespace KeedoApp.Controllers
         {
             var _AccessToken = Session["AccessToken"];
             httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer " + _AccessToken));
+
             HttpResponseMessage httpResponseMessage = httpClient.GetAsync(baseAddress + "findall").Result;
             if (httpResponseMessage.IsSuccessStatusCode)
             {

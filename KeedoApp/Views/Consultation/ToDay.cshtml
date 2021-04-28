@@ -1,0 +1,58 @@
+﻿@model IEnumerable<KeedoApp.Models.Consultation>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+
+</p>
+<div>
+    @Html.Partial("_Notifications")
+</div>
+@ViewBag.message
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dateConsultation)
+            <a href="@Url.Action("ToDay","Consultation")"><img src="https://img.icons8.com/color/48/000000/tear-off-calendar--v2.png" /></a>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.time)
+        </th>
+        <th>
+            Created by
+        </th>
+        <th>
+            Doctor
+        </th>
+        <th>
+            Kid
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateConsultation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.director.ReturnFirstLast)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.doctor.ReturnFirstLast)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kid.FirstNameLastName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idConsultation }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idConsultation }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idConsultation })
+            </td>
+        </tr>
+    }
+
+</table>

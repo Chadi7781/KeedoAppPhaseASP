@@ -1,0 +1,64 @@
+﻿@model IEnumerable<tn.esprit.pi.entities.Daycare>
+
+<div>
+    @Html.Partial("_Notifications")
+</div>
+<table class="table">
+    <tr>
+        <th>
+            Price per month
+        </th>
+        <th>
+            Total price
+        </th>
+        <th>
+            Periode
+        </th>
+        <th>
+            Date begin
+        </th>
+        <th>
+            Date end
+        </th>
+        <th>
+            Capacity
+        </th>
+        <th>
+            Nbr inscription
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.price_M)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price_T)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.periode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateBegin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateEnd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.capacity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nbInscrit)
+        </td>
+        <td>
+            @Html.ActionLink("Affect To", "Affect2", new { idk= @ViewBag.idk, idD=item.idDaycare })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

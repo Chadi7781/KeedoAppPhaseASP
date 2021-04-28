@@ -154,9 +154,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChatBotController.cs" />
+    <Compile Include="Controllers\ConsultationController.cs" />
+    <Compile Include="Controllers\DaycareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KidController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Extensions\NotificationExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -704,6 +710,29 @@
     <Content Include="Views\Role\DeleteRole.cshtml" />
     <Content Include="Views\Role\EditRole.cshtml" />
     <Content Include="Views\Role\GestionRole.cshtml" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
+    <Content Include="Views\ChatBot\Index.cshtml" />
+    <Content Include="Views\Consultation\Create.cshtml" />
+    <Content Include="Views\Consultation\Delete.cshtml" />
+    <Content Include="Views\Consultation\Details.cshtml" />
+    <Content Include="Views\Consultation\Edit.cshtml" />
+    <Content Include="Views\Consultation\Index.cshtml" />
+    <Content Include="Views\Consultation\ToDay.cshtml" />
+    <Content Include="Views\Daycare\Create.cshtml" />
+    <Content Include="Views\Daycare\Delete.cshtml" />
+    <Content Include="Views\Daycare\Details.cshtml" />
+    <Content Include="Views\Daycare\Edit.cshtml" />
+    <Content Include="Views\Daycare\Index.cshtml" />
+    <Content Include="Views\Kid\Affect.cshtml" />
+    <Content Include="Views\Kid\Create.cshtml" />
+    <Content Include="Views\Kid\Delete.cshtml" />
+    <Content Include="Views\Kid\Details.cshtml" />
+    <Content Include="Views\Kid\Edit.cshtml" />
+    <Content Include="Views\Kid\Index.cshtml" />
+    <Content Include="Views\Kid\SortName.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\Index2.cshtml" />
+    <Content Include="Views\Message\Send.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

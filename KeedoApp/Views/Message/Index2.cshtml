@@ -1,0 +1,114 @@
+﻿@model  IEnumerable<KeedoApp.Models.Message>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="~/Content/yasmin/style.css" rel="stylesheet">
+<div class="container">
+    <a href="@Url.Action("Connect","Message", new { id = @ViewBag.IdR, name = @ViewBag.name })">
+        <img src="https://img.icons8.com/color/48/000000/online--v2.png" />
+    </a>
+    <img src="https://img.icons8.com/material/24/fa314a/circle-square-loader.png" />
+    <!-- Page header end -->
+    <!-- Content wrapper start -->
+    <div class="content-wrapper">
+
+        <!-- Row start -->
+        <div class="row gutters">
+
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                <div class="card m-0">
+
+                    <!-- Row start -->
+                    <div class="row no-gutters">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+                            <div class="users-container" style="overflow-y: scroll !important; height:400px !important;">
+                                <div class="chat-search-box">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Search">
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-info">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="users">
+                                    @foreach (var flw in (List<KeedoApp.Models.User>)ViewBag.Followers)
+                                    {
+                                        <li class="person" data-chat="person1">
+                                            <div class="user">
+                                                <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                                @if (@flw.Status == true)
+                                                {
+                                                    <span class="status online"></span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="status offline"></span>
+                                                }
+                                            </div>
+                                            <p class="name-time">
+                                                <span class="name">@flw.ReturnFirstLast</span>
+                                            </p>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
+                            <div class="selected-user">
+                                <span>To: <span class="name">@ViewBag.name</span></span>
+                            </div>
+                            <div class="chat-container" style="overflow-y: scroll !important; height:400px !important;">
+                                <ul class="chat-box chatContainerScroll">
+                                    @foreach (var msg in Model)
+                                    {
+                                        if (msg.receiver.idUser == 3)
+                                        {
+                                            <li class="chat-right">
+                                                <div class="chat-avatar">
+                                                    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                                    <div class="chat-name">@msg.receiver.firstName</div>
+                                                </div>
+                                                <div class="chat-text">
+                                                    @msg.content
+                                                </div>
+                                                <div class="chat-hour">@msg.time.TimeOfDay <span class="fa fa-check-circle"></span></div>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="chat-left">
+                                                <div class="chat-hour">@msg.time.TimeOfDay <span class="fa fa-check-circle"></span></div>
+                                                <div class="chat-text">
+                                                    @msg.content
+                                                </div>
+                                                <div class="chat-avatar">
+                                                    <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                                    <div class="chat-name">@msg.receiver.firstName</div>
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                                <div class="form-group mt-3 mb-0">
+                                    <textarea name="txtMsg" class="form-control" rows="3" placeholder="Type your message here..."></textarea>
+                                    @Html.ActionLink("Send message", "Send", new { id = @ViewBag.IdR })
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Row end -->
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Row end -->
+
+    </div>
+    <!-- Content wrapper end -->
+
+</div>
