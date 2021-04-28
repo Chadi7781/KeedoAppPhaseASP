@@ -230,7 +230,9 @@ namespace KeedoApp.Controllers
         // GET: Post/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            // return View();
+            var model = new Post();
+            return View("Delete", model);
         }
 
         // POST: Post/Delete/5
@@ -247,7 +249,9 @@ namespace KeedoApp.Controllers
 
                 return RedirectToAction("Index");
             }
-            return View();
+            //return View();
+            return View(new Post());
+
         }
 
         // GET: Post/Details/5
@@ -369,7 +373,9 @@ namespace KeedoApp.Controllers
         }
         public ActionResult DeleteReported(int id)
         {
-            return View();
+            //return View();
+            var model = new Post();
+            return View("DeleteReported", model);
         }
 
         // POST: Post/Delete/5
@@ -388,7 +394,7 @@ namespace KeedoApp.Controllers
 
                 return RedirectToAction("Reported");
             }
-            return View();
+            return View(new Post());
         }
 
         public ActionResult Approve(int id)
@@ -438,7 +444,9 @@ namespace KeedoApp.Controllers
         }
         public ActionResult DeleteComment(int id)
         {
-            return View();
+            //   return View();
+            var model = new Comment();
+            return View("DeleteComment", model);
         }
 
         // POST: Post/Delete/5
@@ -455,7 +463,7 @@ namespace KeedoApp.Controllers
 
                 return RedirectToAction("Index");
             }
-            return View();
+            return View(new Comment());
 
         }
 
