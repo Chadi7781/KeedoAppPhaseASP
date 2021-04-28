@@ -34,7 +34,7 @@ namespace KeedoApp.Models
 		{
 		}
 
-		public virtual int IdPost
+       public virtual int IdPost
 		{
 			get
 			{

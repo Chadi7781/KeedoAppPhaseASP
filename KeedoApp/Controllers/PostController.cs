@@ -168,14 +168,19 @@ namespace KeedoApp.Controllers
         }
 
         // GET: Post/Create
-        public ActionResult Create()
+        [HttpGet]
+
+        public ActionResult GetCreate()
         {
-            return View();
+            // return View("Create");
+            var model = new Post();
+            return View("GetCreate", model);
+
         }
 
         // POST: Post/Create
         [HttpPost]
-        public ActionResult Create(Post post)
+        public ActionResult GetCreate(Post post)
         {
             var postTask = httpClient.PostAsJsonAsync<Post>(baseAddress + "Post/add-post", post);
             postTask.Wait();
@@ -187,7 +192,7 @@ namespace KeedoApp.Controllers
 
                 return RedirectToAction("Index");
             }
-            return View();
+            return View(new Post());
         }
 
         // GET: Post/Edit/5

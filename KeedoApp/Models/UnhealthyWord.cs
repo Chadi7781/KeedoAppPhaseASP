@@ -9,7 +9,7 @@ namespace KeedoApp.Models
 
 		private int id;
 
-		private String word;
+		private string word;
 
 		public UnhealthyWord() : base()
 		{
@@ -28,7 +28,7 @@ namespace KeedoApp.Models
 		}
 
 
-		public virtual String Word
+		public virtual string Word
 		{
 			get
 			{

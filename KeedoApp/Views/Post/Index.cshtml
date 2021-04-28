@@ -7,7 +7,11 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")|
+    <!--
+       @Html.ActionLink("Create New", "Create")
+    -->
+    
+    <a href="@Url.Action("GetCreate","Post")">Create</a>|
     @Html.ActionLink("Reported", "Reported")|
 
 

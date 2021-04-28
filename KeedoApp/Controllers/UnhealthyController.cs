@@ -44,6 +44,7 @@ namespace KeedoApp.Controllers
 
 
         // GET: Unhealthy/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -53,18 +54,15 @@ namespace KeedoApp.Controllers
         [HttpPost]
         public ActionResult Create(UnhealthyWord unhealthy)
         {
+
             var postTask = httpClient.PostAsJsonAsync<UnhealthyWord>(baseAddress + "/add", unhealthy);
             postTask.Wait();
 
             var result = postTask.Result;
-            System.Diagnostics.Debug.WriteLine("this is the word" + unhealthy.Word);
 
-            if (result.IsSuccessStatusCode)
-            {
 
                 return RedirectToAction("UnhealthyWords");
-            }
-            return View();
+           
         }
 
         // GET: Unhealthy/Edit/5
