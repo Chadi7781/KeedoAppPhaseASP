@@ -414,7 +414,8 @@ namespace KeedoApp.Controllers
 
         public ActionResult Comment()
         {
-            return View();
+            var model = new Comment();
+            return View("Comment", model);
         }
 
         // POST: Post/Create
@@ -431,7 +432,7 @@ namespace KeedoApp.Controllers
 
                 return RedirectToAction("Index");
             }
-            return View();
+            return View(new Comment());
         }
         public ActionResult DeleteComment(int id)
         {
