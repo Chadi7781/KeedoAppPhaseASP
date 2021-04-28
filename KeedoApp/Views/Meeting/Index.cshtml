@@ -103,7 +103,7 @@
                 events = [];
                 $.ajax({
                     type: "GET",
-                    url: "/home/GetEvents",
+                    url: "/Meeting/GetEventsMeeting",
                     success: function (data) {
                         $.each(data, function (i, v) {
                             events.push({
@@ -169,10 +169,10 @@
                     editable: true,
                     eventDrop: function (event) {
                         var data = {
-                            EventID: event.eventID,
+                            IdMeeting: event.eventID,
                             Subject: event.title,
-                            Start: event.start.format('DD/MM/YYYY HH:mm A'),
-                            End: event.end != null ? event.end.format('DD/MM/YYYY HH:mm A') : null,
+                            StartDate: event.start.format('DD/MM/YYYY HH:mm A'),
+                            EndDate: event.end != null ? event.end.format('DD/MM/YYYY HH:mm A') : null,
                             Description: event.description,
                             ThemeColor: event.color,
                             IsFullDay: event.allDay
@@ -191,7 +191,7 @@
                     $.ajax({
                         type: "POST",
                         url: '/home/DeleteEvent',
-                        data: {'eventID': selectedEvent.eventID},
+                        data: { 'eventID': selectedEvent.eventID },
                         success: function (data) {
                             if (data.status) {
                                 //Refresh the calender
@@ -273,7 +273,7 @@
             function SaveEvent(data) {
                 $.ajax({
                     type: "POST",
-                    url: '/home/SaveEvent',
+                    url: '/Meeting/SaveEventMeeting',
                     data: data,
                     success: function (data) {
                         if (data.status) {

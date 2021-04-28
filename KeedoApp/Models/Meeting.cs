@@ -1,7 +1,11 @@
 ﻿
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace KeedoApp.Models
 
 {
@@ -14,13 +18,17 @@ namespace KeedoApp.Models
 		private int idMeeting;
 
 		private DateTime startDate;
+		private DateTime endDate;
+		private string subject;
+		private bool isFullDay;
+		private string themeColor;
+
+		[DataType(DataType.Time)]
 
 
-		private DateTime time;
+		private DateTime ?createdAt;
 
-		private DateTime createdAt;
-
-		private DateTime canceledAt;
+		private DateTime ?canceledAt;
 
 
 		private User canceler;
@@ -45,9 +53,10 @@ namespace KeedoApp.Models
 		{
 		}
 
-		
 
-		
+
+		[JsonProperty("idMeeting")]
+
 		public virtual int IdMeeting
 		{
 			get
@@ -62,6 +71,34 @@ namespace KeedoApp.Models
 
 
 
+		[JsonProperty("allDay")]
+
+		public virtual bool IsFullDay
+		{
+			get
+			{
+				return isFullDay;
+			}
+			set
+			{
+				this.isFullDay = value;
+			}
+		}
+
+		[JsonProperty("color")]
+
+		public virtual string ThemeColor
+		{
+			get
+			{
+				return themeColor;
+			}
+			set
+			{
+				this.themeColor = value;
+			}
+		}
+		[JsonProperty("startDate")]
 
 		public virtual DateTime StartDate
 		{
@@ -75,38 +112,45 @@ namespace KeedoApp.Models
 			}
 		}
 
+		[JsonProperty("endDate")]
 
 
-
-		public virtual DateTime Time
+		public virtual DateTime EndDate
 		{
 			get
 			{
-				return time;
+				return endDate;
 			}
 			set
 			{
-				this.time = value;
+				this.endDate = value;
 			}
 		}
+		[JsonProperty("subject")]
 
-
-
-
-		public virtual DateTime CanceledAt
+		public virtual string Subject
 		{
 			get
 			{
-				return canceledAt;
+				return subject;
 			}
 			set
 			{
-				this.canceledAt = value;
+				this.subject = value;
 			}
 		}
+	
 
 
 
+		[JsonProperty("canceledAt")]
+
+		
+
+		[Column(TypeName = "datetime2")]
+		public DateTime? CanceledAt { get; set; }
+
+		[JsonProperty("canceler")]
 
 		public virtual User Canceler
 		{
@@ -136,6 +180,7 @@ namespace KeedoApp.Models
 		}
 
 
+		[JsonProperty("typeMeeting")]
 
 
 		public virtual string TypeMeeting
@@ -222,23 +267,14 @@ namespace KeedoApp.Models
 		}
 
 
-		public virtual DateTime CreatedAt
-		{
-			get
-			{
-				return createdAt;
-			}
-			set
-			{
-				this.createdAt = value;
-			}
-		}
+	
 
-		public override string ToString()
-		{
-			return "Meeting [idMeeting=" + idMeeting + ", startDate=" + startDate + ", time=" + time + ", createdAt=" + createdAt + ", canceledAt=" + canceledAt + ", canceler=" + canceler + ", exchangeRequest=" + exchangeRequest + ", status=" + status + ", typeMeeting=" + typeMeeting + ", description=" + description + ", feedbacks=" + feedbacks + ", kindergarden=" + kindergarden + ", users=" + users + "]";
-		}
+		[JsonProperty("createdAt")]
 
+
+
+		[Column(TypeName = "datetime2")]
+		public DateTime? CreatedAt { get; set; }
 
 
 

@@ -140,18 +140,18 @@ namespace KeedoApp.Controllers
 
 
             eventService.addEvent(formCollection);
-            response = true;
+                response = true;
 
-            return new JsonResult
-            {
-                Data = new
+                return new JsonResult
                 {
-                    response = response
-                }
-            };
+                    Data = new
+                    {
+                        response = response
+                    }
+                };
 
 
-        }
+            }
 
 
 

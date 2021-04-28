@@ -25,7 +25,7 @@ namespace KeedoApp.Helper
             httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("http://localhost:8084");
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
+            
             return httpClient;
         }
         public  static ConfigureHttpClient GetInstance()
