@@ -71,6 +71,17 @@ namespace KeedoApp.Controllers
                 {
 
                     posts = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Post>>().Result;
+                    foreach (Post p in posts)
+                    {
+                        httplikemessage = httpClient.GetAsync(baseAddress + "Liking/count-post-likes/" + p.IdPost).Result;
+                        httpcmtmessage = httpClient.GetAsync(baseAddress + "Comment/count-post-comments/" + p.IdPost).Result;
+
+                        p.Likenb = httplikemessage.Content.ReadAsStringAsync().Result.ToString();
+                        p.Cmtnb = httpcmtmessage.Content.ReadAsStringAsync().Result.ToString();
+                        // System.Diagnostics.Debug.WriteLine("this is the id" + p.IdPost+ "this is nblike" + httplikemessage.Content.ReadAsStringAsync().Result.ToString());
+
+
+                    }
                 }
                 else
                 {
